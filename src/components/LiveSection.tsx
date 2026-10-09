@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Bot, Clock, Loader2, MonitorPlay, Search, Sparkles, Video, Zap } from "lucide-react";
 import { agentAlerts, generateDetection } from "@/lib/engine";
+import VideoIntelligence from "./VideoIntelligence";
 import type { AgentAlert, DetectionPayload, SamplingRate, SearchResult } from "@/lib/types";
 
 const TICK_MS = 80;
@@ -209,6 +210,7 @@ export default function LiveSection({ samplingRate }: { samplingRate: SamplingRa
         <div className="space-y-6 lg:col-span-3">
           <VideoFeed tracks={tracks} clock={clock} />
           <SemanticSearch />
+          <VideoIntelligence />
         </div>
         <div className="space-y-6 lg:col-span-2">
           <div className="rounded-3xl border border-neutral-200 bg-neutral-100 p-4">

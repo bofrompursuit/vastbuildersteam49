@@ -37,7 +37,7 @@ function Hero() {
           The Intelligence Layer for Modern Retail
         </h1>
         <p className="mt-6 max-w-lg text-base leading-relaxed text-neutral-600 sm:text-lg">
-          AURA+FIT.AI connects every in-store camera into a unified AI layer — delivering real-time outfit analytics, anonymous
+          AURA.FIT.TECH connects every in-store camera into a unified AI layer — delivering real-time outfit analytics, anonymous
           demographics, and automated merchandising across your stores.
         </p>
         <div className="mt-10 flex flex-wrap gap-2">
@@ -71,7 +71,7 @@ export default function AuraFitApp() {
     <div className="min-h-screen bg-white text-neutral-900">
       <header className="sticky top-0 z-20 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-          <a href="#" className="text-xl font-semibold tracking-tight">AURA+FIT.AI</a>
+          <a href="#" className="text-xl font-semibold tracking-tight">AURA.FIT.TECH</a>
           <nav className="hidden gap-8 text-sm text-neutral-800 md:flex">
             {NAV.map((n) => (
               <a key={n.href} href={n.href} className="hover:text-brand">{n.label}</a>
@@ -106,7 +106,7 @@ export default function AuraFitApp() {
       </main>
 
       <footer className="border-t border-neutral-200 py-6 text-center text-xs text-neutral-500">
-        AURA+FIT.AI · VAST Data · CoreWeave · YOLO · NVIDIA Cosmos · Weights &amp; Biases — anonymous tracking, no PII stored
+        AURA.FIT.TECH · VAST Data · CoreWeave · YOLO · NVIDIA Cosmos · Weights &amp; Biases — anonymous tracking, no PII stored
       </footer>
     </div>
   );

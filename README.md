@@ -24,7 +24,7 @@ python3 scripts/check_keys.py
 - [ ] Names + emails
 - [ ] Optional: live site, screenshot
 
-## App: AURA+FIT.AI
+## App: AURA.FIT.TECH
 Next.js (App Router) + Tailwind + Lucide. Live CCTV detection overlay, demographic/outfit extraction feed,
 semantic footage search, W&B merchandising agent alerts, and the embedded team dashboard.
 Detection data is currently simulated in `src/lib/engine.ts` — swap in real ingestion there.
