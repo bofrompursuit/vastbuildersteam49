@@ -73,6 +73,50 @@ function Hero({ data }: { data: RealDataFile | null }) {
   );
 }
 
+const BUILDERS = [
+  { name: "Bo Moldenhauer", url: "https://www.linkedin.com/in/bomoldenhauer" },
+  { name: "Tarun Theegela", url: "https://www.linkedin.com/in/taruntheegela/" },
+  { name: "Qiman Wang", url: "https://www.linkedin.com/in/qimanwang/" },
+  { name: "Alexander Mong", url: "https://www.linkedin.com/in/alexander-mong/" },
+];
+
+const SPONSORS = [
+  { name: "VAST Data", url: "https://www.vastdata.com/" },
+  { name: "CoreWeave", url: "https://coreweave.com/" },
+  { name: "xAI", url: "https://x.ai/company" },
+  { name: "NVIDIA", url: "https://www.nvidia.com/en-us/" },
+  { name: "Weights & Biases", url: "https://wandb.ai/" },
+  { name: "Hugging Face", url: "https://huggingface.co/" },
+];
+
+function Credits() {
+  const link = "inline-flex items-center gap-1 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-800 hover:border-brand hover:text-brand";
+  return (
+    <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 pb-12 sm:px-6 md:grid-cols-2">
+      <div>
+        <p className="mb-3 font-mono text-xs uppercase tracking-wider text-neutral-500">Connect with the builders</p>
+        <div className="flex flex-wrap gap-2">
+          {BUILDERS.map((b) => (
+            <a key={b.url} href={b.url} target="_blank" rel="noopener noreferrer" className={link}>
+              {b.name} <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p className="mb-3 font-mono text-xs uppercase tracking-wider text-neutral-500">Sponsors</p>
+        <div className="flex flex-wrap gap-2">
+          {SPONSORS.map((s) => (
+            <a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer" className={link}>
+              {s.name} <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function AuraFitApp() {
   const [samplingRate, setSamplingRate] = useState<SamplingRate>(5);
   const { loaded, error } = useRealData();
@@ -130,6 +174,8 @@ export default function AuraFitApp() {
           <DashboardSection samplingRate={samplingRate} onSamplingRate={setSamplingRate} data={data} />
         </div>
       </main>
+
+      <Credits />
 
       <footer className="border-t border-neutral-200 py-6 text-center text-xs text-neutral-500">
         AURAAFIT · VAST VSS · YOLO11 · W&amp;B Inference + Weave — replay of recorded event footage; age, gender, height and fit are not inferred
