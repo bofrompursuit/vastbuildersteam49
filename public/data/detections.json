@@ -1,21 +1,21 @@
 {
  "pipeline": {
-  "generatedAt": "2026-10-09T17:38:44Z",
+  "generatedAt": "2026-10-09T19:17:42Z",
   "detector": "YOLO11s (event GPU endpoint, called directly)",
   "labeler": "W&B Inference: google/gemma-4-26B-A4B-it",
   "tracing": "W&B Weave project vastdata/team-49",
   "index": "VAST VSS (team-49), clips referenced by original_video",
-  "promptVersion": "single-person-outfit-v1",
+  "promptVersion": "single-person-outfit-v2-typed",
   "secondsPerLabel": 1.34,
   "notes": [
    "Replay of recorded street cameras from the event archive (San Francisco, New York), not a live store feed.",
    "Each 5 s piece is tracked separately, so a person seen in two pieces counts twice: numbers are person-sightings, not unique shoppers.",
    "Age, gender, height and fit are not inferred, by design.",
    "Labels are model output (W&B vision) and can be wrong; see the hand check.",
-   "Where the vision model returned only a colour, a generic noun (top / bottoms / item) was added; no garment type was invented.",
    "Scene captions under the replay are the original Cosmos3-Reason descriptions stored in our VAST VSS index (gender words replaced with neutral ones).",
    "Under each scene caption, \"Cosmos3 direct\" lines are a fresh NVIDIA Cosmos3 (nano reasoner) pass with our fashion prompt, for comparison with the W&B labels; repeated lines, copies of the prompt example and gender words were filtered out.",
-   "Boxes follow each person along their YOLO11 track (about 6 positions per second), synced to the video."
+   "Boxes follow each person along their YOLO11 track (about 6 positions per second), synced to the video.",
+   "Labels v2: each person is cropped from the replay frame (padded, upscaled) and W&B Gemma names a garment type from a fixed list (traced in W&B Weave); types on small, distant people are the model's closest match and can be wrong."
   ]
  },
  "clips": [
@@ -56,7 +56,7 @@
      "n": 4,
      "tStart": 15,
      "tEnd": 20,
-     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing and vehicles moving through. A person in a white top and light blue jeans, carrying a green handbag, walks across the crosswalk from left to right. The person is followed by a group of people, including a person in a black shirt and another in a white shirt, both carrying backpacks. A person in a black jacket and carrying a brown box walks along the right side of the crosswalk. A person in a white shirt and beige pants, also carrying a backpack, walks from left to right in the foreground. A person with hair, wearing a black top and carrying a white tote bag, walks from right to left in the foreground. A silver SUV drives through the\u2026",
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing and vehicles moving through. A person in a white top and light blue jeans, carrying a green handbag, walks across the crosswalk from left to right. The person is followed by a group of people, including a person in a black shirt and another in a white shirt, both carrying backpacks. A person in a black jacket and carrying a brown box walks along the right side of the crosswalk. A person in a white shirt and beige pants, also carrying a backpack, walks from left to right in the foreground. A person with hair, wearing a black top and carrying a white tote bag, walks from right to left in the foreground. A silver SUV drives through the…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians cross a busy city intersection with cars and tall buildings in the background.\nP1: top=black jacket; bottom=black trousers; outer=none; carry=black backpack; walking\nP2: top=white t-shirt; bottom=light blue jeans; outer=none; carry=large green tote; walking\nP3: top=black hoodie; bottom=grey trousers; outer=none; carry=black backpack; walking\nP4: top=black jacket; bottom=black trousers; outer=none; carry=large brown box; walking"
     },
@@ -64,7 +64,7 @@
      "n": 5,
      "tStart": 20,
      "tEnd": 25,
-     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing in multiple directions. A person in a black jacket and dark pants walks across the foreground from right to left, carrying a brown cardboard box in their left hand. The person is followed by a person in a gray jacket and dark pants, also carrying a brown cardboard box in their left hand. Both individuals are walking at a steady pace and appear to be heading toward the left side of the frame. In the background, several other pedestrians are visible, some walking across the crosswalk and others standing or waiting near the sidewalks. A few people are seen carrying backpacks or handbags. The traffic lights are visible, with some\u2026",
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing in multiple directions. A person in a black jacket and dark pants walks across the foreground from right to left, carrying a brown cardboard box in their left hand. The person is followed by a person in a gray jacket and dark pants, also carrying a brown cardboard box in their left hand. Both individuals are walking at a steady pace and appear to be heading toward the left side of the frame. In the background, several other pedestrians are visible, some walking across the crosswalk and others standing or waiting near the sidewalks. A few people are seen carrying backpacks or handbags. The traffic lights are visible, with some…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians cross a busy city intersection with traffic lights and tall buildings in the background.\nP1: top=black puffer jacket; bottom=black trousers; outer=none; carry=cardboard box; walking\nP2: top=grey hoodie; bottom=black trousers; outer=none; carry=blue backpack; walking\nP3: top=white t-shirt; bottom=black trousers; outer=none; carry=black bag; walking\nP4: top=black jacket; bottom=black trousers; outer=none; carry=black bag; walking"
     },
@@ -72,7 +72,7 @@
      "n": 6,
      "tStart": 25,
      "tEnd": 30,
-     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through the crosswalks. A person wearing a black shirt and black pants is crossing the street from left to right, carrying a black backpack. Another individual in a white shirt and black pants is also crossing from left to right, holding a black handbag. A cyclist in a black shirt and black pants rides across the intersection from left to right, followed by two more cyclists in black shirts and black pants. Two pedestrians, one in a maroon shirt and black pants and another in a blue shirt and black pants, both carrying black backpacks, walk from right to left across the foreground. Two more pedestrians, one in a\u2026",
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through the crosswalks. A person wearing a black shirt and black pants is crossing the street from left to right, carrying a black backpack. Another individual in a white shirt and black pants is also crossing from left to right, holding a black handbag. A cyclist in a black shirt and black pants rides across the intersection from left to right, followed by two more cyclists in black shirts and black pants. Two pedestrians, one in a maroon shirt and black pants and another in a blue shirt and black pants, both carrying black backpacks, walk from right to left across the foreground. Two more pedestrians, one in a…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians and cyclists cross a busy city intersection under clear daylight.\nP1: white t-shirt; bottom=grey trousers; outer=none; carry=none; walking\nP2: black t-shirt; bottom=black trousers; outer=none; carry=black backpack; walking\nP3: maroon sweater; bottom=black trousers; outer=none; carry=black backpack; walking\nP4: blue shirt; bottom=navy trousers; outer=none; carry=black backpack; walking"
     }
@@ -99,7 +99,7 @@
      "n": 2,
      "tStart": 5,
      "tEnd": 10,
-     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles. A person in a beige jacket and blue jeans walks across the foreground from right to left, passing in front of a black SUV parked on the left side of the frame. Another pedestrian, wearing a light-colored top and carrying a handbag, crosses the street from left to right. A person in a patterned shirt and dark pants stands near the crosswalk, facing the street. A white van drives through the intersection from right to left, while a black sedan is visible further back, moving in the same direction. Traffic lights are visible at the intersection, with one showing red. A fire hydrant is located on the sidewalk near the right\u2026",
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles. A person in a beige jacket and blue jeans walks across the foreground from right to left, passing in front of a black SUV parked on the left side of the frame. Another pedestrian, wearing a light-colored top and carrying a handbag, crosses the street from left to right. A person in a patterned shirt and dark pants stands near the crosswalk, facing the street. A white van drives through the intersection from right to left, while a black sedan is visible further back, moving in the same direction. Traffic lights are visible at the intersection, with one showing red. A fire hydrant is located on the sidewalk near the right…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "P1: top=beige jacket; bottom=blue jeans; outer=none; carry=none; walking\nP2: top=black top; bottom=beige trousers; outer=none; carry=brown tote; walking\nP3: top=grey shirt; bottom=black trousers; outer=none; carry=black bag; standing\nP4: top=blue shirt; bottom=black trousers; outer=none; carry=black bag; standing"
     },
@@ -115,7 +115,7 @@
      "n": 4,
      "tStart": 15,
      "tEnd": 20,
-     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing and vehicles moving through. Several people are walking across the crosswalk, including a group of individuals in casual attire. A person in a black coat carrying a handbag is seen crossing the street, while others are waiting at the curb. A person with a backpack is also visible walking through the intersection. Traffic lights are present, and vehicles, including cars and a white SUV, are navigating the intersection. The environment includes tall buildings, one with a visible \"Fidelity\" sign, and street infrastructure such as a fire hydrant and traffic signals. The overall activity suggests a typical urban setting with\u2026",
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing and vehicles moving through. Several people are walking across the crosswalk, including a group of individuals in casual attire. A person in a black coat carrying a handbag is seen crossing the street, while others are waiting at the curb. A person with a backpack is also visible walking through the intersection. Traffic lights are present, and vehicles, including cars and a white SUV, are navigating the intersection. The environment includes tall buildings, one with a visible \"Fidelity\" sign, and street infrastructure such as a fire hydrant and traffic signals. The overall activity suggests a typical urban setting with…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians cross a busy city intersection with cars passing by.\nP1: top=black coat; bottom=black trousers; outer=none; carry=black tote; walking\nP2: top=black hoodie; bottom=shorts; outer=none; carry=none; walking\nP3: top=grey sweater; bottom=jeans; outer=none; carry=none; walking\nP4: top=black shirt; bottom=shorts; outer=none; carry=none; walking"
     },
@@ -131,7 +131,7 @@
      "n": 6,
      "tStart": 25,
      "tEnd": 30,
-     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing in multiple directions. A person in a white shirt and black pants walks across the crosswalk, while another individual in a red shirt and black pants crosses from the opposite direction. A person in a yellow shirt and purple shorts is also visible crossing the street. Several pedestrians are waiting at the curb, including one in a gray shirt and jeans with a backpack, and another in a black suit with a briefcase. A person in a white shirt and black pants is seen walking along the sidewalk. A person in a black shirt and jeans is riding a bicycle across the intersection. A white car is driving through the intersection, and a\u2026",
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing in multiple directions. A person in a white shirt and black pants walks across the crosswalk, while another individual in a red shirt and black pants crosses from the opposite direction. A person in a yellow shirt and purple shorts is also visible crossing the street. Several pedestrians are waiting at the curb, including one in a gray shirt and jeans with a backpack, and another in a black suit with a briefcase. A person in a white shirt and black pants is seen walking along the sidewalk. A person in a black shirt and jeans is riding a bicycle across the intersection. A white car is driving through the intersection, and a…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians cross a busy city intersection while vehicles pass through the crosswalk.\nP1: top=beige blouse; bottom=black trousers; outer=none; carry=none; walking\nP2: top=orange sweater; bottom=black trousers; outer=none; carry=none; walking\nP3: top=white t-shirt; bottom=black trousers; outer=none; carry=black backpack; walking\nP4: top=grey sweater; bottom=black trousers; outer=none; carry=black backpack; walking"
     }
@@ -150,7 +150,7 @@
      "n": 1,
      "tStart": 0,
      "tEnd": 5,
-     "cosmosCaption": "A white minivan drives through the intersection from left to right. A yellow taxi follows, also moving left to right. A dark gray minivan then proceeds in the same direction. A person in a black hoodie stands on the sidewalk near the crosswalk, facing the street. Another person in a light-colored jacket walks along the sidewalk, carrying a bicycle. A person in a brown coat and high heels crosses the street from left to right. A person in a dark jacket and jeans walks along the sidewalk, carrying a backpack. A white delivery truck is parked on the right side of the street. A fire hydrant is visible on the left sidewalk. A traffic light shows a red pedestrian signal. A street sign reads\u2026",
+     "cosmosCaption": "A white minivan drives through the intersection from left to right. A yellow taxi follows, also moving left to right. A dark gray minivan then proceeds in the same direction. A person in a black hoodie stands on the sidewalk near the crosswalk, facing the street. Another person in a light-colored jacket walks along the sidewalk, carrying a bicycle. A person in a brown coat and high heels crosses the street from left to right. A person in a dark jacket and jeans walks along the sidewalk, carrying a backpack. A white delivery truck is parked on the right side of the street. A fire hydrant is visible on the left sidewalk. A traffic light shows a red pedestrian signal. A street sign reads…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "A busy city intersection with pedestrians crossing and vehicles passing through.\nP1: top=beige coat; bottom=black trousers; outer=none; carry=black handbag; walking\nP2: top=black hoodie; bottom=black trousers; outer=none; carry=none; standing\nP3: top=white hoodie; bottom=blue jeans; outer=none; carry=none; walking\nP4: top=black hoodie; bottom=beige trousers; outer=none; carry=none; walking"
     },
@@ -158,7 +158,7 @@
      "n": 2,
      "tStart": 5,
      "tEnd": 10,
-     "cosmosCaption": "A gray minivan drives through the intersection from left to right. A white truck is parked on the right side of the street. A pedestrian wearing a brown jacket, black skirt, and high heels crosses the street from left to right. Another pedestrian in dark clothing walks across the crosswalk from right to left. A person in a light-colored jacket and blue jeans walks along the sidewalk on the right. A cyclist rides across the intersection from left to right. A pedestrian with a stroller enters the frame from the left. A traffic light showing a red hand is visible on the right side of the street. A street sign reading \"Walker St\" is visible on the left. A building with the number \"401\" and the\u2026",
+     "cosmosCaption": "A gray minivan drives through the intersection from left to right. A white truck is parked on the right side of the street. A pedestrian wearing a brown jacket, black skirt, and high heels crosses the street from left to right. Another pedestrian in dark clothing walks across the crosswalk from right to left. A person in a light-colored jacket and blue jeans walks along the sidewalk on the right. A cyclist rides across the intersection from left to right. A pedestrian with a stroller enters the frame from the left. A traffic light showing a red hand is visible on the right side of the street. A street sign reading \"Walker St\" is visible on the left. A building with the number \"401\" and the…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "A busy city intersection with pedestrians crossing and vehicles passing by.\nP1: top=black puffer jacket; bottom=black trousers; outer=none; carry=none; walking\nP2: top=black coat; bottom=black trousers; outer=none; carry=brown tote; walking\nP3: top=black hoodie; bottom=black trousers; outer=none; carry=none; walking\nP4: top=grey blazer; bottom=black skirt; outer=none; carry=black handbag; walking"
     },
@@ -166,7 +166,7 @@
      "n": 3,
      "tStart": 10,
      "tEnd": 15,
-     "cosmosCaption": "A group of pedestrians crosses a marked crosswalk on a city street. A person in a black top and light-colored pants pushes a stroller with a pink blanket. A person in a plaid shirt carries a child in a pink jacket. Another person in a black top and dark pants carries a brown shoulder bag. A person in a black jacket and gray pants walks alongside them. A person in a black top and pants carries a red backpack. A person in a black top and gray pants carries a white bag. A person in a green jacket and blue jeans walks toward the crosswalk. A person in a dark jacket and blue jeans walks away from the crosswalk. A white truck is parked on the right side of the street. A traffic light shows a red\u2026",
+     "cosmosCaption": "A group of pedestrians crosses a marked crosswalk on a city street. A person in a black top and light-colored pants pushes a stroller with a pink blanket. A person in a plaid shirt carries a child in a pink jacket. Another person in a black top and dark pants carries a brown shoulder bag. A person in a black jacket and gray pants walks alongside them. A person in a black top and pants carries a red backpack. A person in a black top and gray pants carries a white bag. A person in a green jacket and blue jeans walks toward the crosswalk. A person in a dark jacket and blue jeans walks away from the crosswalk. A white truck is parked on the right side of the street. A traffic light shows a red…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians cross a city street at a marked crosswalk during the day.\nP1: top=black sweater; bottom=grey trousers; outer=none; carry=red tote; walking\nP2: top=plaid shirt; bottom=grey trousers; outer=none; carry=black backpack; walking\nP3: top=black jacket; bottom=black trousers; outer=none; carry=none; walking\nP4: top=black sweater; bottom=black trousers; outer=none; carry=none; walking"
     },
@@ -182,7 +182,7 @@
      "n": 5,
      "tStart": 20,
      "tEnd": 25,
-     "cosmosCaption": "The scene is a city street intersection with a marked crosswalk and traffic signals. Pedestrians are crossing the street from right to left, including a person in a blue jacket and black pants, and another person in dark clothing carrying a light-colored handbag. A person in a plaid shirt and jeans walks along the sidewalk on the right. A cyclist wearing a helmet and a red jacket rides through the intersection from left to right, passing in front of a white truck parked on the right side of the frame. The truck has a visible logo that appears to read \"CHASE\" on its side. A traffic light pole on the right displays a pedestrian signal showing a hand, indicating pedestrians should not cross. A\u2026",
+     "cosmosCaption": "The scene is a city street intersection with a marked crosswalk and traffic signals. Pedestrians are crossing the street from right to left, including a person in a blue jacket and black pants, and another person in dark clothing carrying a light-colored handbag. A person in a plaid shirt and jeans walks along the sidewalk on the right. A cyclist wearing a helmet and a red jacket rides through the intersection from left to right, passing in front of a white truck parked on the right side of the frame. The truck has a visible logo that appears to read \"CHASE\" on its side. A traffic light pole on the right displays a pedestrian signal showing a hand, indicating pedestrians should not cross. A…",
      "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)",
      "cosmosOutfit": "Pedestrians and a cyclist cross a city street at an intersection.\nP1: top=red sweater; bottom=black trousers; outer=none; carry=none; walking\nP2: top=blue jacket; bottom=black trousers; outer=none; carry=black shoulder bag; walking\nP3: top=black coat; bottom=black trousers; outer=none; carry=large beige shoulder bag; walking\nP4: top=plaid shirt; bottom=grey trousers; outer=none; carry=none; walking"
     },
@@ -210,19 +210,18 @@
     "h": 20.37
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black bag",
-     "white object"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": true,
-    "aesthetic": "Outdoor / Technical"
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -276,18 +275,18 @@
     "h": 14.63
    },
    "outfit": {
-    "top": "beige top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "beige shirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -432,18 +431,19 @@
     "h": 28.98
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "beige bottoms",
-    "outer": "black jacket",
+    "top": "black sweatshirt",
+    "bottom": "beige trousers",
+    "outer": "none",
     "carry": [
-     "white object"
+     "black tote",
+     "white paper"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Beige",
     "primaryHex": "#111827",
-    "secondaryHex": "#e7d8c9",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -672,16 +672,16 @@
     "h": 30.93
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "beige bottoms",
+    "top": "white t-shirt",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black jacket"
     ],
     "primaryColor": "White",
     "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -772,16 +772,16 @@
     "h": 13.15
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "navy blue bottoms",
+    "top": "black long-sleeve tee",
+    "bottom": "black jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
-    "primaryColor": "Red",
-    "secondaryColor": "Navy",
-    "primaryHex": "#dc2626",
-    "secondaryHex": "#1e3a8a",
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -851,16 +851,16 @@
     "h": 23.61
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "beige bottoms",
+    "top": "white polo",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [],
     "primaryColor": "White",
     "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -1012,15 +1012,15 @@
     "h": 17.31
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "navy blue bottoms",
+    "top": "brown long-sleeve tee",
+    "bottom": "navy jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
-    "primaryColor": "Red",
+    "primaryColor": "Brown",
     "secondaryColor": "Navy",
-    "primaryHex": "#dc2626",
+    "primaryHex": "#7c4a1e",
     "secondaryHex": "#1e3a8a",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
@@ -1147,18 +1147,18 @@
     "h": 17.69
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": true,
-    "aesthetic": "Outdoor / Technical"
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -1275,11 +1275,11 @@
     "h": 29.35
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
+    "top": "black long-sleeve tee",
+    "bottom": "grey trousers",
     "outer": "black jacket",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
@@ -1333,16 +1333,16 @@
     "h": 22.04
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "navy blue bottoms",
+    "top": "maroon long-sleeve tee",
+    "bottom": "black jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Red",
-    "secondaryColor": "Navy",
+    "secondaryColor": "Black",
     "primaryHex": "#dc2626",
-    "secondaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -1454,15 +1454,16 @@
     "h": 29.17
    },
    "outfit": {
-    "top": "purple top",
-    "bottom": "navy blue bottoms",
+    "top": "brown long-sleeve tee",
+    "bottom": "navy jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "black handbag"
     ],
-    "primaryColor": "Purple",
+    "primaryColor": "Brown",
     "secondaryColor": "Navy",
-    "primaryHex": "#9333ea",
+    "primaryHex": "#7c4a1e",
     "secondaryHex": "#1e3a8a",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
@@ -1701,18 +1702,18 @@
     "h": 18.06
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": true,
-    "aesthetic": "Outdoor / Technical"
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -1829,18 +1830,16 @@
     "h": 23.98
    },
    "outfit": {
-    "top": "black top",
+    "top": "black sweatshirt",
     "bottom": "unclear",
     "outer": "black jacket",
-    "carry": [
-     "white object"
-    ],
+    "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Unclear",
     "primaryHex": "#111827",
-    "secondaryHex": "#a3a3a3",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -1915,18 +1914,18 @@
     "h": 32.22
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "grey jeans",
+    "outer": "black leather jacket",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
     "primaryHex": "#111827",
     "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -2148,16 +2147,17 @@
     "h": 20.56
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "beige bottoms",
+    "top": "white t-shirt",
+    "bottom": "grey trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "black shoulder bag"
     ],
     "primaryColor": "White",
-    "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "secondaryColor": "Grey",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -2220,18 +2220,18 @@
     "h": 17.69
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": true,
-    "aesthetic": "Outdoor / Technical"
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -2315,12 +2315,12 @@
    "outfit": {
     "top": "black hoodie",
     "bottom": "unclear",
-    "outer": "black hoodie",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Unclear",
     "primaryHex": "#111827",
-    "secondaryHex": "#a3a3a3",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
     "aesthetic": "Streetwear"
    },
@@ -2488,9 +2488,9 @@
     "h": 27.96
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "black hoodie",
+    "top": "black hoodie",
+    "bottom": "grey jeans",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
@@ -2712,16 +2712,16 @@
     "h": 20.19
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "beige bottoms",
+    "top": "white t-shirt",
+    "bottom": "grey trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black jacket"
     ],
     "primaryColor": "White",
-    "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "secondaryColor": "Grey",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -2903,15 +2903,16 @@
     "h": 28.52
    },
    "outfit": {
-    "top": "purple top",
-    "bottom": "navy blue bottoms",
+    "top": "maroon long-sleeve tee",
+    "bottom": "navy jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "black handbag"
     ],
-    "primaryColor": "Purple",
+    "primaryColor": "Red",
     "secondaryColor": "Navy",
-    "primaryHex": "#9333ea",
+    "primaryHex": "#dc2626",
     "secondaryHex": "#1e3a8a",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
@@ -2961,11 +2962,11 @@
     "h": 13.15
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black jacket",
+    "top": "black long-sleeve tee",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "grey bag"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -3033,16 +3034,16 @@
     "h": 32.69
    },
    "outfit": {
-    "top": "black shirt",
-    "bottom": "purple trousers",
-    "outer": "none",
+    "top": "black blouse",
+    "bottom": "dark red skirt",
+    "outer": "black jacket",
     "carry": [
-     "patterned bag"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Purple",
+    "secondaryColor": "Red",
     "primaryHex": "#111827",
-    "secondaryHex": "#9333ea",
+    "secondaryHex": "#dc2626",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
    },
@@ -3140,16 +3141,16 @@
     "h": 18.7
    },
    "outfit": {
-    "top": "white top",
+    "top": "cream blouse",
     "bottom": "unclear",
-    "outer": "beige outer layer",
+    "outer": "beige coat",
     "carry": [],
     "primaryColor": "Beige",
     "secondaryColor": "Unclear",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#a3a3a3",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "primaryHex": "#d6c3a1",
+    "secondaryHex": "#cbd5e1",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3203,18 +3204,18 @@
     "h": 17.31
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black leggings",
+    "outer": "none",
     "carry": [
-     "grey item"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3324,18 +3325,18 @@
     "h": 32.87
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
+    "top": "white blouse",
+    "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "green item"
+     "olive tote"
     ],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3389,18 +3390,18 @@
     "h": 17.59
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": true,
-    "aesthetic": "Outdoor / Technical"
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3483,17 +3484,15 @@
    },
    "outfit": {
     "top": "black t-shirt",
-    "bottom": "grey trousers",
+    "bottom": "black trousers",
     "outer": "none",
-    "carry": [
-     "black bag"
-    ],
+    "carry": [],
     "primaryColor": "Black",
-    "secondaryColor": "Grey",
+    "secondaryColor": "Black",
     "primaryHex": "#111827",
-    "secondaryHex": "#9ca3af",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3547,16 +3546,16 @@
     "h": 33.8
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "grey bottoms",
+    "top": "black t-shirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
-    "primaryColor": "Grey",
-    "secondaryColor": "Grey",
-    "primaryHex": "#9ca3af",
-    "secondaryHex": "#9ca3af",
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -3605,18 +3604,18 @@
     "h": 30.37
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
+    "top": "white blouse",
+    "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "green item"
+     "olive tote"
     ],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3768,18 +3767,19 @@
     "h": 18.61
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black leggings",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "phone"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -3840,15 +3840,15 @@
     "h": 28.89
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "black bottoms",
-    "outer": "grey puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black puffer jacket",
     "carry": [
      "brown box"
     ],
-    "primaryColor": "Grey",
+    "primaryColor": "Black",
     "secondaryColor": "Black",
-    "primaryHex": "#9ca3af",
+    "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": true,
     "aesthetic": "Outdoor / Technical"
@@ -4080,16 +4080,17 @@
     "h": 31.48
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
+    "top": "white t-shirt",
+    "bottom": "light blue jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "phone"
     ],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -4299,16 +4300,16 @@
     "h": 27.31
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "brown bottoms",
+    "top": "black t-shirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Brown",
+    "secondaryColor": "Black",
     "primaryHex": "#111827",
-    "secondaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -4385,11 +4386,11 @@
     "h": 30.65
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "brown bottoms",
+    "top": "black t-shirt",
+    "bottom": "brown trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Brown",
@@ -4618,16 +4619,17 @@
     "h": 33.06
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
+    "top": "white t-shirt",
+    "bottom": "light blue jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "phone"
     ],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -4732,11 +4734,11 @@
     "h": 26.02
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black long-sleeve tee",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -4881,18 +4883,18 @@
     "h": 22.31
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black hoodie",
+    "bottom": "black jeans",
+    "outer": "black jacket",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -4995,17 +4997,17 @@
     "h": 35.93
    },
    "outfit": {
-    "top": "patterned shirt",
-    "bottom": "beige trousers",
+    "top": "light blue shirt",
+    "bottom": "beige chinos",
     "outer": "none",
     "carry": [
-     "black bag",
-     "grey object"
+     "black backpack",
+     "phone"
     ],
-    "primaryColor": "Patterned",
+    "primaryColor": "Blue",
     "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
    },
@@ -5194,16 +5196,16 @@
     "h": 24.44
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black t-shirt",
+    "bottom": "grey trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Black",
+    "secondaryColor": "Grey",
     "primaryHex": "#111827",
-    "secondaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -5351,17 +5353,15 @@
    },
    "outfit": {
     "top": "white t-shirt",
-    "bottom": "beige trousers",
+    "bottom": "grey jeans",
     "outer": "none",
-    "carry": [
-     "black object"
-    ],
+    "carry": [],
     "primaryColor": "White",
-    "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "secondaryColor": "Grey",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -5478,11 +5478,11 @@
     "h": 17.78
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black puffer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black puffer jacket",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -5613,18 +5613,19 @@
     "h": 23.8
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "white bottoms",
+    "top": "blue blouse",
+    "bottom": "white trousers",
     "outer": "none",
     "carry": [
-     "brown item"
+     "black shoulder bag",
+     "black backpack"
     ],
-    "primaryColor": "Navy",
+    "primaryColor": "Blue",
     "secondaryColor": "White",
-    "primaryHex": "#1e3a8a",
-    "secondaryHex": "#f8fafc",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#f9fafb",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -5741,18 +5742,18 @@
     "h": 24.44
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -5855,18 +5856,18 @@
     "h": 34.07
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
+    "top": "grey long-sleeve tee",
+    "bottom": "beige chinos",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
-    "primaryColor": "Patterned",
+    "primaryColor": "Grey",
     "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -5955,18 +5956,18 @@
     "h": 30.65
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black jacket",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -6034,16 +6035,16 @@
     "h": 18.98
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "black outer layer",
+    "top": "black hoodie",
+    "bottom": "grey trousers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
     "primaryHex": "#111827",
     "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -6272,18 +6273,18 @@
     "h": 25.28
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "beige bottoms",
+    "top": "light blue shirt",
+    "bottom": "beige chinos",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
-    "primaryColor": "White",
+    "primaryColor": "Blue",
     "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -6330,16 +6331,16 @@
     "h": 18.33
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "beige bottoms",
+    "top": "white t-shirt",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black shopping bag"
     ],
     "primaryColor": "White",
     "secondaryColor": "Beige",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -6563,18 +6564,18 @@
     "h": 20.09
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black jacket",
+    "top": "black shirt",
+    "bottom": "black trousers",
+    "outer": "black blazer",
     "carry": [
-     "black bag"
+     "beige tote"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -6810,16 +6811,16 @@
     "h": 26.57
    },
    "outfit": {
-    "top": "white top",
+    "top": "black long-sleeve tee",
     "bottom": "unclear",
-    "outer": "black outer layer",
+    "outer": "none",
     "carry": [
-     "white item"
+     "white tote"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Unclear",
     "primaryHex": "#111827",
-    "secondaryHex": "#a3a3a3",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -6872,14 +6873,13 @@
     "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "beige bag",
-     "silver bag",
-     "green bag"
+     "brown shopping bag",
+     "grey shoulder bag"
     ],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -7047,19 +7047,18 @@
     "h": 18.06
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "light blue jeans",
+    "top": "black sweatshirt",
+    "bottom": "white trousers",
     "outer": "none",
     "carry": [
-     "black backpack",
-     "grey bag"
+     "black backpack"
     ],
-    "primaryColor": "White",
-    "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryColor": "Black",
+    "secondaryColor": "White",
+    "primaryHex": "#111827",
+    "secondaryHex": "#f9fafb",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -7107,17 +7106,17 @@
    },
    "outfit": {
     "top": "black t-shirt",
-    "bottom": "grey trousers",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
      "black backpack"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Grey",
+    "secondaryColor": "Black",
     "primaryHex": "#111827",
-    "secondaryHex": "#9ca3af",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -7199,18 +7198,18 @@
     "h": 20.09
    },
    "outfit": {
-    "top": "grey shirt",
+    "top": "white t-shirt",
     "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
-    "primaryColor": "Grey",
+    "primaryColor": "White",
     "secondaryColor": "Beige",
-    "primaryHex": "#9ca3af",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -7264,16 +7263,16 @@
     "h": 19.91
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "black bottoms",
-    "outer": "patterned outer layer",
+    "top": "patterned shirt",
+    "bottom": "black trousers",
+    "outer": "patterned jacket",
     "carry": [],
     "primaryColor": "Patterned",
     "secondaryColor": "Black",
-    "primaryHex": "#a3a3a3",
+    "primaryHex": "#a78bfa",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -7432,16 +7431,16 @@
     "h": 20.09
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "black bottoms",
-    "outer": "patterned outer layer",
+    "top": "patterned blouse",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Patterned",
     "secondaryColor": "Black",
-    "primaryHex": "#a3a3a3",
+    "primaryHex": "#a78bfa",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -7558,11 +7557,11 @@
     "h": 22.96
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black t-shirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "patterned item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -7735,16 +7734,16 @@
     "h": 17.69
    },
    "outfit": {
-    "top": "grey shirt",
-    "bottom": "beige trousers",
+    "top": "white long-sleeve tee",
+    "bottom": "beige chinos",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
-    "primaryColor": "Grey",
+    "primaryColor": "White",
     "secondaryColor": "Beige",
-    "primaryHex": "#9ca3af",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
    },
@@ -7802,15 +7801,15 @@
    "outfit": {
     "top": "white shirt",
     "bottom": "unclear",
-    "outer": "navy blue jacket",
+    "outer": "navy coat",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Navy",
     "secondaryColor": "Unclear",
     "primaryHex": "#1e3a8a",
-    "secondaryHex": "#a3a3a3",
-    "heavyOuterwear": false,
+    "secondaryHex": "#cbd5e1",
+    "heavyOuterwear": true,
     "aesthetic": "Smart Casual"
    },
    "demographics": null,
@@ -7865,18 +7864,18 @@
     "h": 20.28
    },
    "outfit": {
-    "top": "red top",
+    "top": "maroon sweatshirt",
     "bottom": "unclear",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Red",
     "secondaryColor": "Unclear",
     "primaryHex": "#dc2626",
-    "secondaryHex": "#a3a3a3",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -8049,18 +8048,18 @@
     "h": 33.15
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "navy blue bottoms",
-    "outer": "navy blue outer layer",
+    "top": "navy shirt",
+    "bottom": "navy trousers",
+    "outer": "navy blazer",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Navy",
     "secondaryColor": "Navy",
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#1e3a8a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -8212,16 +8211,16 @@
     "h": 34.17
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "grey bottoms",
+    "top": "white t-shirt",
+    "bottom": "light blue jeans",
     "outer": "none",
     "carry": [
-     "silver"
+     "white coffee cup"
     ],
     "primaryColor": "White",
-    "secondaryColor": "Grey",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#9ca3af",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -8323,11 +8322,11 @@
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black crossbody bag"
     ],
     "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#2563eb",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
@@ -8559,18 +8558,18 @@
     "h": 20.56
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "black bottoms",
+    "top": "black t-shirt",
+    "bottom": "black leggings",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
-    "primaryColor": "Grey",
+    "primaryColor": "Black",
     "secondaryColor": "Black",
-    "primaryHex": "#9ca3af",
+    "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -8785,16 +8784,16 @@
     "h": 19.54
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "blue bottoms",
-    "outer": "beige outer layer",
+    "top": "patterned sweater",
+    "bottom": "blue jeans",
+    "outer": "none",
     "carry": [],
-    "primaryColor": "Beige",
+    "primaryColor": "Patterned",
     "secondaryColor": "Blue",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -8862,19 +8861,18 @@
     "h": 22.22
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "grey bottoms",
-    "outer": "patterned outer layer",
+    "top": "patterned shirt",
+    "bottom": "unclear",
+    "outer": "patterned coat",
     "carry": [
-     "black item",
-     "white item"
+     "black backpack"
     ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Grey",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#9ca3af",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "secondaryColor": "Unclear",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#cbd5e1",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -9096,16 +9094,16 @@
     "h": 22.41
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "blue bottoms",
-    "outer": "beige outer layer",
+    "top": "olive shirt",
+    "bottom": "blue jeans",
+    "outer": "olive jacket",
     "carry": [],
-    "primaryColor": "Beige",
+    "primaryColor": "Green",
     "secondaryColor": "Blue",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -9264,16 +9262,16 @@
     "h": 19.07
    },
    "outfit": {
-    "top": "blue top",
+    "top": "blue shirt",
     "bottom": "unclear",
     "outer": "none",
     "carry": [],
     "primaryColor": "Blue",
     "secondaryColor": "Unclear",
-    "primaryHex": "#2563eb",
-    "secondaryHex": "#a3a3a3",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -9320,18 +9318,18 @@
     "h": 32.5
    },
    "outfit": {
-    "top": "blue shirt",
+    "top": "blue button-up shirt",
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black crossbody bag"
     ],
     "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#2563eb",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -9560,16 +9558,16 @@
     "h": 24.72
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "unclear",
-    "outer": "beige outer layer",
+    "top": "grey blouse",
+    "bottom": "blue jeans",
+    "outer": "olive jacket",
     "carry": [],
-    "primaryColor": "Beige",
-    "secondaryColor": "Unclear",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#a3a3a3",
+    "primaryColor": "Green",
+    "secondaryColor": "Blue",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -9798,15 +9796,16 @@
     "h": 21.57
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "grey t-shirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "phone"
     ],
-    "primaryColor": "Black",
+    "primaryColor": "Grey",
     "secondaryColor": "Black",
-    "primaryHex": "#111827",
+    "primaryHex": "#9ca3af",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
@@ -10038,19 +10037,19 @@
     "h": 23.8
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
-    "outer": "patterned outer layer",
+    "top": "patterned shirt",
+    "bottom": "patterned trousers",
+    "outer": "none",
     "carry": [
-     "white item",
-     "black item"
+     "black shoulder bag",
+     "white shopping bag"
     ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "secondaryColor": "Patterned",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#a78bfa",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -10272,18 +10271,18 @@
     "h": 16.85
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "beige bottoms",
-    "outer": "grey outer layer",
+    "top": "black tank top",
+    "bottom": "grey trousers",
+    "outer": "grey cardigan",
     "carry": [
-     "white item"
+     "white tote"
     ],
     "primaryColor": "Grey",
-    "secondaryColor": "Beige",
+    "secondaryColor": "Grey",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#e7d8c9",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -10418,11 +10417,11 @@
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black crossbody bag"
     ],
     "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#2563eb",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
@@ -10654,7 +10653,7 @@
     "h": 14.91
    },
    "outfit": {
-    "top": "navy blue sweater",
+    "top": "navy sweatshirt",
     "bottom": "black trousers",
     "outer": "none",
     "carry": [],
@@ -10663,7 +10662,7 @@
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -10892,18 +10891,16 @@
     "h": 14.81
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
-    "outer": "beige outer layer",
-    "carry": [
-     "grey item"
-    ],
-    "primaryColor": "Beige",
+    "top": "grey sweatshirt",
+    "bottom": "light blue jeans",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Grey",
     "secondaryColor": "Blue",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -11112,15 +11109,16 @@
    },
    "outfit": {
     "top": "cream sweater",
-    "bottom": "beige trousers",
+    "bottom": "cream trousers",
     "outer": "none",
     "carry": [
-     "patterned bag"
+     "patterned handbag",
+     "white tote"
     ],
     "primaryColor": "Cream",
-    "secondaryColor": "Beige",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#e7d8c9",
+    "secondaryColor": "Cream",
+    "primaryHex": "#f3ead3",
+    "secondaryHex": "#f3ead3",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
    },
@@ -11218,19 +11216,19 @@
     "h": 28.89
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "grey outer layer",
+    "top": "grey sweatshirt",
+    "bottom": "grey joggers",
+    "outer": "none",
     "carry": [
-     "maroon item",
-     "white item"
+     "brown tote",
+     "white tote"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Grey",
     "primaryHex": "#9ca3af",
     "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -11284,7 +11282,7 @@
     "h": 17.31
    },
    "outfit": {
-    "top": "black hoodie",
+    "top": "black sweatshirt",
     "bottom": "black shorts",
     "outer": "none",
     "carry": [],
@@ -11529,18 +11527,18 @@
     "h": 16.3
    },
    "outfit": {
-    "top": "cream sweater",
+    "top": "white tank top",
     "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "patterned object"
+     "black backpack"
     ],
-    "primaryColor": "Cream",
+    "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -11769,15 +11767,17 @@
     "h": 21.48
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "grey t-shirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "black shoulder bag",
+     "phone"
     ],
-    "primaryColor": "Black",
+    "primaryColor": "Grey",
     "secondaryColor": "Black",
-    "primaryHex": "#111827",
+    "primaryHex": "#9ca3af",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
@@ -11995,16 +11995,16 @@
     "h": 13.33
    },
    "outfit": {
-    "top": "cream top",
+    "top": "white blouse",
     "bottom": "unclear",
     "outer": "none",
     "carry": [],
-    "primaryColor": "Cream",
+    "primaryColor": "White",
     "secondaryColor": "Unclear",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#a3a3a3",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -12072,19 +12072,18 @@
     "h": 30.0
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "beige bottoms",
+    "top": "cream sweater",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "white item",
-     "brown item"
+     "brown handbag"
     ],
-    "primaryColor": "Grey",
+    "primaryColor": "Cream",
     "secondaryColor": "Beige",
-    "primaryHex": "#9ca3af",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f3ead3",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -12229,18 +12228,16 @@
     "h": 30.46
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "unclear",
-    "outer": "grey outer layer",
-    "carry": [
-     "black item"
-    ],
-    "primaryColor": "Grey",
-    "secondaryColor": "Unclear",
-    "primaryHex": "#9ca3af",
-    "secondaryHex": "#a3a3a3",
+    "top": "patterned shirt",
+    "bottom": "black trousers",
+    "outer": "light blue jacket",
+    "carry": [],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -12378,18 +12375,19 @@
     "h": 22.87
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "unclear",
-    "outer": "patterned jacket",
+    "top": "patterned shirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black bag"
+     "black shoulder bag",
+     "white shopping bag"
     ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Unclear",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#a3a3a3",
+    "secondaryColor": "Black",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -12517,11 +12515,11 @@
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black crossbody bag"
     ],
     "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#2563eb",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
@@ -12753,18 +12751,18 @@
     "h": 21.94
    },
    "outfit": {
-    "top": "white top",
+    "top": "white hoodie",
     "bottom": "unclear",
-    "outer": "white jacket",
+    "outer": "none",
     "carry": [
-     "grey bag"
+     "black shoulder bag"
     ],
     "primaryColor": "White",
     "secondaryColor": "Unclear",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#a3a3a3",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -12997,7 +12995,7 @@
     "bottom": "black shorts",
     "outer": "none",
     "carry": [
-     "white and black helmet"
+     "white patterned helmet"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -13226,15 +13224,15 @@
     "h": 21.11
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "grey t-shirt",
+    "bottom": "black jeans",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
-    "primaryColor": "Black",
+    "primaryColor": "Grey",
     "secondaryColor": "Black",
-    "primaryHex": "#111827",
+    "primaryHex": "#9ca3af",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
@@ -13410,19 +13408,18 @@
     "h": 24.17
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "grey bottoms",
-    "outer": "patterned outer layer",
+    "top": "patterned shirt",
+    "bottom": "patterned trousers",
+    "outer": "none",
     "carry": [
-     "black item",
-     "white item"
+     "white shopping bag"
     ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Grey",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#9ca3af",
+    "secondaryColor": "Patterned",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#a78bfa",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -13644,8 +13641,8 @@
     "h": 24.17
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
+    "top": "navy sweatshirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [],
     "primaryColor": "Navy",
@@ -13653,7 +13650,7 @@
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -13883,13 +13880,13 @@
    },
    "outfit": {
     "top": "grey t-shirt",
-    "bottom": "blue jeans",
-    "outer": "beige jacket",
+    "bottom": "grey trousers",
+    "outer": "white jacket",
     "carry": [],
-    "primaryColor": "Beige",
-    "secondaryColor": "Blue",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#2563eb",
+    "primaryColor": "White",
+    "secondaryColor": "Grey",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -13938,7 +13935,7 @@
     "h": 33.33
    },
    "outfit": {
-    "top": "cream sweater",
+    "top": "cream long-sleeve tee",
     "bottom": "blue jeans",
     "outer": "none",
     "carry": [
@@ -13946,8 +13943,8 @@
     ],
     "primaryColor": "Cream",
     "secondaryColor": "Blue",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f3ead3",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -14157,11 +14154,12 @@
     "h": 33.06
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black shirt",
+    "bottom": "black trousers",
     "outer": "black coat",
     "carry": [
-     "black bag"
+     "black tote",
+     "phone"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -14306,14 +14304,14 @@
     "h": 16.02
    },
    "outfit": {
-    "top": "white top",
+    "top": "white sweatshirt",
     "bottom": "unclear",
-    "outer": "white hoodie",
+    "outer": "none",
     "carry": [],
     "primaryColor": "White",
     "secondaryColor": "Unclear",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#a3a3a3",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
     "aesthetic": "Streetwear"
    },
@@ -14412,15 +14410,15 @@
    },
    "outfit": {
     "top": "yellow t-shirt",
-    "bottom": "purple shorts",
+    "bottom": "red shorts",
     "outer": "none",
     "carry": [],
     "primaryColor": "Yellow",
-    "secondaryColor": "Purple",
+    "secondaryColor": "Red",
     "primaryHex": "#facc15",
-    "secondaryHex": "#9333ea",
+    "secondaryHex": "#dc2626",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -14495,14 +14493,16 @@
     "h": 31.3
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "grey bottoms",
-    "outer": "grey outer layer",
-    "carry": [],
+    "top": "light blue t-shirt",
+    "bottom": "light blue jeans",
+    "outer": "grey jacket",
+    "carry": [
+     "black umbrella"
+    ],
     "primaryColor": "Grey",
-    "secondaryColor": "Grey",
+    "secondaryColor": "Blue",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#9ca3af",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -14642,18 +14642,18 @@
     "h": 27.69
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweater",
+    "bottom": "black trousers",
+    "outer": "black coat",
     "carry": [
-     "black item"
+     "black handbag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -14749,17 +14749,16 @@
     "h": 41.94
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "navy blue bottoms",
-    "outer": "none",
+    "top": "black long-sleeve tee",
+    "bottom": "blue jeans",
+    "outer": "black jacket",
     "carry": [
-     "black item",
-     "patterned item"
+     "black backpack"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Navy",
+    "secondaryColor": "Blue",
     "primaryHex": "#111827",
-    "secondaryHex": "#1e3a8a",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -14857,16 +14856,18 @@
     "h": 32.87
    },
    "outfit": {
-    "top": "blue shirt",
+    "top": "blue button-up shirt",
     "bottom": "black trousers",
     "outer": "none",
-    "carry": [],
+    "carry": [
+     "black crossbody bag"
+    ],
     "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#2563eb",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -15095,10 +15096,12 @@
     "h": 38.7
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black hoodie",
-    "carry": [],
+    "top": "black hoodie",
+    "bottom": "black shorts",
+    "outer": "none",
+    "carry": [
+     "beige shoulder bag"
+    ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
@@ -15214,19 +15217,18 @@
     "h": 28.52
    },
    "outfit": {
-    "top": "cream top",
-    "bottom": "beige bottoms",
+    "top": "cream sweater",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "white item",
-     "red item"
+     "patterned handbag"
     ],
     "primaryColor": "Cream",
     "secondaryColor": "Beige",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#f3ead3",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -15455,11 +15457,11 @@
     "h": 30.09
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black blouse",
+    "bottom": "black trousers",
     "outer": "black coat",
     "carry": [
-     "black bag"
+     "grey handbag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -15695,16 +15697,16 @@
     "h": 37.5
    },
    "outfit": {
-    "top": "cream top",
-    "bottom": "blue bottoms",
+    "top": "cream long-sleeve tee",
+    "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Cream",
     "secondaryColor": "Blue",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f3ead3",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -16077,7 +16079,7 @@
    "outfit": {
     "top": "black hoodie",
     "bottom": "black shorts",
-    "outer": "black hoodie",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -16292,16 +16294,14 @@
     "h": 27.59
    },
    "outfit": {
-    "top": "beige top",
-    "bottom": "blue bottoms",
+    "top": "beige long-sleeve tee",
+    "bottom": "blue jeans",
     "outer": "none",
-    "carry": [
-     "unclear item"
-    ],
+    "carry": [],
     "primaryColor": "Beige",
     "secondaryColor": "Blue",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#d6c3a1",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -16389,11 +16389,11 @@
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "White",
     "secondaryColor": "Black",
-    "primaryHex": "#f8fafc",
+    "primaryHex": "#f9fafb",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
@@ -16555,8 +16555,8 @@
     "h": 36.57
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
+    "top": "navy sweatshirt",
+    "bottom": "black joggers",
     "outer": "none",
     "carry": [],
     "primaryColor": "Navy",
@@ -16564,7 +16564,7 @@
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -16660,16 +16660,16 @@
     "h": 39.54
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
-    "outer": "white outer layer",
+    "top": "white shirt",
+    "bottom": "blue jeans",
+    "outer": "white jacket",
     "carry": [],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -16786,16 +16786,16 @@
     "h": 26.94
    },
    "outfit": {
-    "top": "black shirt",
+    "top": "black long-sleeve tee",
     "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Blue",
     "primaryHex": "#111827",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -16907,9 +16907,9 @@
     "h": 37.59
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
-    "outer": "navy blue outer layer",
+    "top": "navy long-sleeve tee",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Navy",
     "secondaryColor": "Black",
@@ -16995,11 +16995,11 @@
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "grey bag"
+     "grey backpack"
     ],
     "primaryColor": "White",
     "secondaryColor": "Black",
-    "primaryHex": "#f8fafc",
+    "primaryHex": "#f9fafb",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
@@ -17112,14 +17112,14 @@
     "h": 20.28
    },
    "outfit": {
-    "top": "yellow top",
-    "bottom": "purple bottoms",
+    "top": "yellow t-shirt",
+    "bottom": "purple shorts",
     "outer": "none",
     "carry": [],
     "primaryColor": "Yellow",
     "secondaryColor": "Purple",
     "primaryHex": "#facc15",
-    "secondaryHex": "#9333ea",
+    "secondaryHex": "#7c3aed",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -17210,14 +17210,14 @@
     "h": 21.48
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "blue bottoms",
+    "top": "navy t-shirt",
+    "bottom": "blue jeans",
     "outer": "none",
     "carry": [],
     "primaryColor": "Navy",
     "secondaryColor": "Blue",
     "primaryHex": "#1e3a8a",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -17294,18 +17294,18 @@
     "h": 13.52
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "navy blue bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "grey item"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Navy",
+    "secondaryColor": "Black",
     "primaryHex": "#111827",
-    "secondaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -17370,12 +17370,12 @@
     "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Blue",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -17442,11 +17442,11 @@
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black shoulder bag"
     ],
     "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#2563eb",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
@@ -17519,7 +17519,7 @@
     "primaryColor": "Grey",
     "secondaryColor": "Blue",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -17712,12 +17712,12 @@
     "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "white bag"
+     "brown tote"
     ],
     "primaryColor": "Beige",
     "secondaryColor": "Beige",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#d6c3a1",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
     "aesthetic": "Smart Casual"
    },
@@ -17815,18 +17815,18 @@
     "h": 29.54
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "black outer layer",
+    "top": "navy shirt",
+    "bottom": "grey trousers",
+    "outer": "navy coat",
     "carry": [
-     "black item"
+     "black suitcase"
     ],
-    "primaryColor": "Black",
+    "primaryColor": "Navy",
     "secondaryColor": "Grey",
-    "primaryHex": "#111827",
+    "primaryHex": "#1e3a8a",
     "secondaryHex": "#9ca3af",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18041,11 +18041,11 @@
     "h": 31.39
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "black bottoms",
+    "top": "red t-shirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Red",
     "secondaryColor": "Black",
@@ -18282,15 +18282,15 @@
    },
    "outfit": {
     "top": "yellow t-shirt",
-    "bottom": "purple shorts",
+    "bottom": "brown shorts",
     "outer": "none",
     "carry": [],
     "primaryColor": "Yellow",
-    "secondaryColor": "Purple",
+    "secondaryColor": "Brown",
     "primaryHex": "#facc15",
-    "secondaryHex": "#9333ea",
+    "secondaryHex": "#7c4a1e",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18351,18 +18351,19 @@
     "h": 33.06
    },
    "outfit": {
-    "top": "beige top",
-    "bottom": "black bottoms",
+    "top": "cream polo",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack",
+     "black phone"
     ],
-    "primaryColor": "Beige",
+    "primaryColor": "Cream",
     "secondaryColor": "Black",
-    "primaryHex": "#e7d8c9",
+    "primaryHex": "#f3ead3",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18542,18 +18543,18 @@
     "h": 22.41
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "blue bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "navy jeans",
+    "outer": "none",
     "carry": [
-     "olive item"
+     "olive backpack"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Blue",
+    "secondaryColor": "Navy",
     "primaryHex": "#111827",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#1e3a8a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18621,18 +18622,18 @@
     "h": 13.52
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18686,18 +18687,18 @@
     "h": 29.26
    },
    "outfit": {
-    "top": "grey shirt",
+    "top": "grey sweatshirt",
     "bottom": "unclear",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Unclear",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#a3a3a3",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18751,18 +18752,18 @@
     "h": 19.44
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black coat",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "black item"
+     "brown shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
-    "heavyOuterwear": true,
-    "aesthetic": "Smart Casual"
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -18858,14 +18859,14 @@
     "h": 17.87
    },
    "outfit": {
-    "top": "yellow top",
-    "bottom": "purple bottoms",
+    "top": "yellow t-shirt",
+    "bottom": "purple shorts",
     "outer": "none",
     "carry": [],
     "primaryColor": "Yellow",
     "secondaryColor": "Purple",
     "primaryHex": "#facc15",
-    "secondaryHex": "#9333ea",
+    "secondaryHex": "#7c3aed",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -18949,18 +18950,18 @@
     "h": 17.69
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
-    "outer": "jacket",
+    "top": "patterned blouse",
+    "bottom": "grey trousers",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
-    "primaryColor": "Unclear",
-    "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "primaryColor": "Patterned",
+    "secondaryColor": "Grey",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19044,16 +19045,16 @@
    "outfit": {
     "top": "white shirt",
     "bottom": "grey trousers",
-    "outer": "black jacket",
+    "outer": "black blazer",
     "carry": [
-     "black bag"
+     "black handbag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
     "primaryHex": "#111827",
     "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19149,18 +19150,18 @@
     "h": 14.63
    },
    "outfit": {
-    "top": "grey t-shirt",
+    "top": "grey sweatshirt",
     "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black bag"
+     "black shoulder bag"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Black",
     "primaryHex": "#9ca3af",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19244,14 +19245,14 @@
    "outfit": {
     "top": "yellow t-shirt",
     "bottom": "purple shorts",
-    "outer": "black jacket",
+    "outer": "none",
     "carry": [],
-    "primaryColor": "Black",
+    "primaryColor": "Yellow",
     "secondaryColor": "Purple",
-    "primaryHex": "#111827",
-    "secondaryHex": "#9333ea",
+    "primaryHex": "#facc15",
+    "secondaryHex": "#7c3aed",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19312,18 +19313,18 @@
     "h": 28.89
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "black bottoms",
+    "top": "grey sweatshirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Black",
     "primaryHex": "#9ca3af",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19440,18 +19441,16 @@
     "h": 17.41
    },
    "outfit": {
-    "top": "beige top",
+    "top": "beige blouse",
     "bottom": "unclear",
-    "outer": "beige jacket",
-    "carry": [
-     "black bag"
-    ],
-    "primaryColor": "Beige",
+    "outer": "olive jacket",
+    "carry": [],
+    "primaryColor": "Green",
     "secondaryColor": "Unclear",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#a3a3a3",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19540,11 +19539,11 @@
     "h": 17.87
    },
    "outfit": {
-    "top": "black hoodie",
+    "top": "black sweatshirt",
     "bottom": "black trousers",
-    "outer": "none",
+    "outer": "black jacket",
     "carry": [
-     "black bag"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -19619,18 +19618,18 @@
     "h": 17.22
    },
    "outfit": {
-    "top": "green top",
-    "bottom": "black bottoms",
+    "top": "olive sweatshirt",
+    "bottom": "black trousers",
     "outer": "none",
     "carry": [
-     "black item"
+     "black shoulder bag"
     ],
     "primaryColor": "Green",
     "secondaryColor": "Black",
     "primaryHex": "#16a34a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19698,19 +19697,19 @@
     "h": 17.69
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
+    "top": "patterned shirt",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "black bag",
-     "grey garment"
+     "black shoulder bag",
+     "grey shopping bag"
     ],
     "primaryColor": "Patterned",
     "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19764,18 +19763,18 @@
     "h": 22.59
    },
    "outfit": {
-    "top": "grey top",
-    "bottom": "blue bottoms",
+    "top": "grey sweatshirt",
+    "bottom": "blue jeans",
     "outer": "none",
     "carry": [
-     "black item"
+     "black backpack"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Blue",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19830,15 +19829,15 @@
    },
    "outfit": {
     "top": "yellow t-shirt",
-    "bottom": "purple shorts",
+    "bottom": "patterned shorts",
     "outer": "none",
     "carry": [],
     "primaryColor": "Yellow",
-    "secondaryColor": "Purple",
+    "secondaryColor": "Patterned",
     "primaryHex": "#facc15",
-    "secondaryHex": "#9333ea",
+    "secondaryHex": "#a78bfa",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -19885,18 +19884,18 @@
     "h": 37.31
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black shirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "grey item"
+     "black backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20132,16 +20131,16 @@
     "h": 23.8
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20370,16 +20369,18 @@
     "h": 16.02
    },
    "outfit": {
-    "top": "cream top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [],
+    "top": "brown sweatshirt",
+    "bottom": "black joggers",
+    "outer": "none",
+    "carry": [
+     "white phone"
+    ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20503,16 +20504,16 @@
     "h": 16.48
    },
    "outfit": {
-    "top": "brown top",
-    "bottom": "blue bottoms",
-    "outer": "brown jacket",
+    "top": "black tank top",
+    "bottom": "blue jeans",
+    "outer": "none",
     "carry": [],
-    "primaryColor": "Brown",
+    "primaryColor": "Black",
     "secondaryColor": "Blue",
-    "primaryHex": "#7c4a1e",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#111827",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20580,18 +20581,16 @@
     "h": 17.04
    },
    "outfit": {
-    "top": "brown top",
-    "bottom": "blue bottoms",
+    "top": "patterned shirt",
+    "bottom": "blue jeans",
     "outer": "none",
-    "carry": [
-     "black item"
-    ],
-    "primaryColor": "Brown",
+    "carry": [],
+    "primaryColor": "Patterned",
     "secondaryColor": "Blue",
-    "primaryHex": "#7c4a1e",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20680,18 +20679,18 @@
     "h": 15.0
    },
    "outfit": {
-    "top": "grey shirt",
+    "top": "brown sweater",
     "bottom": "blue jeans",
-    "outer": "brown jacket",
+    "outer": "none",
     "carry": [
-     "black bag"
+     "brown shoulder bag"
     ],
     "primaryColor": "Brown",
     "secondaryColor": "Blue",
     "primaryHex": "#7c4a1e",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20752,18 +20751,16 @@
     "h": 32.5
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "beige bottoms",
-    "outer": "black jacket",
-    "carry": [
-     "black bicycle"
-    ],
+    "top": "black sweatshirt",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Beige",
     "primaryHex": "#111827",
-    "secondaryHex": "#e7d8c9",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20908,16 +20905,18 @@
     "h": 16.85
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [],
+    "top": "brown button-up shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "white phone"
+    ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -20985,16 +20984,16 @@
     "h": 22.31
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black joggers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -21223,16 +21222,18 @@
     "h": 16.67
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [],
+    "top": "brown shirt",
+    "bottom": "black trousers",
+    "outer": "brown jacket",
+    "carry": [
+     "white phone"
+    ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -21286,16 +21287,14 @@
     "h": 32.78
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "beige bottoms",
+    "top": "black long-sleeve tee",
+    "bottom": "beige trousers",
     "outer": "none",
-    "carry": [
-     "blue bicycle"
-    ],
+    "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Beige",
     "primaryHex": "#111827",
-    "secondaryHex": "#e7d8c9",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -21365,18 +21364,18 @@
     "h": 40.46
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "blue bottoms",
+    "top": "white shirt",
+    "bottom": "blue jeans",
     "outer": "white jacket",
     "carry": [
-     "patterned bag"
+     "black backpack"
     ],
     "primaryColor": "White",
     "secondaryColor": "Blue",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -21479,18 +21478,18 @@
     "h": 14.72
    },
    "outfit": {
-    "top": "purple top",
-    "bottom": "blue bottoms",
-    "outer": "grey puffer",
+    "top": "patterned blouse",
+    "bottom": "blue trousers",
+    "outer": "grey jacket",
     "carry": [
-     "black object"
+     "maroon backpack"
     ],
     "primaryColor": "Grey",
     "secondaryColor": "Blue",
     "primaryHex": "#9ca3af",
-    "secondaryHex": "#2563eb",
-    "heavyOuterwear": true,
-    "aesthetic": "Outdoor / Technical"
+    "secondaryHex": "#3b82f6",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -21677,16 +21676,18 @@
     "h": 16.67
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [],
+    "top": "white shirt",
+    "bottom": "black trousers",
+    "outer": "brown jacket",
+    "carry": [
+     "phone"
+    ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -21831,16 +21832,16 @@
     "h": 37.5
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -21943,18 +21944,18 @@
     "h": 46.2
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
     "outer": "black jacket",
     "carry": [
-     "brown bag"
+     "brown shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22022,16 +22023,16 @@
     "h": 21.39
    },
    "outfit": {
-    "top": "white top",
+    "top": "white sweatshirt",
     "bottom": "unclear",
-    "outer": "white outer layer",
+    "outer": "none",
     "carry": [],
     "primaryColor": "White",
     "secondaryColor": "Unclear",
-    "primaryHex": "#f8fafc",
-    "secondaryHex": "#a3a3a3",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#cbd5e1",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22085,18 +22086,18 @@
     "h": 32.78
    },
    "outfit": {
-    "top": "beige top",
-    "bottom": "black bottoms",
-    "outer": "beige outer layer",
+    "top": "beige blouse",
+    "bottom": "black skirt",
+    "outer": "none",
     "carry": [
-     "black item"
+     "black handbag"
     ],
     "primaryColor": "Beige",
     "secondaryColor": "Black",
-    "primaryHex": "#e7d8c9",
+    "primaryHex": "#d6c3a1",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22269,16 +22270,16 @@
     "h": 20.93
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22374,18 +22375,18 @@
     "h": 56.02
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
+    "top": "patterned button-up shirt",
+    "bottom": "olive trousers",
     "outer": "none",
     "carry": [
-     "pink item"
+     "grey backpack"
     ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "secondaryColor": "Green",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22432,11 +22433,11 @@
     "h": 21.48
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
+    "top": "black t-shirt",
+    "bottom": "black trousers",
+    "outer": "brown jacket",
     "carry": [
-     "red item"
+     "phone"
     ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
@@ -22662,7 +22663,7 @@
     "bottom": "black trousers",
     "outer": "black jacket",
     "carry": [
-     "brown bag"
+     "brown shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -22737,18 +22738,19 @@
     "h": 44.63
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "brown bottoms",
+    "top": "patterned button-up shirt",
+    "bottom": "olive trousers",
     "outer": "none",
     "carry": [
-     "pink item"
+     "black backpack",
+     "pink baby carrier"
     ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Brown",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#7c4a1e",
+    "secondaryColor": "Green",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22907,16 +22909,16 @@
     "h": 33.7
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "green bottoms",
-    "outer": "none",
+    "top": "unclear",
+    "bottom": "unclear",
+    "outer": "black coat",
     "carry": [],
-    "primaryColor": "Patterned",
-    "secondaryColor": "Green",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#16a34a",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "primaryColor": "Black",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#111827",
+    "secondaryHex": "#cbd5e1",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -22970,18 +22972,18 @@
     "h": 49.07
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "grey joggers",
+    "outer": "none",
     "carry": [
-     "brown item"
+     "black stroller"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
     "primaryHex": "#111827",
     "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23056,19 +23058,18 @@
     "h": 47.13
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "beige bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "light grey trousers",
+    "outer": "none",
     "carry": [
-     "brown item",
-     "black item"
+     "black stroller"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Beige",
+    "secondaryColor": "Grey",
     "primaryHex": "#111827",
-    "secondaryHex": "#e7d8c9",
+    "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23220,18 +23221,18 @@
     "h": 43.33
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "brown item"
+     "brown shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23369,18 +23370,18 @@
     "h": 41.3
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black joggers",
+    "outer": "black jacket",
     "carry": [
-     "brown item"
+     "brown shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23506,14 +23507,14 @@
    "outfit": {
     "top": "white shirt",
     "bottom": "black trousers",
-    "outer": "black jacket",
+    "outer": "black blazer",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23644,16 +23645,16 @@
     "h": 19.63
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23721,18 +23722,18 @@
     "h": 30.09
    },
    "outfit": {
-    "top": "white shirt",
+    "top": "olive sweater",
     "bottom": "blue jeans",
-    "outer": "green sweater",
+    "outer": "none",
     "carry": [
-     "silver object"
+     "white coffee cup"
     ],
     "primaryColor": "Green",
     "secondaryColor": "Blue",
     "primaryHex": "#16a34a",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23779,18 +23780,16 @@
     "h": 13.06
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "black bottoms",
-    "outer": "red jacket",
-    "carry": [
-     "brown bag"
-    ],
+    "top": "red sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [],
     "primaryColor": "Red",
     "secondaryColor": "Black",
     "primaryHex": "#dc2626",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23858,18 +23857,18 @@
     "h": 42.41
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
+    "top": "blue patterned button-up shirt",
+    "bottom": "olive trousers",
     "outer": "none",
     "carry": [
-     "pink item"
+     "grey backpack"
     ],
-    "primaryColor": "Patterned",
-    "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "primaryColor": "Blue",
+    "secondaryColor": "Green",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23930,18 +23929,18 @@
     "h": 49.17
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black shirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "red item"
+     "red backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -23995,16 +23994,16 @@
     "h": 35.28
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "grey bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "grey trousers",
+    "outer": "black jacket",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Grey",
     "primaryHex": "#111827",
     "secondaryHex": "#9ca3af",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -24051,18 +24050,18 @@
     "h": 37.41
    },
    "outfit": {
-    "top": "black sweater",
-    "bottom": "grey trousers",
+    "top": "black sweatshirt",
+    "bottom": "beige trousers",
     "outer": "none",
     "carry": [
-     "white bag"
+     "white shopping bag"
     ],
     "primaryColor": "Black",
-    "secondaryColor": "Grey",
+    "secondaryColor": "Beige",
     "primaryHex": "#111827",
-    "secondaryHex": "#9ca3af",
+    "secondaryHex": "#d6c3a1",
     "heavyOuterwear": false,
-    "aesthetic": "Smart Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -24130,16 +24129,16 @@
     "h": 18.43
    },
    "outfit": {
-    "top": "black hoodie",
+    "top": "black shirt",
     "bottom": "black trousers",
-    "outer": "black hoodie",
+    "outer": "black jacket",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Streetwear"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -24263,18 +24262,18 @@
     "h": 49.26
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "blue patterned shirt",
+    "bottom": "olive trousers",
+    "outer": "none",
     "carry": [
-     "red item"
+     "white shoulder bag"
     ],
-    "primaryColor": "Black",
-    "secondaryColor": "Black",
-    "primaryHex": "#111827",
-    "secondaryHex": "#111827",
+    "primaryColor": "Blue",
+    "secondaryColor": "Green",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -24496,18 +24495,18 @@
     "h": 42.04
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black sweatshirt",
+    "bottom": "black joggers",
     "outer": "none",
     "carry": [
-     "red item"
+     "red backpack"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -24638,11 +24637,11 @@
     "h": 19.07
    },
    "outfit": {
-    "top": "beige top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
+    "top": "white t-shirt",
+    "bottom": "black jeans",
+    "outer": "brown jacket",
     "carry": [
-     "black item"
+     "blue skateboard"
     ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
@@ -24857,18 +24856,18 @@
     "h": 24.35
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "unclear",
-    "outer": "green jacket",
+    "top": "white shirt",
+    "bottom": "blue jeans",
+    "outer": "olive blazer",
     "carry": [
-     "unclear item"
+     "white phone"
     ],
     "primaryColor": "Green",
-    "secondaryColor": "Unclear",
+    "secondaryColor": "Blue",
     "primaryHex": "#16a34a",
-    "secondaryHex": "#a3a3a3",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -25062,16 +25061,18 @@
     "h": 47.69
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
-    "carry": [],
+    "top": "black sweatshirt",
+    "bottom": "black joggers",
+    "outer": "none",
+    "carry": [
+     "red backpack"
+    ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -25139,11 +25140,11 @@
     "h": 41.48
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "white t-shirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "beige item"
+     "beige tote"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -25337,18 +25338,16 @@
     "h": 25.0
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
-    "outer": "navy blue outer layer",
-    "carry": [
-     "grey item"
-    ],
-    "primaryColor": "Navy",
+    "top": "blue shirt",
+    "bottom": "black leggings",
+    "outer": "blue jacket",
+    "carry": [],
+    "primaryColor": "Blue",
     "secondaryColor": "Black",
-    "primaryHex": "#1e3a8a",
+    "primaryHex": "#3b82f6",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -25409,16 +25408,18 @@
     "h": 35.65
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "grey bottoms",
+    "top": "patterned button-up shirt",
+    "bottom": "olive trousers",
     "outer": "none",
-    "carry": [],
+    "carry": [
+     "grey backpack"
+    ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Grey",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#9ca3af",
+    "secondaryColor": "Green",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -25584,16 +25585,19 @@
     "h": 38.43
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "beige bottoms",
+    "top": "blue patterned button-up shirt",
+    "bottom": "olive trousers",
     "outer": "none",
-    "carry": [],
-    "primaryColor": "Patterned",
-    "secondaryColor": "Beige",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#e7d8c9",
+    "carry": [
+     "grey backpack",
+     "pink bag"
+    ],
+    "primaryColor": "Blue",
+    "secondaryColor": "Green",
+    "primaryHex": "#3b82f6",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -25766,18 +25770,18 @@
     "h": 48.8
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "beige item"
+     "beige shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -25845,18 +25849,18 @@
     "h": 32.41
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
     "outer": "black jacket",
     "carry": [
-     "brown bag"
+     "brown shoulder bag"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -26015,11 +26019,11 @@
     "h": 35.65
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "black outer layer",
+    "top": "black long-sleeve tee",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [
-     "beige item"
+     "beige tote"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -26180,16 +26184,14 @@
    "outfit": {
     "top": "white shirt",
     "bottom": "blue jeans",
-    "outer": "green sweater",
-    "carry": [
-     "clear object"
-    ],
+    "outer": "olive jacket",
+    "carry": [],
     "primaryColor": "Green",
     "secondaryColor": "Blue",
     "primaryHex": "#16a34a",
-    "secondaryHex": "#2563eb",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -26250,16 +26252,16 @@
     "h": 20.37
    },
    "outfit": {
-    "top": "white t-shirt",
+    "top": "black shirt",
     "bottom": "blue jeans",
-    "outer": "brown jacket",
+    "outer": "black coat",
     "carry": [],
-    "primaryColor": "Brown",
+    "primaryColor": "Black",
     "secondaryColor": "Blue",
-    "primaryHex": "#7c4a1e",
-    "secondaryHex": "#2563eb",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "primaryHex": "#111827",
+    "secondaryHex": "#3b82f6",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -26334,12 +26336,10 @@
     "h": 16.67
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
+    "top": "black long-sleeve tee",
+    "bottom": "black trousers",
     "outer": "none",
-    "carry": [
-     "black item"
-    ],
+    "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
@@ -26413,19 +26413,19 @@
     "h": 26.85
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "navy blue bottoms",
+    "top": "patterned shirt",
+    "bottom": "navy jeans",
     "outer": "none",
     "carry": [
-     "black item",
-     "beige item"
+     "black backpack",
+     "beige handbag"
     ],
     "primaryColor": "Patterned",
     "secondaryColor": "Navy",
-    "primaryHex": "#a3a3a3",
+    "primaryHex": "#a78bfa",
     "secondaryHex": "#1e3a8a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -26591,11 +26591,11 @@
     "h": 32.87
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "none",
+    "top": "white long-sleeve tee",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [
-     "beige item"
+     "beige tote"
     ],
     "primaryColor": "Black",
     "secondaryColor": "Black",
@@ -26831,16 +26831,18 @@
     "h": 33.24
    },
    "outfit": {
-    "top": "patterned top",
-    "bottom": "brown bottoms",
+    "top": "patterned button-up shirt",
+    "bottom": "olive trousers",
     "outer": "none",
-    "carry": [],
+    "carry": [
+     "black backpack"
+    ],
     "primaryColor": "Patterned",
-    "secondaryColor": "Brown",
-    "primaryHex": "#a3a3a3",
-    "secondaryHex": "#7c4a1e",
+    "secondaryColor": "Green",
+    "primaryHex": "#a78bfa",
+    "secondaryHex": "#16a34a",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Business Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -26950,18 +26952,16 @@
     "h": 18.15
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [
-     "brown item"
-    ],
+    "top": "brown shirt",
+    "bottom": "black trousers",
+    "outer": "brown jacket",
+    "carry": [],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27057,18 +27057,16 @@
     "h": 23.8
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "black bottoms",
-    "outer": "red jacket",
-    "carry": [
-     "black bag"
-    ],
+    "top": "red sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [],
     "primaryColor": "Red",
     "secondaryColor": "Black",
     "primaryHex": "#dc2626",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27171,15 +27169,15 @@
     "h": 19.07
    },
    "outfit": {
-    "top": "black white top",
-    "bottom": "blue bottoms",
-    "outer": "none",
+    "top": "white t-shirt",
+    "bottom": "blue jeans",
+    "outer": "black coat",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Blue",
     "primaryHex": "#111827",
-    "secondaryHex": "#2563eb",
-    "heavyOuterwear": false,
+    "secondaryHex": "#3b82f6",
+    "heavyOuterwear": true,
     "aesthetic": "Casual"
    },
    "demographics": null,
@@ -27311,16 +27309,16 @@
     "h": 20.56
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "black jacket",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Black",
     "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27524,15 +27522,13 @@
     "top": "beige sweater",
     "bottom": "blue jeans",
     "outer": "none",
-    "carry": [
-     "black bag"
-    ],
+    "carry": [],
     "primaryColor": "Beige",
     "secondaryColor": "Blue",
-    "primaryHex": "#e7d8c9",
-    "secondaryHex": "#2563eb",
+    "primaryHex": "#d6c3a1",
+    "secondaryHex": "#3b82f6",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27628,18 +27624,16 @@
     "h": 38.15
    },
    "outfit": {
-    "top": "red top",
-    "bottom": "black bottoms",
-    "outer": "red jacket",
-    "carry": [
-     "beige bag"
-    ],
+    "top": "red sweatshirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [],
     "primaryColor": "Red",
     "secondaryColor": "Black",
     "primaryHex": "#dc2626",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27742,18 +27736,18 @@
     "h": 20.93
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
+    "top": "white t-shirt",
+    "bottom": "black joggers",
     "outer": "brown jacket",
     "carry": [
-     "grey bag"
+     "blue shoulder bag"
     ],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27870,16 +27864,16 @@
     "h": 13.98
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "blue bottoms",
-    "outer": "black outer layer",
+    "top": "black sweater",
+    "bottom": "blue jeans",
+    "outer": "black coat",
     "carry": [],
     "primaryColor": "Black",
     "secondaryColor": "Blue",
     "primaryHex": "#111827",
-    "secondaryHex": "#2563eb",
-    "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "secondaryHex": "#3b82f6",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -27954,18 +27948,16 @@
     "h": 29.72
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [
-     "grey item"
-    ],
+    "top": "white shirt",
+    "bottom": "black trousers",
+    "outer": "brown leather jacket",
+    "carry": [],
     "primaryColor": "Brown",
     "secondaryColor": "Black",
     "primaryHex": "#7c4a1e",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -28194,18 +28186,16 @@
     "h": 21.67
    },
    "outfit": {
-    "top": "black top",
-    "bottom": "black bottoms",
-    "outer": "green outer layer",
-    "carry": [
-     "black item"
-    ],
+    "top": "black shirt",
+    "bottom": "black jeans",
+    "outer": "olive jacket",
+    "carry": [],
     "primaryColor": "Green",
     "secondaryColor": "Black",
     "primaryHex": "#16a34a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Smart Casual"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -28441,14 +28431,14 @@
     "h": 14.63
    },
    "outfit": {
-    "top": "cream top",
-    "bottom": "black bottoms",
+    "top": "white t-shirt",
+    "bottom": "brown trousers",
     "outer": "none",
     "carry": [],
-    "primaryColor": "Cream",
-    "secondaryColor": "Black",
-    "primaryHex": "#fef3c7",
-    "secondaryHex": "#111827",
+    "primaryColor": "White",
+    "secondaryColor": "Brown",
+    "primaryHex": "#f9fafb",
+    "secondaryHex": "#7c4a1e",
     "heavyOuterwear": false,
     "aesthetic": "Casual"
    },
@@ -28497,16 +28487,16 @@
     "h": 16.11
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "navy blue outer layer",
+    "top": "black sweatshirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
     "carry": [],
-    "primaryColor": "Navy",
+    "primaryColor": "Black",
     "secondaryColor": "Black",
-    "primaryHex": "#1e3a8a",
+    "primaryHex": "#111827",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Streetwear"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -28672,18 +28662,18 @@
     "h": 19.91
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
+    "top": "navy t-shirt",
+    "bottom": "black joggers",
     "outer": "none",
     "carry": [
-     "red item"
+     "red shoulder bag"
     ],
     "primaryColor": "Navy",
     "secondaryColor": "Black",
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -28779,18 +28769,18 @@
     "h": 20.37
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
+    "top": "navy t-shirt",
+    "bottom": "black joggers",
     "outer": "none",
     "carry": [
-     "red item"
+     "red backpack"
     ],
     "primaryColor": "Navy",
     "secondaryColor": "Black",
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -28900,18 +28890,16 @@
     "h": 19.81
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
+    "top": "navy t-shirt",
+    "bottom": "black joggers",
     "outer": "none",
-    "carry": [
-     "red item"
-    ],
+    "carry": [],
     "primaryColor": "Navy",
     "secondaryColor": "Black",
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -29007,10 +28995,12 @@
     "h": 20.09
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
+    "top": "navy t-shirt",
+    "bottom": "black trousers",
     "outer": "none",
-    "carry": [],
+    "carry": [
+     "black shoulder bag"
+    ],
     "primaryColor": "Navy",
     "secondaryColor": "Black",
     "primaryHex": "#1e3a8a",
@@ -29126,18 +29116,18 @@
     "h": 19.44
    },
    "outfit": {
-    "top": "navy blue top",
-    "bottom": "black bottoms",
-    "outer": "navy blue outer layer",
+    "top": "navy long-sleeve tee",
+    "bottom": "black joggers",
+    "outer": "none",
     "carry": [
-     "white item"
+     "white shopping bag"
     ],
     "primaryColor": "Navy",
     "secondaryColor": "Black",
     "primaryHex": "#1e3a8a",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -29198,16 +29188,18 @@
     "h": 13.52
    },
    "outfit": {
-    "top": "white top",
-    "bottom": "black bottoms",
-    "outer": "brown outer layer",
-    "carry": [],
-    "primaryColor": "Brown",
+    "top": "white t-shirt",
+    "bottom": "black leggings",
+    "outer": "none",
+    "carry": [
+     "white shopping bag"
+    ],
+    "primaryColor": "White",
     "secondaryColor": "Black",
-    "primaryHex": "#7c4a1e",
+    "primaryHex": "#f9fafb",
     "secondaryHex": "#111827",
     "heavyOuterwear": false,
-    "aesthetic": "Casual"
+    "aesthetic": "Athleisure"
    },
    "demographics": null,
    "model": "google/gemma-4-26B-A4B-it",
@@ -29253,37 +29245,37 @@
  "aggregates": {
   "sightings": 214,
   "tracks": 214,
-  "heavyOuterwearPct": 5.1,
+  "heavyOuterwearPct": 6.1,
   "carryPct": {
-   "backpack": 1.9,
-   "tote": 0.0,
-   "handbag": 0.0,
+   "backpack": 31.8,
+   "tote": 6.1,
+   "handbag": 4.7,
    "bag": 21.5,
    "box": 0.5,
-   "phone": 0.0,
-   "none": 28.0
+   "phone": 6.5,
+   "none": 31.8
   },
   "topColors": {
-   "Black": 83,
-   "White": 21,
-   "Patterned": 17,
-   "Grey": 17,
-   "Navy": 15,
-   "Brown": 14,
-   "Beige": 12,
-   "Red": 8,
-   "Cream": 7,
-   "Blue": 7,
-   "Yellow": 5,
-   "Green": 5,
-   "Purple": 2,
-   "Unclear": 1
+   "Black": 86,
+   "White": 26,
+   "Blue": 15,
+   "Grey": 15,
+   "Patterned": 15,
+   "Navy": 13,
+   "Brown": 12,
+   "Green": 8,
+   "Red": 7,
+   "Cream": 6,
+   "Yellow": 6,
+   "Beige": 5
   },
   "aesthetics": {
-   "Casual": 163,
-   "Smart Casual": 33,
-   "Streetwear": 10,
-   "Outdoor / Technical": 8
+   "Smart Casual": 66,
+   "Casual": 57,
+   "Streetwear": 54,
+   "Athleisure": 21,
+   "Business Casual": 14,
+   "Outdoor / Technical": 2
   }
  }
 }

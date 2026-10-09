@@ -101,7 +101,7 @@ function useReplay(data: RealDataFile | null, speed: SamplingRate) {
         d,
         key: `${d.clipId}-${d.trackingId}-${d.tSec}`,
         label: [
-          `${d.trackingId.split("-").pop()} · ${d.outfit.top}`,
+          `${d.trackingId.split("-").pop()} · ${d.outfit.outer && d.outfit.outer !== "none" ? `${d.outfit.outer} over ${d.outfit.top}` : d.outfit.top}`,
           d.outfit.bottom && d.outfit.bottom !== "unclear" ? d.outfit.bottom : "",
           d.outfit.carry.length ? `carry: ${d.outfit.carry.join(", ")}` : "",
         ].filter(Boolean).join("\n"),
