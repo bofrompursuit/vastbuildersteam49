@@ -40,8 +40,8 @@ jobs:
       url: https://auraafit.tech
     steps:
       - uses: actions/checkout@v4
-      # Only the .mp4 is served; skip the 22 MB .mov original
-      - run: git lfs pull --include=public/assets/videos/store-demo.mp4
+      # Serve every .mp4 (store demo + replay clips); skip the 22 MB .mov original
+      - run: git lfs pull --include="public/assets/videos/*.mp4"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
