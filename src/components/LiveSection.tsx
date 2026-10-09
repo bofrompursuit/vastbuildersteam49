@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Bot, Clock, Loader2, MonitorPlay, Search, Sparkles, Video, Zap } from "lucide-react";
+import { Bot, Clock, Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, CloudSun, Loader2, MonitorPlay, Moon, Search, Sparkles, Sun, Video, Zap } from "lucide-react";
 import { agentAlerts, generateDetection } from "@/lib/engine";
 import VideoIntelligence from "./VideoIntelligence";
 import type { AgentAlert, DetectionPayload, SamplingRate, SearchResult } from "@/lib/types";
@@ -10,6 +10,48 @@ const TICK_MS = 80;
 
 interface Track extends DetectionPayload {
   speed: number;
+}
+
+interface Weather {
+  tempF: number;
+  code: number;
+  isDay: boolean;
+}
+
+// WMO weather codes -> short label + icon
+function describeWeather({ code, isDay }: Weather) {
+  if (code === 0) return { label: "Clear", Icon: isDay ? Sun : Moon };
+  if (code <= 2) return { label: "Partly Cloudy", Icon: CloudSun };
+  if (code === 3) return { label: "Overcast", Icon: Cloud };
+  if (code <= 48) return { label: "Fog", Icon: CloudFog };
+  if (code <= 67 || (code >= 80 && code <= 82)) return { label: "Rain", Icon: CloudRain };
+  if (code <= 86) return { label: "Snow", Icon: CloudSnow };
+  return { label: "Storm", Icon: CloudLightning };
+}
+
+/** Live weather at the camera location (Walker St, Tribeca NYC), styled like the video's detection labels. */
+function WeatherTag() {
+  const [w, setW] = useState<Weather | null>(null);
+
+  useEffect(() => {
+    const load = () =>
+      fetch("https://api.open-meteo.com/v1/forecast?latitude=40.7187&longitude=-74.0046&current=temperature_2m,weather_code,is_day&temperature_unit=fahrenheit")
+        .then((r) => r.json())
+        .then((d) => setW({ tempF: d.current.temperature_2m, code: d.current.weather_code, isDay: d.current.is_day === 1 }))
+        .catch(() => {});
+    load();
+    const id = setInterval(load, 10 * 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (!w) return null;
+  const { label, Icon } = describeWeather(w);
+  return (
+    <div className="flex items-center gap-1 bg-[#3cb44b]/90 px-1.5 py-0.5 text-[10px] font-medium text-white sm:text-xs" title="Live weather · Tribeca, NYC">
+      <Icon className="h-3 w-3" />
+      {Math.round(w.tempF)}°F<span className="hidden sm:inline"> {label}</span>
+    </div>
+  );
 }
 
 function VideoFeed({ tracks, clock }: { tracks: Track[]; clock: string }) {
@@ -24,10 +66,17 @@ function VideoFeed({ tracks, clock }: { tracks: Track[]; clock: string }) {
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="absolute left-3 top-3 flex items-center gap-2 rounded bg-slate-950/80 px-2 py-1 font-mono text-xs text-slate-200">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" /> REC · CAM-01 STREET ENTRANCE
+      {/* top strip: kept above the video's own detection labels (they start ~17% down) */}
+      <div className="absolute left-2 top-2 flex items-center gap-1.5 rounded bg-slate-950/80 px-2 py-0.5 font-mono text-[10px] text-slate-200 sm:left-3 sm:top-3 sm:text-xs">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" /> REC<span className="hidden sm:inline"> · CAM-01 STREET ENTRANCE</span>
       </div>
-      <div className="absolute right-3 top-3 rounded bg-slate-950/80 px-2 py-1 font-mono text-xs text-slate-300">{clock}</div>
+      <div className="absolute right-2 top-2 flex items-stretch gap-1 sm:right-3 sm:top-3">
+        <WeatherTag />
+        <div className="rounded bg-slate-950/80 px-2 py-0.5 font-mono text-[10px] text-slate-300 sm:text-xs">
+          <span className="hidden sm:inline">{clock.split(", ")[0]}, </span>
+          {clock.split(", ")[1] ?? clock}
+        </div>
+      </div>
       <div className="absolute bottom-3 left-3 rounded bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-emerald-400">
         YOLOv8 · {tracks.length + 14} active tracks
       </div>
