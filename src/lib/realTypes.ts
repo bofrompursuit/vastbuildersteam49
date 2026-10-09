@@ -33,6 +33,7 @@ export interface RealDetection {
   demographics: null; // not inferred, by design
   model: string; // labelling model, e.g. "google/gemma-4-26B-A4B-it"
   traceUrl?: string; // W&B Weave call URL for this label, when available
+  path?: [number, number, number, number, number][]; // [tSec, x, y, w, h] (percent of frame), ~6 samples/s across the whole YOLO track
 }
 
 export interface RealSegment {

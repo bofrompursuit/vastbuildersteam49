@@ -7,16 +7,28 @@ import type { RealClip, RealDataFile, RealDetection } from "@/lib/realTypes";
 import VideoIntelligence from "./VideoIntelligence";
 import type { AgentAlert, AgentResponse, DetectionPayload, SamplingRate, SearchResult } from "@/lib/types";
 
-const TICK_MS = 80;
-/** A box stays on screen this many replay-seconds after its label time. Boxes are never invented between labels. */
-const BOX_HOLD_SEC = 3;
+/** Boxes without a recorded path stay on screen this many replay-seconds after their label time. */
+const BOX_HOLD_SEC = 1.0;
+/** Path boxes show from PATH_LEAD_SEC before the first sample to PATH_TAIL_SEC after the last. */
+const PATH_LEAD_SEC = 0.1;
+const PATH_TAIL_SEC = 0.2;
 const FEED_MAX = 40;
+
+interface VisibleBox {
+  key: string;
+  label: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
 
 interface ReplayState {
   clip: RealClip | null;
-  t: number; // seconds into the current clip
+  t: number; // seconds into the current clip (the video's clock when a video is playing)
   pass: number; // how many full passes through all clips
-  visible: RealDetection[]; // real detections whose label time is within BOX_HOLD_SEC before t
+  visible: VisibleBox[];
+  token: string; // identifies the current playthrough of a clip (remounts the <video>)
 }
 
 interface FeedItem {
@@ -24,20 +36,93 @@ interface FeedItem {
   d: DetectionPayload;
 }
 
+interface PreDet {
+  d: RealDetection;
+  key: string;
+  label: string;
+  path: [number, number, number, number, number][] | null;
+  t0: number; // first time this box can be visible
+  t1: number; // last time (exclusive for hold boxes)
+}
+
 const clipDuration = (c: RealClip) => (c.durationSec > 0 ? c.durationSec : 30);
 
-/** Replays the recorded detections over time. Everything emitted here comes from the data file. */
+function boxesAt(dets: PreDet[], t: number): VisibleBox[] {
+  const out: VisibleBox[] = [];
+  for (const p of dets) {
+    if (p.path) {
+      if (t < p.t0 || t > p.t1) continue;
+      const path = p.path;
+      let lo = 0;
+      let hi = path.length - 1;
+      if (t <= path[0][0]) hi = 0;
+      else if (t >= path[hi][0]) lo = hi;
+      else {
+        while (hi - lo > 1) {
+          const mid = (lo + hi) >> 1;
+          if (path[mid][0] <= t) lo = mid;
+          else hi = mid;
+        }
+      }
+      const a = path[lo];
+      const b = path[hi];
+      const f = hi === lo || b[0] === a[0] ? 0 : Math.min(1, Math.max(0, (t - a[0]) / (b[0] - a[0])));
+      out.push({ key: p.key, label: p.label, x: a[1] + (b[1] - a[1]) * f, y: a[2] + (b[2] - a[2]) * f, w: a[3] + (b[3] - a[3]) * f, h: a[4] + (b[4] - a[4]) * f });
+    } else if (t >= p.t0 && t < p.t1) {
+      const bb = p.d.bbox;
+      out.push({ key: p.key, label: p.label, x: bb.x, y: bb.y, w: bb.w, h: bb.h });
+    }
+  }
+  return out;
+}
+
+/**
+ * Replays the recorded detections over time. Everything emitted here comes from the data file.
+ * When a real video file is playing, the <video> element is the clock (read every animation frame);
+ * otherwise a timer advances replay time at `speed`x.
+ */
 function useReplay(data: RealDataFile | null, speed: SamplingRate) {
-  const [state, setState] = useState<ReplayState>({ clip: null, t: 0, pass: 0, visible: [] });
+  const [state, setState] = useState<ReplayState>({ clip: null, t: 0, pass: 0, visible: [], token: "0-" });
   const [feed, setFeed] = useState<FeedItem[]>([]);
+  const [haveVideo, setHaveVideo] = useState<Record<string, boolean>>({});
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const haveVideoRef = useRef(haveVideo);
+  haveVideoRef.current = haveVideo;
   const pos = useRef({ i: 0, t: 0, pass: 0, first: true });
   const speedRef = useRef(speed);
   speedRef.current = speed;
 
+  // Precomputed per clip: detections sorted by time, with path bounds resolved once.
   const byClip = useMemo(() => {
-    const m = new Map<string, RealDetection[]>();
-    data?.detections.forEach((d) => m.set(d.clipId, [...(m.get(d.clipId) ?? []), d].sort((a, b) => a.tSec - b.tSec)));
+    const m = new Map<string, PreDet[]>();
+    data?.detections.forEach((d) => {
+      const path = d.path && d.path.length > 0 ? [...d.path].sort((a, b) => a[0] - b[0]) : null;
+      const pd: PreDet = {
+        d,
+        key: `${d.clipId}-${d.trackingId}-${d.tSec}`,
+        label: `${d.trackingId.split("-").pop()} · ${d.outfit.top}`,
+        path,
+        t0: path ? path[0][0] - PATH_LEAD_SEC : d.tSec,
+        t1: path ? path[path.length - 1][0] + PATH_TAIL_SEC : d.tSec + BOX_HOLD_SEC,
+      };
+      m.set(d.clipId, [...(m.get(d.clipId) ?? []), pd]);
+    });
+    m.forEach((arr) => arr.sort((a, b) => a.d.tSec - b.d.tSec));
     return m;
+  }, [data]);
+
+  // Use a clip file only if it has been placed at /assets/videos/<filename>. Probe every clip up front.
+  useEffect(() => {
+    if (!data) return;
+    let live = true;
+    data.clips.forEach((clip) => {
+      fetch(`/assets/videos/${encodeURIComponent(clip.filename)}`, { method: "HEAD" })
+        .then((r) => live && setHaveVideo((h) => ({ ...h, [clip.clipId]: r.ok && (r.headers.get("content-type") ?? "").startsWith("video") })))
+        .catch(() => live && setHaveVideo((h) => ({ ...h, [clip.clipId]: false })));
+    });
+    return () => {
+      live = false;
+    };
   }, [data]);
 
   useEffect(() => {
@@ -45,61 +130,75 @@ function useReplay(data: RealDataFile | null, speed: SamplingRate) {
     pos.current = { i: 0, t: 0, pass: 0, first: true };
     setFeed([]);
     const clips = data.clips;
-    const id = setInterval(() => {
+    let raf = 0;
+    let last = performance.now();
+    let shown = { clipId: "", pass: -1, t: -1 };
+
+    const advance = (p: typeof pos.current) => {
+      p.i = (p.i + 1) % clips.length;
+      if (p.i === 0) p.pass += 1;
+      p.t = 0;
+      p.first = true;
+    };
+
+    const frame = (now: number) => {
+      raf = requestAnimationFrame(frame);
+      const dtSec = Math.min((now - last) / 1000, 0.25);
+      last = now;
       const p = pos.current;
       const clip = clips[p.i];
-      const dur = clipDuration(clip);
+      const token = `${p.pass}-${clip.clipId}`;
       const dets = byClip.get(clip.clipId) ?? [];
-      const nt = Math.min(p.t + (TICK_MS / 1000) * speedRef.current, dur);
+      const dur = clipDuration(clip);
+      const useVideo = haveVideoRef.current[clip.clipId] === true;
+      const v = videoRef.current;
+      let nt: number;
+      let ended = false;
+
+      if (useVideo) {
+        // Wait until the <video> for THIS playthrough is mounted (it remounts per clip/pass).
+        if (!v || v.dataset.token !== token) {
+          if (shown.clipId !== clip.clipId || shown.pass !== p.pass) {
+            shown = { clipId: clip.clipId, pass: p.pass, t: 0 };
+            setState({ clip, t: 0, pass: p.pass, visible: boxesAt(dets, 0), token });
+          }
+          return;
+        }
+        if (v.playbackRate !== speedRef.current) v.playbackRate = speedRef.current;
+        if (v.paused && !v.ended) v.play().catch(() => {});
+        nt = v.currentTime;
+        ended = v.ended || (v.duration > 0 && Number.isFinite(v.duration) && nt >= v.duration - 0.03);
+      } else {
+        nt = Math.min(p.t + dtSec * speedRef.current, dur);
+        ended = nt >= dur;
+      }
+
       const lo = p.first ? -1 : p.t;
-      const fresh = dets.filter((d) => d.tSec > lo && d.tSec <= nt);
+      const fresh = dets.filter((x) => x.d.tSec > lo && x.d.tSec <= nt);
       p.first = false;
       if (fresh.length) {
-        const items = fresh.map((d) => ({ key: `${p.pass}-${d.clipId}-${d.trackingId}-${d.tSec}`, d: toPayload(d, clip) })).reverse();
+        const items = fresh.map((x) => ({ key: `${p.pass}-${x.key}`, d: toPayload(x.d, clip) })).reverse();
         setFeed((f) => [...items, ...f].slice(0, FEED_MAX));
       }
-      const visible = dets.filter((d) => nt - d.tSec >= 0 && nt - d.tSec < BOX_HOLD_SEC);
-      setState({ clip, t: nt, pass: p.pass, visible });
-      if (nt >= dur) {
-        p.i = (p.i + 1) % clips.length;
-        if (p.i === 0) p.pass += 1;
-        p.t = 0;
-        p.first = true;
-      } else {
-        p.t = nt;
+      p.t = nt;
+
+      if (shown.clipId !== clip.clipId || shown.pass !== p.pass || Math.abs(shown.t - nt) > 1e-3) {
+        shown = { clipId: clip.clipId, pass: p.pass, t: nt };
+        setState({ clip, t: nt, pass: p.pass, visible: boxesAt(dets, nt), token });
       }
-    }, TICK_MS);
-    return () => clearInterval(id);
+      if (ended) advance(p);
+    };
+
+    raf = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(raf);
   }, [data, byClip]);
 
-  return { ...state, feed };
+  const videoOn = !!state.clip && haveVideo[state.clip.clipId] === true;
+  return { ...state, feed, videoRef, videoOn };
 }
 
 function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; speed: SamplingRate }) {
-  const { clip, t, visible, pass } = replay;
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [haveVideo, setHaveVideo] = useState<Record<string, boolean>>({});
-
-  // Use the real clip file only if it has been placed at /assets/videos/<filename>. Otherwise boxes are drawn on a blank frame.
-  useEffect(() => {
-    if (!clip || clip.clipId in haveVideo) return;
-    let live = true;
-    fetch(`/assets/videos/${encodeURIComponent(clip.filename)}`, { method: "HEAD" })
-      .then((r) => live && setHaveVideo((h) => ({ ...h, [clip.clipId]: r.ok && (r.headers.get("content-type") ?? "").startsWith("video") })))
-      .catch(() => live && setHaveVideo((h) => ({ ...h, [clip.clipId]: false })));
-    return () => {
-      live = false;
-    };
-  }, [clip, haveVideo]);
-
-  const videoOn = !!clip && haveVideo[clip.clipId];
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v || !videoOn) return;
-    v.playbackRate = speed;
-    if (Math.abs(v.currentTime - t) > 0.8) v.currentTime = t;
-  }, [t, speed, videoOn]);
+  const { clip, t, visible, pass, videoRef, videoOn, token } = replay;
 
   const seg = clip?.segments?.find((sg) => t >= sg.tStart && t < sg.tEnd) ?? clip?.segments?.[clip.segments.length - 1];
 
@@ -107,7 +206,7 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
     <div>
     <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
       {videoOn && clip ? (
-        <video ref={videoRef} src={`/assets/videos/${encodeURIComponent(clip.filename)}`} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-fill" />
+        <video key={token} ref={videoRef} data-token={token} src={`/assets/videos/${encodeURIComponent(clip.filename)}`} autoPlay muted playsInline className="absolute inset-0 h-full w-full object-fill" />
       ) : (
         <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:10%_10%]">
           <p className="absolute inset-x-0 bottom-10 px-6 text-center font-mono text-[10px] text-slate-400">
@@ -118,12 +217,12 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
 
       {visible.map((d) => (
         <div
-          key={`${d.clipId}-${d.trackingId}-${d.tSec}`}
+          key={d.key}
           className="absolute rounded-sm border-2 border-emerald-400/90"
-          style={{ left: `${d.bbox.x}%`, top: `${d.bbox.y}%`, width: `${d.bbox.w}%`, height: `${d.bbox.h}%` }}
+          style={{ left: `${d.x}%`, top: `${d.y}%`, width: `${d.w}%`, height: `${d.h}%` }}
         >
           <span className="absolute -top-4 left-0 whitespace-nowrap rounded bg-emerald-500/90 px-1 font-mono text-[9px] text-slate-950">
-            {d.trackingId.split("-").pop()} · {d.outfit.top}
+            {d.label}
           </span>
         </div>
       ))}
