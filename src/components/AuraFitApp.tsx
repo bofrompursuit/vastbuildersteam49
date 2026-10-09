@@ -6,7 +6,7 @@ import LiveSection from "./LiveSection";
 import DashboardSection from "./DashboardSection";
 import type { SamplingRate } from "@/lib/types";
 import type { RealDataFile } from "@/lib/realTypes";
-import { useRealData, type LoadedRealData } from "@/lib/realData";
+import { useRealData } from "@/lib/realData";
 
 /** Status chips are built from `pipeline` in the data file. Nothing here is hard-coded as "live". */
 function statusFor(data: RealDataFile) {
@@ -73,29 +73,6 @@ function Hero({ data }: { data: RealDataFile | null }) {
   );
 }
 
-function Notes({ loaded }: { loaded: LoadedRealData }) {
-  const { data, isSample, source } = loaded;
-  const lines = [
-    "Replay of recorded street cameras (San Francisco / New York) from the event archive, processed by YOLO11 + W&B vision. This is not a live store feed.",
-    ...data.pipeline.notes,
-    "Product suggestions come from a demo catalog (fixed rule: outfit aesthetic to a sample SKU). They are not model output and not real inventory.",
-    "The signage button only calls a demo endpoint; no physical display is connected.",
-    "The video-upload analyzer below only returns real labels for the replayed event clips (see its note).",
-  ];
-  return (
-    <details open className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4 text-xs text-neutral-600">
-      <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-wider text-neutral-700">How this works / limits</summary>
-      <p className="mt-2 font-mono text-[11px] text-neutral-500">
-        Data file: {source}
-        {isSample ? " (SAMPLE: shape only, not the real run)" : ""} · generated {data.pipeline.generatedAt} · prompt {data.pipeline.promptVersion}
-      </p>
-      <ul className="mt-2 list-disc space-y-1 pl-5">
-        {lines.map((l, i) => <li key={i}>{l}</li>)}
-      </ul>
-    </details>
-  );
-}
-
 export default function AuraFitApp() {
   const [samplingRate, setSamplingRate] = useState<SamplingRate>(5);
   const { loaded, error } = useRealData();
@@ -141,7 +118,6 @@ export default function AuraFitApp() {
             </span>
           ))}
         </div>
-        {loaded && <Notes loaded={loaded} />}
 
         <div>
           <Eyebrow>Section 01 · Recorded-camera replay</Eyebrow>
