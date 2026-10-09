@@ -1,0 +1,23 @@
+# AURAAFIT: 3-minute recorded demo script
+
+Target length 3:00. Say "replay of recorded street cameras" every time footage is on screen; never say "live" or "real-time" about the footage. Every number you say must be on screen at that moment (read it off the app; do not quote from this file).
+
+**Tabs to have open before recording:** (1) the app, https://auraafit.tech; (2) the W&B Weave UI, project `vastdata/team-49`, one trace already clicked open; (3) VSS Explore on the matching clip (e.g. `20261001_095836_sf2_chunk_0017.mp4`).
+
+| Time | Beat | Surface | On screen | Say (plain, short) |
+|---|---|---|---|---|
+| 0:00 to 0:20 | **The problem** | App, landing / overview | Overview with the footfall number | "Retailers count heads. A door counter tells you 200 people walked by. It does not tell you how many carried shopping bags, or that most wore heavy coats. That is what decides what goes in the window. We built AURAAFIT to read the outfits." |
+| 0:20 to 1:10 | **Real footage, real outfit labels** | App, footage replay with detection overlay and outfit feed | Boxes on the replayed clip; outfit rows (top, bottom, outer, carry); then the aggregates (colours, carry share, heavy outerwear) | "This is a replay of recorded street cameras from today's event archive, indexed in VAST VSS. YOLO11 finds each person. A W&B vision model reads each crop and writes what they wear and carry. These rows are model output, not hand-typed. The counts are person-sightings, not unique people. Colour mix, bags, heavy outerwear: all computed from these rows." Click one aggregate or card, show the clip it came from. |
+| 1:10 to 1:25 | **Clip receipt** (optional if time is short) | VSS Explore | The same clip card, captions/detections | "Every number points back to a clip in our VSS index, so a buyer can check it against the footage." |
+| 1:25 to 2:00 | **One Weave trace** | Weave UI (`vastdata/team-49`) | One trace opened: the prompt (`outfit-prompt-noexample`), the input image, the model's answer | "Every label is traced in W&B Weave. Here is one call: the prompt version, the exact image the model saw, and the answer. We iterated this prompt more than ten times against an answer key. A prompt with a concrete example got copied on far scenes, so the published version has no example." |
+| 2:00 to 2:25 | **Agent alert from the aggregates** | App, agent / alerts panel | The alert text next to the aggregates it cites | "The merchandising agent reads these aggregates, not raw video, and drafts an alert. It calls W&B Inference live when a key is set and falls back to rules when it is not." (State which mode this recording used, after checking.) |
+| 2:25 to 2:50 | **The honesty beat** | App (pipeline notes / demographics field) + a few seconds of the Weave trace or LOOP_LOG numbers | Demographics shown as "not inferred"; the app's pipeline notes | "What it gets wrong: far-away people turn into 'black top, black trousers'. It over-assigns backpacks and prefers 'trousers' over 'jeans'. We checked one clip against an answer key labelled frame-by-frame for one clip (by an AI labeller, spot-checked by eye; not yet a human hand check), not the whole set. Age, gender and race are not inferred, on purpose. The guard drops those words, and nothing is tracked across cameras. It is aggregates only." |
+| 2:50 to 3:00 | **Close: buyer and next step** | App, overview | | "The buyer is a retailer, a landlord or a business improvement district choosing what to stock or lease on a block. Next step: run it on a real storefront camera with the store's consent, over repeated days, so the trends are real." |
+
+## Notes for whoever records
+- **Keep to the wording:** "replay of recorded street cameras", "person-sightings", "not inferred". Do not say "live store feed", "real-time", or "shoppers".
+- **No invented numbers.** Quote only what is visible in the app or Weave at that moment. Safe fixed facts from our work: 612 clips, 3,537 five-second segments, 13 cameras in our VSS index; about 1.8 seconds per label (measured on tiles); 10+ prompt versions.
+- **If the agent fell back to rules**, say so in the recording: "this run used the rule-based fallback".
+- **If asked "why not rewrite the VSS captions?":** the event's re-ingest queue was backed up (detector pods not ready), so we called the YOLO and Cosmos endpoints directly. Do not volunteer this in the 3 minutes unless there is room.
+- **Do not show** any frame with a clearly visible face at full size, and skip the GoPro bike footage (riders' faces).
+- Record the full pass once, then trim; if over 3:00, cut the optional VSS Explore beat first.

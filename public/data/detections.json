@@ -1,0 +1,6105 @@
+{
+ "pipeline": {
+  "generatedAt": "2026-10-09T17:38:44Z",
+  "detector": "YOLO11s (event GPU endpoint, called directly)",
+  "labeler": "W&B Inference: google/gemma-4-26B-A4B-it",
+  "tracing": "W&B Weave project vastdata/team-49",
+  "index": "VAST VSS (team-49), clips referenced by original_video",
+  "promptVersion": "single-person-outfit-v1",
+  "secondsPerLabel": 1.34,
+  "notes": [
+   "Replay of recorded street cameras from the event archive (San Francisco, New York), not a live store feed.",
+   "Each 5 s piece is tracked separately, so a person seen in two pieces counts twice: numbers are person-sightings, not unique shoppers.",
+   "Age, gender, height and fit are not inferred, by design.",
+   "Labels are model output (W&B vision) and can be wrong; see the hand check.",
+   "Where the vision model returned only a colour, a generic noun (top / bottoms / item) was added; no garment type was invented.",
+   "Scene captions under the replay are the original Cosmos3-Reason descriptions stored in our VAST VSS index (gender words replaced with neutral ones)."
+  ]
+ },
+ "clips": [
+  {
+   "clipId": "sf2c17",
+   "camera": "sf_streets_cam-2",
+   "location": "san_francisco",
+   "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261001_095836_sf2_chunk_0017.mp4",
+   "filename": "20261001_095836_sf2_chunk_0017.mp4",
+   "durationSec": 30,
+   "description": "Busy San Francisco crosswalk by a Fidelity storefront, bright afternoon",
+   "segments": [
+    {
+     "n": 1,
+     "tStart": 0,
+     "tEnd": 5,
+     "cosmosCaption": "A black Amazon Prime delivery van is driving through an intersection in a city. The van is moving from left to right across the frame. Pedestrians are crossing the street at a crosswalk, some waiting at the curb while others are in the process of crossing. The traffic light is green for the direction the van is traveling in. The van is a standard delivery vehicle with the Amazon Prime logo clearly visible on the side. The intersection is busy with other vehicles and pedestrians. The van continues to move forward through the intersection, following the flow of traffic.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 2,
+     "tStart": 5,
+     "tEnd": 10,
+     "cosmosCaption": "The scene is a busy city intersection with pedestrians and vehicles moving through the area. A FedEx delivery truck is visible, driving through the intersection. Several cars, including a white sedan and a dark-colored vehicle, are also present. A cyclist rides across the intersection, navigating among the vehicles. Pedestrians are seen crossing the street at designated crosswalks, while others wait on the sidewalks. The traffic lights are functioning, and the overall flow of traffic appears orderly. The environment includes tall buildings with glass facades and street signs indicating directions. No unusual behavior or safety hazards are evident in the footage.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 3,
+     "tStart": 10,
+     "tEnd": 15,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through. A FedEx delivery truck is visible on the right side of the intersection, indicating commercial activity. Pedestrians are crossing the street at designated crosswalks, while others are walking along the sidewalks. The traffic lights are functioning, and vehicles are following the signals. The environment appears orderly, with no immediate signs of unusual behavior or safety hazards. The presence of a fire hydrant and street signs is consistent with a typical city setting.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 4,
+     "tStart": 15,
+     "tEnd": 20,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing and vehicles moving through. A person in a white top and light blue jeans, carrying a green handbag, walks across the crosswalk from left to right. The person is followed by a group of people, including a person in a black shirt and another in a white shirt, both carrying backpacks. A person in a black jacket and carrying a brown box walks along the right side of the crosswalk. A person in a white shirt and beige pants, also carrying a backpack, walks from left to right in the foreground. A person with hair, wearing a black top and carrying a white tote bag, walks from right to left in the foreground. A silver SUV drives through the\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 5,
+     "tStart": 20,
+     "tEnd": 25,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing in multiple directions. A person in a black jacket and dark pants walks across the foreground from right to left, carrying a brown cardboard box in their left hand. The person is followed by a person in a gray jacket and dark pants, also carrying a brown cardboard box in their left hand. Both individuals are walking at a steady pace and appear to be heading toward the left side of the frame. In the background, several other pedestrians are visible, some walking across the crosswalk and others standing or waiting near the sidewalks. A few people are seen carrying backpacks or handbags. The traffic lights are visible, with some\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 6,
+     "tStart": 25,
+     "tEnd": 30,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through the crosswalks. A person wearing a black shirt and black pants is crossing the street from left to right, carrying a black backpack. Another individual in a white shirt and black pants is also crossing from left to right, holding a black handbag. A cyclist in a black shirt and black pants rides across the intersection from left to right, followed by two more cyclists in black shirts and black pants. Two pedestrians, one in a maroon shirt and black pants and another in a blue shirt and black pants, both carrying black backpacks, walk from right to left across the foreground. Two more pedestrians, one in a\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    }
+   ]
+  },
+  {
+   "clipId": "sf2c19",
+   "camera": "sf_streets_cam-2",
+   "location": "san_francisco",
+   "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261001_095927_sf2_chunk_0019.mp4",
+   "filename": "20261001_095927_sf2_chunk_0019.mp4",
+   "durationSec": 30,
+   "description": "Same San Francisco corner, people waiting at the curb",
+   "segments": [
+    {
+     "n": 1,
+     "tStart": 0,
+     "tEnd": 5,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through the area. A black SUV is parked on the left side of the frame, and a silver sedan is visible nearby. A white car is seen driving through the intersection in the background. A motorcycle is also present, moving along the road. Traffic lights are visible at the intersection, and a fire hydrant is located on the sidewalk. A person wearing a backpack is walking on the sidewalk, and another individual is seen crossing the street. A handbag is carried by one of the pedestrians. The overall activity suggests a typical day in a city with people going about their daily routines.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 2,
+     "tStart": 5,
+     "tEnd": 10,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles. A person in a beige jacket and blue jeans walks across the foreground from right to left, passing in front of a black SUV parked on the left side of the frame. Another pedestrian, wearing a light-colored top and carrying a handbag, crosses the street from left to right. A person in a patterned shirt and dark pants stands near the crosswalk, facing the street. A white van drives through the intersection from right to left, while a black sedan is visible further back, moving in the same direction. Traffic lights are visible at the intersection, with one showing red. A fire hydrant is located on the sidewalk near the right\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 3,
+     "tStart": 10,
+     "tEnd": 15,
+     "cosmosCaption": "The scene is a busy city intersection with pedestrians crossing and vehicles moving through. A white van is seen driving from right to left across the intersection, followed by a black car and a blue car. Pedestrians are crossing the street at marked crosswalks, with some waiting at the curb. A person in a light-colored coat and face mask walks across the foreground from left to right. A fire hydrant is visible on the sidewalk near the crosswalk. Traffic lights are present at the intersection, and a truck is parked on the left side of the frame. The overall activity suggests a typical urban environment with orderly pedestrian and vehicular movement.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 4,
+     "tStart": 15,
+     "tEnd": 20,
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing and vehicles moving through. Several people are walking across the crosswalk, including a group of individuals in casual attire. A person in a black coat carrying a handbag is seen crossing the street, while others are waiting at the curb. A person with a backpack is also visible walking through the intersection. Traffic lights are present, and vehicles, including cars and a white SUV, are navigating the intersection. The environment includes tall buildings, one with a visible \"Fidelity\" sign, and street infrastructure such as a fire hydrant and traffic signals. The overall activity suggests a typical urban setting with\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 5,
+     "tStart": 20,
+     "tEnd": 25,
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing a marked crosswalk. Several individuals are walking across the street, some carrying backpacks or handbags. A few people are standing near the curb, waiting to cross. The traffic light is visible and appears to be green for vehicles, allowing cars to move through the intersection. A black SUV is parked on the left side of the frame, and other vehicles can be seen driving in the background. The surrounding area includes tall buildings with glass facades and a mix of modern and er architectural styles. The overall atmosphere is one of typical urban activity with people going about their daily routines.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 6,
+     "tStart": 25,
+     "tEnd": 30,
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing in multiple directions. A person in a white shirt and black pants walks across the crosswalk, while another individual in a red shirt and black pants crosses from the opposite direction. A person in a yellow shirt and purple shorts is also visible crossing the street. Several pedestrians are waiting at the curb, including one in a gray shirt and jeans with a backpack, and another in a black suit with a briefcase. A person in a white shirt and black pants is seen walking along the sidewalk. A person in a black shirt and jeans is riding a bicycle across the intersection. A white car is driving through the intersection, and a\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    }
+   ]
+  },
+  {
+   "clipId": "nyc1c13",
+   "camera": "nyc_streets_cam-1",
+   "location": "new_york",
+   "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261008_070321_VID_20261006_174811_003_chunk_0013.mp4",
+   "filename": "20261008_070321_VID_20261006_174811_003_chunk_0013.mp4",
+   "durationSec": 30,
+   "description": "Broadway and Walker St, New York, overcast late afternoon",
+   "segments": [
+    {
+     "n": 1,
+     "tStart": 0,
+     "tEnd": 5,
+     "cosmosCaption": "A white minivan drives through the intersection from left to right. A yellow taxi follows, also moving left to right. A dark gray minivan then proceeds in the same direction. A person in a black hoodie stands on the sidewalk near the crosswalk, facing the street. Another person in a light-colored jacket walks along the sidewalk, carrying a bicycle. A person in a brown coat and high heels crosses the street from left to right. A person in a dark jacket and jeans walks along the sidewalk, carrying a backpack. A white delivery truck is parked on the right side of the street. A fire hydrant is visible on the left sidewalk. A traffic light shows a red pedestrian signal. A street sign reads\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 2,
+     "tStart": 5,
+     "tEnd": 10,
+     "cosmosCaption": "A gray minivan drives through the intersection from left to right. A white truck is parked on the right side of the street. A pedestrian wearing a brown jacket, black skirt, and high heels crosses the street from left to right. Another pedestrian in dark clothing walks across the crosswalk from right to left. A person in a light-colored jacket and blue jeans walks along the sidewalk on the right. A cyclist rides across the intersection from left to right. A pedestrian with a stroller enters the frame from the left. A traffic light showing a red hand is visible on the right side of the street. A street sign reading \"Walker St\" is visible on the left. A building with the number \"401\" and the\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 3,
+     "tStart": 10,
+     "tEnd": 15,
+     "cosmosCaption": "A group of pedestrians crosses a marked crosswalk on a city street. A person in a black top and light-colored pants pushes a stroller with a pink blanket. A person in a plaid shirt carries a child in a pink jacket. Another person in a black top and dark pants carries a brown shoulder bag. A person in a black jacket and gray pants walks alongside them. A person in a black top and pants carries a red backpack. A person in a black top and gray pants carries a white bag. A person in a green jacket and blue jeans walks toward the crosswalk. A person in a dark jacket and blue jeans walks away from the crosswalk. A white truck is parked on the right side of the street. A traffic light shows a red\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 4,
+     "tStart": 15,
+     "tEnd": 20,
+     "cosmosCaption": "Pedestrians cross a marked crosswalk in an urban setting. A person with a large gray handbag walks across the foreground. Behind their, a person in a plaid shirt carries a child in a pink jacket. Another person pushes a stroller while walking with a group. A person in a green jacket and jeans crosses the street. A white truck is parked on the right side of the street. A traffic light shows a red hand signal for pedestrians. A street sign reads \"Walker St.\" A building with a storefront labeled \"UNIFORM\" is visible. A fire hydrant and a bicycle are on the sidewalk. Orange traffic cones and a metal barricade are in the foreground.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 5,
+     "tStart": 20,
+     "tEnd": 25,
+     "cosmosCaption": "The scene is a city street intersection with a marked crosswalk and traffic signals. Pedestrians are crossing the street from right to left, including a person in a blue jacket and black pants, and another person in dark clothing carrying a light-colored handbag. A person in a plaid shirt and jeans walks along the sidewalk on the right. A cyclist wearing a helmet and a red jacket rides through the intersection from left to right, passing in front of a white truck parked on the right side of the frame. The truck has a visible logo that appears to read \"CHASE\" on its side. A traffic light pole on the right displays a pedestrian signal showing a hand, indicating pedestrians should not cross. A\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 6,
+     "tStart": 25,
+     "tEnd": 30,
+     "cosmosCaption": "Pedestrians cross a marked crosswalk in front of a building with a storefront labeled 'UNIFORM' at 401. A traffic light shows a red hand, indicating pedestrians should not cross. A white truck is parked on the right side of the street. A bicycle is visible near the crosswalk. A clock is mounted on the building facade. A person wearing a backpack is seen walking on the sidewalk. A handbag is carried by one pedestrian. The street has orange traffic cones and metal barricades in the foreground. The scene is active with multiple people walking in different directions.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    }
+   ]
+  }
+ ],
+ "detections": [
+  {
+   "trackingId": "sf2c17-p1-T00",
+   "clipId": "sf2c17",
+   "tSec": 0.0,
+   "confidence": 0.839,
+   "bbox": {
+    "x": 49.74,
+    "y": 62.69,
+    "w": 4.64,
+    "h": 20.37
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black puffer",
+    "carry": [
+     "black bag",
+     "white object"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T01",
+   "clipId": "sf2c17",
+   "tSec": 0.5,
+   "confidence": 0.73,
+   "bbox": {
+    "x": 93.12,
+    "y": 62.59,
+    "w": 4.9,
+    "h": 14.63
+   },
+   "outfit": {
+    "top": "beige top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T02",
+   "clipId": "sf2c17",
+   "tSec": 3.83,
+   "confidence": 0.859,
+   "bbox": {
+    "x": 53.33,
+    "y": 70.74,
+    "w": 9.84,
+    "h": 28.98
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "beige bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "white object"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Beige",
+    "primaryHex": "#111827",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T04",
+   "clipId": "sf2c17",
+   "tSec": 0.5,
+   "confidence": 0.793,
+   "bbox": {
+    "x": 60.94,
+    "y": 68.61,
+    "w": 7.45,
+    "h": 30.93
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T06",
+   "clipId": "sf2c17",
+   "tSec": 1.5,
+   "confidence": 0.733,
+   "bbox": {
+    "x": 75.31,
+    "y": 59.72,
+    "w": 3.12,
+    "h": 13.15
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Navy",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T07",
+   "clipId": "sf2c17",
+   "tSec": 2.33,
+   "confidence": 0.781,
+   "bbox": {
+    "x": 45.36,
+    "y": 61.67,
+    "w": 5.0,
+    "h": 23.61
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T10",
+   "clipId": "sf2c17",
+   "tSec": 4.67,
+   "confidence": 0.791,
+   "bbox": {
+    "x": 61.51,
+    "y": 61.85,
+    "w": 4.69,
+    "h": 17.31
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Navy",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T11",
+   "clipId": "sf2c17",
+   "tSec": 3.67,
+   "confidence": 0.777,
+   "bbox": {
+    "x": 46.35,
+    "y": 60.46,
+    "w": 3.85,
+    "h": 17.69
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black puffer",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p1-T12",
+   "clipId": "sf2c17",
+   "tSec": 4.83,
+   "confidence": 0.717,
+   "bbox": {
+    "x": 70.89,
+    "y": 70.19,
+    "w": 7.66,
+    "h": 29.35
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T00",
+   "clipId": "sf2c17",
+   "tSec": 6.83,
+   "confidence": 0.791,
+   "bbox": {
+    "x": 44.79,
+    "y": 60.46,
+    "w": 6.61,
+    "h": 22.04
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Navy",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T01",
+   "clipId": "sf2c17",
+   "tSec": 9.5,
+   "confidence": 0.824,
+   "bbox": {
+    "x": 8.8,
+    "y": 58.33,
+    "w": 11.09,
+    "h": 29.17
+   },
+   "outfit": {
+    "top": "purple top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Purple",
+    "secondaryColor": "Navy",
+    "primaryHex": "#9333ea",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T02",
+   "clipId": "sf2c17",
+   "tSec": 5.17,
+   "confidence": 0.789,
+   "bbox": {
+    "x": 46.46,
+    "y": 60.09,
+    "w": 3.59,
+    "h": 18.06
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black puffer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T03",
+   "clipId": "sf2c17",
+   "tSec": 5.0,
+   "confidence": 0.854,
+   "bbox": {
+    "x": 66.15,
+    "y": 75.83,
+    "w": 10.57,
+    "h": 23.98
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "unclear",
+    "outer": "black jacket",
+    "carry": [
+     "white object"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#111827",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T04",
+   "clipId": "sf2c17",
+   "tSec": 5.33,
+   "confidence": 0.835,
+   "bbox": {
+    "x": 62.4,
+    "y": 67.69,
+    "w": 8.59,
+    "h": 32.22
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T07",
+   "clipId": "sf2c17",
+   "tSec": 7.67,
+   "confidence": 0.752,
+   "bbox": {
+    "x": 40.89,
+    "y": 60.19,
+    "w": 4.17,
+    "h": 20.56
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p2-T08",
+   "clipId": "sf2c17",
+   "tSec": 9.33,
+   "confidence": 0.796,
+   "bbox": {
+    "x": 46.46,
+    "y": 60.37,
+    "w": 3.75,
+    "h": 17.69
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black puffer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T00",
+   "clipId": "sf2c17",
+   "tSec": 10.0,
+   "confidence": 0.877,
+   "bbox": {
+    "x": 81.25,
+    "y": 77.59,
+    "w": 16.04,
+    "h": 22.22
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "unclear",
+    "outer": "black hoodie",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#111827",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T02",
+   "clipId": "sf2c17",
+   "tSec": 13.67,
+   "confidence": 0.822,
+   "bbox": {
+    "x": 40.89,
+    "y": 61.48,
+    "w": 6.88,
+    "h": 27.96
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black hoodie",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T03",
+   "clipId": "sf2c17",
+   "tSec": 10.5,
+   "confidence": 0.799,
+   "bbox": {
+    "x": 41.2,
+    "y": 60.46,
+    "w": 3.96,
+    "h": 20.19
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T04",
+   "clipId": "sf2c17",
+   "tSec": 10.0,
+   "confidence": 0.774,
+   "bbox": {
+    "x": 0.89,
+    "y": 58.43,
+    "w": 9.9,
+    "h": 28.52
+   },
+   "outfit": {
+    "top": "purple top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Purple",
+    "secondaryColor": "Navy",
+    "primaryHex": "#9333ea",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T08",
+   "clipId": "sf2c17",
+   "tSec": 11.0,
+   "confidence": 0.673,
+   "bbox": {
+    "x": 76.88,
+    "y": 60.46,
+    "w": 3.18,
+    "h": 13.15
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "grey bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T09",
+   "clipId": "sf2c17",
+   "tSec": 11.67,
+   "confidence": 0.905,
+   "bbox": {
+    "x": 0.0,
+    "y": 67.13,
+    "w": 15.73,
+    "h": 32.69
+   },
+   "outfit": {
+    "top": "black shirt",
+    "bottom": "purple trousers",
+    "outer": "none",
+    "carry": [
+     "patterned bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Purple",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T10",
+   "clipId": "sf2c17",
+   "tSec": 12.33,
+   "confidence": 0.84,
+   "bbox": {
+    "x": 1.25,
+    "y": 81.02,
+    "w": 15.62,
+    "h": 18.7
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "unclear",
+    "outer": "beige outer layer",
+    "carry": [],
+    "primaryColor": "Beige",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T11",
+   "clipId": "sf2c17",
+   "tSec": 14.0,
+   "confidence": 0.827,
+   "bbox": {
+    "x": 63.7,
+    "y": 62.13,
+    "w": 4.79,
+    "h": 17.31
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "grey item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T12",
+   "clipId": "sf2c17",
+   "tSec": 13.67,
+   "confidence": 0.79,
+   "bbox": {
+    "x": 10.57,
+    "y": 66.94,
+    "w": 11.3,
+    "h": 32.87
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "green item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T14",
+   "clipId": "sf2c17",
+   "tSec": 14.17,
+   "confidence": 0.782,
+   "bbox": {
+    "x": 46.41,
+    "y": 60.46,
+    "w": 3.75,
+    "h": 17.59
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black puffer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T15",
+   "clipId": "sf2c17",
+   "tSec": 13.83,
+   "confidence": 0.831,
+   "bbox": {
+    "x": 0.0,
+    "y": 56.48,
+    "w": 8.65,
+    "h": 34.26
+   },
+   "outfit": {
+    "top": "black t-shirt",
+    "bottom": "grey trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p3-T17",
+   "clipId": "sf2c17",
+   "tSec": 14.17,
+   "confidence": 0.843,
+   "bbox": {
+    "x": 6.25,
+    "y": 56.48,
+    "w": 10.31,
+    "h": 33.8
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "grey bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Grey",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T00",
+   "clipId": "sf2c17",
+   "tSec": 15.0,
+   "confidence": 0.765,
+   "bbox": {
+    "x": 36.98,
+    "y": 66.48,
+    "w": 9.17,
+    "h": 30.37
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "green item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T01",
+   "clipId": "sf2c17",
+   "tSec": 15.17,
+   "confidence": 0.822,
+   "bbox": {
+    "x": 56.2,
+    "y": 62.69,
+    "w": 6.04,
+    "h": 18.61
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T02",
+   "clipId": "sf2c17",
+   "tSec": 19.83,
+   "confidence": 0.873,
+   "bbox": {
+    "x": 77.97,
+    "y": 70.93,
+    "w": 8.44,
+    "h": 28.89
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "black bottoms",
+    "outer": "grey puffer",
+    "carry": [
+     "brown box"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Black",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T03",
+   "clipId": "sf2c17",
+   "tSec": 17.17,
+   "confidence": 0.78,
+   "bbox": {
+    "x": 44.53,
+    "y": 65.65,
+    "w": 9.17,
+    "h": 31.48
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T04",
+   "clipId": "sf2c17",
+   "tSec": 16.17,
+   "confidence": 0.801,
+   "bbox": {
+    "x": 38.18,
+    "y": 58.43,
+    "w": 8.91,
+    "h": 27.31
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "brown bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Brown",
+    "primaryHex": "#111827",
+    "secondaryHex": "#7c4a1e",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T05",
+   "clipId": "sf2c17",
+   "tSec": 15.17,
+   "confidence": 0.792,
+   "bbox": {
+    "x": 24.11,
+    "y": 56.48,
+    "w": 8.59,
+    "h": 30.65
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "brown bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Brown",
+    "primaryHex": "#111827",
+    "secondaryHex": "#7c4a1e",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T06",
+   "clipId": "sf2c17",
+   "tSec": 16.17,
+   "confidence": 0.741,
+   "bbox": {
+    "x": 29.74,
+    "y": 66.67,
+    "w": 11.25,
+    "h": 33.06
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T07",
+   "clipId": "sf2c17",
+   "tSec": 18.5,
+   "confidence": 0.71,
+   "bbox": {
+    "x": 21.93,
+    "y": 60.37,
+    "w": 9.95,
+    "h": 26.02
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T08",
+   "clipId": "sf2c17",
+   "tSec": 17.5,
+   "confidence": 0.707,
+   "bbox": {
+    "x": 37.14,
+    "y": 61.48,
+    "w": 7.34,
+    "h": 22.31
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T10",
+   "clipId": "sf2c17",
+   "tSec": 17.17,
+   "confidence": 0.85,
+   "bbox": {
+    "x": 21.51,
+    "y": 63.98,
+    "w": 12.6,
+    "h": 35.93
+   },
+   "outfit": {
+    "top": "patterned shirt",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [
+     "black bag",
+     "grey object"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T11",
+   "clipId": "sf2c17",
+   "tSec": 17.17,
+   "confidence": 0.806,
+   "bbox": {
+    "x": 50.89,
+    "y": 59.26,
+    "w": 6.61,
+    "h": 24.44
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T13",
+   "clipId": "sf2c17",
+   "tSec": 17.67,
+   "confidence": 0.759,
+   "bbox": {
+    "x": 41.15,
+    "y": 60.37,
+    "w": 3.7,
+    "h": 20.28
+   },
+   "outfit": {
+    "top": "white t-shirt",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [
+     "black object"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T14",
+   "clipId": "sf2c17",
+   "tSec": 19.67,
+   "confidence": 0.69,
+   "bbox": {
+    "x": 46.04,
+    "y": 60.46,
+    "w": 3.85,
+    "h": 17.78
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black puffer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T15",
+   "clipId": "sf2c17",
+   "tSec": 17.83,
+   "confidence": 0.711,
+   "bbox": {
+    "x": 49.27,
+    "y": 64.63,
+    "w": 5.62,
+    "h": 23.8
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "white bottoms",
+    "outer": "none",
+    "carry": [
+     "brown item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "White",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#f8fafc",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T16",
+   "clipId": "sf2c17",
+   "tSec": 18.0,
+   "confidence": 0.79,
+   "bbox": {
+    "x": 29.69,
+    "y": 61.2,
+    "w": 8.65,
+    "h": 24.44
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T17",
+   "clipId": "sf2c17",
+   "tSec": 18.83,
+   "confidence": 0.816,
+   "bbox": {
+    "x": 49.9,
+    "y": 63.8,
+    "w": 7.29,
+    "h": 34.07
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p4-T18",
+   "clipId": "sf2c17",
+   "tSec": 19.5,
+   "confidence": 0.867,
+   "bbox": {
+    "x": 2.03,
+    "y": 60.37,
+    "w": 13.65,
+    "h": 30.65
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T01",
+   "clipId": "sf2c17",
+   "tSec": 20.0,
+   "confidence": 0.782,
+   "bbox": {
+    "x": 34.43,
+    "y": 57.31,
+    "w": 4.22,
+    "h": 18.98
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T02",
+   "clipId": "sf2c17",
+   "tSec": 20.5,
+   "confidence": 0.807,
+   "bbox": {
+    "x": 63.44,
+    "y": 63.8,
+    "w": 6.41,
+    "h": 25.28
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T03",
+   "clipId": "sf2c17",
+   "tSec": 20.0,
+   "confidence": 0.72,
+   "bbox": {
+    "x": 40.52,
+    "y": 60.93,
+    "w": 4.11,
+    "h": 18.33
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Beige",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T05",
+   "clipId": "sf2c17",
+   "tSec": 21.5,
+   "confidence": 0.726,
+   "bbox": {
+    "x": 43.8,
+    "y": 58.24,
+    "w": 4.06,
+    "h": 20.09
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T06",
+   "clipId": "sf2c17",
+   "tSec": 20.17,
+   "confidence": 0.779,
+   "bbox": {
+    "x": 1.51,
+    "y": 73.15,
+    "w": 17.4,
+    "h": 26.57
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "unclear",
+    "outer": "black outer layer",
+    "carry": [
+     "white item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#111827",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T08",
+   "clipId": "sf2c17",
+   "tSec": 20.5,
+   "confidence": 0.71,
+   "bbox": {
+    "x": 81.35,
+    "y": 65.37,
+    "w": 5.52,
+    "h": 16.67
+   },
+   "outfit": {
+    "top": "white t-shirt",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "beige bag",
+     "silver bag",
+     "green bag"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T09",
+   "clipId": "sf2c17",
+   "tSec": 21.33,
+   "confidence": 0.679,
+   "bbox": {
+    "x": 76.67,
+    "y": 65.0,
+    "w": 4.22,
+    "h": 18.06
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "light blue jeans",
+    "outer": "none",
+    "carry": [
+     "black backpack",
+     "grey bag"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T10",
+   "clipId": "sf2c17",
+   "tSec": 21.67,
+   "confidence": 0.713,
+   "bbox": {
+    "x": 85.68,
+    "y": 59.35,
+    "w": 4.27,
+    "h": 16.11
+   },
+   "outfit": {
+    "top": "black t-shirt",
+    "bottom": "grey trousers",
+    "outer": "none",
+    "carry": [
+     "black backpack"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T11",
+   "clipId": "sf2c17",
+   "tSec": 22.0,
+   "confidence": 0.619,
+   "bbox": {
+    "x": 75.73,
+    "y": 63.61,
+    "w": 3.91,
+    "h": 20.09
+   },
+   "outfit": {
+    "top": "grey shirt",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Beige",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T12",
+   "clipId": "sf2c17",
+   "tSec": 23.67,
+   "confidence": 0.705,
+   "bbox": {
+    "x": 88.18,
+    "y": 64.35,
+    "w": 5.94,
+    "h": 19.91
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "black bottoms",
+    "outer": "patterned outer layer",
+    "carry": [],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Black",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p5-T14",
+   "clipId": "sf2c17",
+   "tSec": 23.83,
+   "confidence": 0.642,
+   "bbox": {
+    "x": 83.91,
+    "y": 64.17,
+    "w": 5.42,
+    "h": 20.09
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "black bottoms",
+    "outer": "patterned outer layer",
+    "carry": [],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Black",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p6-T01",
+   "clipId": "sf2c17",
+   "tSec": 28.17,
+   "confidence": 0.818,
+   "bbox": {
+    "x": 7.08,
+    "y": 58.8,
+    "w": 9.06,
+    "h": 22.96
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "patterned item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p6-T05",
+   "clipId": "sf2c17",
+   "tSec": 25.17,
+   "confidence": 0.691,
+   "bbox": {
+    "x": 92.03,
+    "y": 63.61,
+    "w": 5.26,
+    "h": 17.69
+   },
+   "outfit": {
+    "top": "grey shirt",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Beige",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p6-T07",
+   "clipId": "sf2c17",
+   "tSec": 26.5,
+   "confidence": 0.748,
+   "bbox": {
+    "x": 85.78,
+    "y": 72.96,
+    "w": 11.04,
+    "h": 26.76
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "unclear",
+    "outer": "navy blue jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p6-T08",
+   "clipId": "sf2c17",
+   "tSec": 26.33,
+   "confidence": 0.863,
+   "bbox": {
+    "x": 75.21,
+    "y": 79.44,
+    "w": 17.19,
+    "h": 20.28
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "unclear",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p6-T10",
+   "clipId": "sf2c17",
+   "tSec": 27.67,
+   "confidence": 0.838,
+   "bbox": {
+    "x": 65.62,
+    "y": 66.57,
+    "w": 9.69,
+    "h": 33.15
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "navy blue bottoms",
+    "outer": "navy blue outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Navy",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c17-p6-T15",
+   "clipId": "sf2c17",
+   "tSec": 28.67,
+   "confidence": 0.869,
+   "bbox": {
+    "x": 6.88,
+    "y": 65.65,
+    "w": 12.34,
+    "h": 34.17
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "grey bottoms",
+    "outer": "none",
+    "carry": [
+     "silver"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Grey",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p1-T00",
+   "clipId": "sf2c19",
+   "tSec": 0.5,
+   "confidence": 0.895,
+   "bbox": {
+    "x": 77.6,
+    "y": 66.94,
+    "w": 10.68,
+    "h": 32.69
+   },
+   "outfit": {
+    "top": "blue shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p1-T01",
+   "clipId": "sf2c19",
+   "tSec": 1.17,
+   "confidence": 0.772,
+   "bbox": {
+    "x": 50.36,
+    "y": 58.98,
+    "w": 3.96,
+    "h": 20.56
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Black",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p1-T02",
+   "clipId": "sf2c19",
+   "tSec": 0.83,
+   "confidence": 0.82,
+   "bbox": {
+    "x": 63.18,
+    "y": 65.19,
+    "w": 5.31,
+    "h": 19.54
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "blue bottoms",
+    "outer": "beige outer layer",
+    "carry": [],
+    "primaryColor": "Beige",
+    "secondaryColor": "Blue",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p1-T04",
+   "clipId": "sf2c19",
+   "tSec": 1.33,
+   "confidence": 0.685,
+   "bbox": {
+    "x": 59.43,
+    "y": 63.61,
+    "w": 5.16,
+    "h": 22.22
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "grey bottoms",
+    "outer": "patterned outer layer",
+    "carry": [
+     "black item",
+     "white item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Grey",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p1-T07",
+   "clipId": "sf2c19",
+   "tSec": 3.0,
+   "confidence": 0.831,
+   "bbox": {
+    "x": 49.11,
+    "y": 62.96,
+    "w": 5.83,
+    "h": 22.41
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "blue bottoms",
+    "outer": "beige outer layer",
+    "carry": [],
+    "primaryColor": "Beige",
+    "secondaryColor": "Blue",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p1-T08",
+   "clipId": "sf2c19",
+   "tSec": 2.67,
+   "confidence": 0.888,
+   "bbox": {
+    "x": 0.0,
+    "y": 80.56,
+    "w": 13.23,
+    "h": 19.07
+   },
+   "outfit": {
+    "top": "blue top",
+    "bottom": "unclear",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Blue",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p2-T00",
+   "clipId": "sf2c19",
+   "tSec": 8.33,
+   "confidence": 0.9,
+   "bbox": {
+    "x": 85.21,
+    "y": 66.94,
+    "w": 9.11,
+    "h": 32.5
+   },
+   "outfit": {
+    "top": "blue shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p2-T01",
+   "clipId": "sf2c19",
+   "tSec": 8.17,
+   "confidence": 0.864,
+   "bbox": {
+    "x": 38.28,
+    "y": 75.19,
+    "w": 11.3,
+    "h": 24.72
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "unclear",
+    "outer": "beige outer layer",
+    "carry": [],
+    "primaryColor": "Beige",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p2-T02",
+   "clipId": "sf2c19",
+   "tSec": 6.33,
+   "confidence": 0.755,
+   "bbox": {
+    "x": 51.35,
+    "y": 58.98,
+    "w": 3.85,
+    "h": 21.57
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p2-T05",
+   "clipId": "sf2c19",
+   "tSec": 6.5,
+   "confidence": 0.682,
+   "bbox": {
+    "x": 59.01,
+    "y": 62.87,
+    "w": 5.47,
+    "h": 23.8
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "patterned outer layer",
+    "carry": [
+     "white item",
+     "black item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p2-T07",
+   "clipId": "sf2c19",
+   "tSec": 8.0,
+   "confidence": 0.633,
+   "bbox": {
+    "x": 41.3,
+    "y": 60.74,
+    "w": 4.9,
+    "h": 16.85
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "beige bottoms",
+    "outer": "grey outer layer",
+    "carry": [
+     "white item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Beige",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T00",
+   "clipId": "sf2c19",
+   "tSec": 11.17,
+   "confidence": 0.892,
+   "bbox": {
+    "x": 85.0,
+    "y": 66.94,
+    "w": 9.43,
+    "h": 32.69
+   },
+   "outfit": {
+    "top": "blue shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T02",
+   "clipId": "sf2c19",
+   "tSec": 14.83,
+   "confidence": 0.717,
+   "bbox": {
+    "x": 40.62,
+    "y": 56.11,
+    "w": 3.23,
+    "h": 14.91
+   },
+   "outfit": {
+    "top": "navy blue sweater",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T03",
+   "clipId": "sf2c19",
+   "tSec": 14.0,
+   "confidence": 0.664,
+   "bbox": {
+    "x": 34.06,
+    "y": 53.8,
+    "w": 2.92,
+    "h": 14.81
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "beige outer layer",
+    "carry": [
+     "grey item"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Blue",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T04",
+   "clipId": "sf2c19",
+   "tSec": 11.67,
+   "confidence": 0.653,
+   "bbox": {
+    "x": 61.93,
+    "y": 69.07,
+    "w": 6.56,
+    "h": 28.52
+   },
+   "outfit": {
+    "top": "cream sweater",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [
+     "patterned bag"
+    ],
+    "primaryColor": "Cream",
+    "secondaryColor": "Beige",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T05",
+   "clipId": "sf2c19",
+   "tSec": 10.5,
+   "confidence": 0.741,
+   "bbox": {
+    "x": 53.7,
+    "y": 65.74,
+    "w": 5.78,
+    "h": 28.89
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "grey outer layer",
+    "carry": [
+     "maroon item",
+     "white item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Grey",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T06",
+   "clipId": "sf2c19",
+   "tSec": 14.83,
+   "confidence": 0.689,
+   "bbox": {
+    "x": 32.45,
+    "y": 55.28,
+    "w": 3.49,
+    "h": 17.31
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "black shorts",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T07",
+   "clipId": "sf2c19",
+   "tSec": 14.83,
+   "confidence": 0.71,
+   "bbox": {
+    "x": 37.4,
+    "y": 55.09,
+    "w": 3.39,
+    "h": 16.3
+   },
+   "outfit": {
+    "top": "cream sweater",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "patterned object"
+    ],
+    "primaryColor": "Cream",
+    "secondaryColor": "Blue",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T08",
+   "clipId": "sf2c19",
+   "tSec": 12.0,
+   "confidence": 0.708,
+   "bbox": {
+    "x": 51.35,
+    "y": 59.07,
+    "w": 3.7,
+    "h": 21.48
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T10",
+   "clipId": "sf2c19",
+   "tSec": 12.17,
+   "confidence": 0.588,
+   "bbox": {
+    "x": 96.2,
+    "y": 86.3,
+    "w": 3.75,
+    "h": 13.33
+   },
+   "outfit": {
+    "top": "cream top",
+    "bottom": "unclear",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Cream",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T11",
+   "clipId": "sf2c19",
+   "tSec": 14.33,
+   "confidence": 0.824,
+   "bbox": {
+    "x": 72.55,
+    "y": 69.81,
+    "w": 8.23,
+    "h": 30.0
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "white item",
+     "brown item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Beige",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T12",
+   "clipId": "sf2c19",
+   "tSec": 12.67,
+   "confidence": 0.868,
+   "bbox": {
+    "x": 3.18,
+    "y": 69.35,
+    "w": 15.16,
+    "h": 30.46
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "unclear",
+    "outer": "grey outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p3-T13",
+   "clipId": "sf2c19",
+   "tSec": 14.5,
+   "confidence": 0.656,
+   "bbox": {
+    "x": 60.78,
+    "y": 62.87,
+    "w": 5.0,
+    "h": 22.87
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "unclear",
+    "outer": "patterned jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T00",
+   "clipId": "sf2c19",
+   "tSec": 19.5,
+   "confidence": 0.882,
+   "bbox": {
+    "x": 85.1,
+    "y": 66.76,
+    "w": 9.38,
+    "h": 32.96
+   },
+   "outfit": {
+    "top": "blue shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T01",
+   "clipId": "sf2c19",
+   "tSec": 15.0,
+   "confidence": 0.819,
+   "bbox": {
+    "x": 67.6,
+    "y": 77.78,
+    "w": 11.77,
+    "h": 21.94
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "unclear",
+    "outer": "white jacket",
+    "carry": [
+     "grey bag"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T02",
+   "clipId": "sf2c19",
+   "tSec": 19.83,
+   "confidence": 0.784,
+   "bbox": {
+    "x": 38.91,
+    "y": 61.85,
+    "w": 8.54,
+    "h": 36.67
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "black shorts",
+    "outer": "none",
+    "carry": [
+     "white and black helmet"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T03",
+   "clipId": "sf2c19",
+   "tSec": 17.17,
+   "confidence": 0.719,
+   "bbox": {
+    "x": 51.41,
+    "y": 59.35,
+    "w": 3.75,
+    "h": 21.11
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T04",
+   "clipId": "sf2c19",
+   "tSec": 15.5,
+   "confidence": 0.646,
+   "bbox": {
+    "x": 60.62,
+    "y": 62.87,
+    "w": 4.58,
+    "h": 24.17
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "grey bottoms",
+    "outer": "patterned outer layer",
+    "carry": [
+     "black item",
+     "white item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Grey",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T06",
+   "clipId": "sf2c19",
+   "tSec": 19.33,
+   "confidence": 0.72,
+   "bbox": {
+    "x": 48.65,
+    "y": 59.35,
+    "w": 4.74,
+    "h": 24.17
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T07",
+   "clipId": "sf2c19",
+   "tSec": 15.17,
+   "confidence": 0.648,
+   "bbox": {
+    "x": 34.95,
+    "y": 55.28,
+    "w": 2.81,
+    "h": 16.02
+   },
+   "outfit": {
+    "top": "grey t-shirt",
+    "bottom": "blue jeans",
+    "outer": "beige jacket",
+    "carry": [],
+    "primaryColor": "Beige",
+    "secondaryColor": "Blue",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T08",
+   "clipId": "sf2c19",
+   "tSec": 19.83,
+   "confidence": 0.664,
+   "bbox": {
+    "x": 46.51,
+    "y": 61.11,
+    "w": 5.21,
+    "h": 33.33
+   },
+   "outfit": {
+    "top": "cream sweater",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "black backpack"
+    ],
+    "primaryColor": "Cream",
+    "secondaryColor": "Blue",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T10",
+   "clipId": "sf2c19",
+   "tSec": 15.83,
+   "confidence": 0.874,
+   "bbox": {
+    "x": 5.57,
+    "y": 64.72,
+    "w": 11.88,
+    "h": 33.06
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black coat",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T11",
+   "clipId": "sf2c19",
+   "tSec": 15.5,
+   "confidence": 0.615,
+   "bbox": {
+    "x": 81.93,
+    "y": 83.89,
+    "w": 15.16,
+    "h": 16.02
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "unclear",
+    "outer": "white hoodie",
+    "carry": [],
+    "primaryColor": "White",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T12",
+   "clipId": "sf2c19",
+   "tSec": 17.33,
+   "confidence": 0.608,
+   "bbox": {
+    "x": 49.43,
+    "y": 58.52,
+    "w": 2.71,
+    "h": 15.93
+   },
+   "outfit": {
+    "top": "yellow t-shirt",
+    "bottom": "purple shorts",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Yellow",
+    "secondaryColor": "Purple",
+    "primaryHex": "#facc15",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T13",
+   "clipId": "sf2c19",
+   "tSec": 19.83,
+   "confidence": 0.782,
+   "bbox": {
+    "x": 36.51,
+    "y": 59.07,
+    "w": 6.41,
+    "h": 31.3
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "grey bottoms",
+    "outer": "grey outer layer",
+    "carry": [],
+    "primaryColor": "Grey",
+    "secondaryColor": "Grey",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T14",
+   "clipId": "sf2c19",
+   "tSec": 19.17,
+   "confidence": 0.826,
+   "bbox": {
+    "x": 54.9,
+    "y": 67.59,
+    "w": 7.71,
+    "h": 27.69
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p4-T16",
+   "clipId": "sf2c19",
+   "tSec": 18.67,
+   "confidence": 0.852,
+   "bbox": {
+    "x": 0.0,
+    "y": 57.5,
+    "w": 16.93,
+    "h": 41.94
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item",
+     "patterned item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Navy",
+    "primaryHex": "#111827",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T00",
+   "clipId": "sf2c19",
+   "tSec": 20.17,
+   "confidence": 0.856,
+   "bbox": {
+    "x": 85.16,
+    "y": 66.85,
+    "w": 9.22,
+    "h": 32.87
+   },
+   "outfit": {
+    "top": "blue shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T01",
+   "clipId": "sf2c19",
+   "tSec": 22.0,
+   "confidence": 0.822,
+   "bbox": {
+    "x": 17.55,
+    "y": 61.02,
+    "w": 10.0,
+    "h": 38.7
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black hoodie",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T02",
+   "clipId": "sf2c19",
+   "tSec": 24.33,
+   "confidence": 0.804,
+   "bbox": {
+    "x": 77.86,
+    "y": 71.2,
+    "w": 10.16,
+    "h": 28.52
+   },
+   "outfit": {
+    "top": "cream top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "white item",
+     "red item"
+    ],
+    "primaryColor": "Cream",
+    "secondaryColor": "Beige",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T03",
+   "clipId": "sf2c19",
+   "tSec": 20.67,
+   "confidence": 0.749,
+   "bbox": {
+    "x": 60.31,
+    "y": 62.87,
+    "w": 5.68,
+    "h": 30.09
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black coat",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T04",
+   "clipId": "sf2c19",
+   "tSec": 23.0,
+   "confidence": 0.772,
+   "bbox": {
+    "x": 17.86,
+    "y": 62.13,
+    "w": 12.6,
+    "h": 37.5
+   },
+   "outfit": {
+    "top": "cream top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Cream",
+    "secondaryColor": "Blue",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T05",
+   "clipId": "sf2c19",
+   "tSec": 20.67,
+   "confidence": 0.798,
+   "bbox": {
+    "x": 32.24,
+    "y": 62.22,
+    "w": 8.96,
+    "h": 37.5
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "black shorts",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T07",
+   "clipId": "sf2c19",
+   "tSec": 22.67,
+   "confidence": 0.805,
+   "bbox": {
+    "x": 7.92,
+    "y": 60.19,
+    "w": 10.73,
+    "h": 39.72
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "black shorts",
+    "outer": "black hoodie",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T10",
+   "clipId": "sf2c19",
+   "tSec": 21.5,
+   "confidence": 0.707,
+   "bbox": {
+    "x": 36.72,
+    "y": 62.13,
+    "w": 6.04,
+    "h": 27.59
+   },
+   "outfit": {
+    "top": "beige top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "unclear item"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Blue",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T11",
+   "clipId": "sf2c19",
+   "tSec": 21.83,
+   "confidence": 0.657,
+   "bbox": {
+    "x": 34.27,
+    "y": 55.09,
+    "w": 3.18,
+    "h": 16.3
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Black",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T12",
+   "clipId": "sf2c19",
+   "tSec": 22.5,
+   "confidence": 0.795,
+   "bbox": {
+    "x": 34.9,
+    "y": 62.96,
+    "w": 9.06,
+    "h": 36.57
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T13",
+   "clipId": "sf2c19",
+   "tSec": 23.67,
+   "confidence": 0.725,
+   "bbox": {
+    "x": 0.36,
+    "y": 58.15,
+    "w": 9.84,
+    "h": 39.54
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "white outer layer",
+    "carry": [],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T14",
+   "clipId": "sf2c19",
+   "tSec": 23.33,
+   "confidence": 0.768,
+   "bbox": {
+    "x": 48.75,
+    "y": 58.61,
+    "w": 7.6,
+    "h": 26.94
+   },
+   "outfit": {
+    "top": "black shirt",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Blue",
+    "primaryHex": "#111827",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T16",
+   "clipId": "sf2c19",
+   "tSec": 23.5,
+   "confidence": 0.671,
+   "bbox": {
+    "x": 19.06,
+    "y": 61.39,
+    "w": 11.67,
+    "h": 37.59
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "navy blue outer layer",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T17",
+   "clipId": "sf2c19",
+   "tSec": 24.0,
+   "confidence": 0.748,
+   "bbox": {
+    "x": 38.07,
+    "y": 59.07,
+    "w": 4.64,
+    "h": 20.19
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "grey bag"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Black",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T18",
+   "clipId": "sf2c19",
+   "tSec": 24.83,
+   "confidence": 0.707,
+   "bbox": {
+    "x": 47.92,
+    "y": 59.07,
+    "w": 3.65,
+    "h": 20.28
+   },
+   "outfit": {
+    "top": "yellow top",
+    "bottom": "purple bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Yellow",
+    "secondaryColor": "Purple",
+    "primaryHex": "#facc15",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T19",
+   "clipId": "sf2c19",
+   "tSec": 24.83,
+   "confidence": 0.773,
+   "bbox": {
+    "x": 31.04,
+    "y": 60.0,
+    "w": 5.1,
+    "h": 21.48
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Blue",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T20",
+   "clipId": "sf2c19",
+   "tSec": 24.5,
+   "confidence": 0.66,
+   "bbox": {
+    "x": 86.72,
+    "y": 61.48,
+    "w": 4.84,
+    "h": 13.52
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "navy blue bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "grey item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Navy",
+    "primaryHex": "#111827",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p5-T21",
+   "clipId": "sf2c19",
+   "tSec": 24.33,
+   "confidence": 0.709,
+   "bbox": {
+    "x": 23.18,
+    "y": 60.09,
+    "w": 5.62,
+    "h": 25.0
+   },
+   "outfit": {
+    "top": "grey t-shirt",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Blue",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T00",
+   "clipId": "sf2c19",
+   "tSec": 25.0,
+   "confidence": 0.787,
+   "bbox": {
+    "x": 93.49,
+    "y": 66.57,
+    "w": 6.46,
+    "h": 27.04
+   },
+   "outfit": {
+    "top": "blue shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Blue",
+    "secondaryColor": "Black",
+    "primaryHex": "#2563eb",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T01",
+   "clipId": "sf2c19",
+   "tSec": 26.83,
+   "confidence": 0.73,
+   "bbox": {
+    "x": 30.16,
+    "y": 59.81,
+    "w": 6.72,
+    "h": 23.61
+   },
+   "outfit": {
+    "top": "grey t-shirt",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "black backpack"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Blue",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T02",
+   "clipId": "sf2c19",
+   "tSec": 25.17,
+   "confidence": 0.771,
+   "bbox": {
+    "x": 84.01,
+    "y": 72.69,
+    "w": 8.54,
+    "h": 26.94
+   },
+   "outfit": {
+    "top": "beige sweater",
+    "bottom": "beige trousers",
+    "outer": "none",
+    "carry": [
+     "white bag"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Beige",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T03",
+   "clipId": "sf2c19",
+   "tSec": 29.5,
+   "confidence": 0.765,
+   "bbox": {
+    "x": 39.17,
+    "y": 63.43,
+    "w": 7.34,
+    "h": 29.54
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T04",
+   "clipId": "sf2c19",
+   "tSec": 29.17,
+   "confidence": 0.819,
+   "bbox": {
+    "x": 54.53,
+    "y": 68.43,
+    "w": 7.08,
+    "h": 31.39
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Black",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T05",
+   "clipId": "sf2c19",
+   "tSec": 25.0,
+   "confidence": 0.739,
+   "bbox": {
+    "x": 48.39,
+    "y": 59.07,
+    "w": 3.54,
+    "h": 20.19
+   },
+   "outfit": {
+    "top": "yellow t-shirt",
+    "bottom": "purple shorts",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Yellow",
+    "secondaryColor": "Purple",
+    "primaryHex": "#facc15",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T06",
+   "clipId": "sf2c19",
+   "tSec": 26.83,
+   "confidence": 0.818,
+   "bbox": {
+    "x": 51.98,
+    "y": 66.3,
+    "w": 8.7,
+    "h": 33.06
+   },
+   "outfit": {
+    "top": "beige top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Black",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T07",
+   "clipId": "sf2c19",
+   "tSec": 25.33,
+   "confidence": 0.743,
+   "bbox": {
+    "x": 61.88,
+    "y": 61.85,
+    "w": 5.99,
+    "h": 22.41
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "blue bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "olive item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Blue",
+    "primaryHex": "#111827",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T09",
+   "clipId": "sf2c19",
+   "tSec": 25.17,
+   "confidence": 0.659,
+   "bbox": {
+    "x": 83.18,
+    "y": 60.93,
+    "w": 4.06,
+    "h": 13.52
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T12",
+   "clipId": "sf2c19",
+   "tSec": 26.0,
+   "confidence": 0.75,
+   "bbox": {
+    "x": 2.4,
+    "y": 70.56,
+    "w": 10.89,
+    "h": 29.26
+   },
+   "outfit": {
+    "top": "grey shirt",
+    "bottom": "unclear",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T14",
+   "clipId": "sf2c19",
+   "tSec": 26.83,
+   "confidence": 0.766,
+   "bbox": {
+    "x": 84.84,
+    "y": 68.61,
+    "w": 7.14,
+    "h": 19.44
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black coat",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": true,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T15",
+   "clipId": "sf2c19",
+   "tSec": 27.5,
+   "confidence": 0.764,
+   "bbox": {
+    "x": 55.62,
+    "y": 61.3,
+    "w": 5.99,
+    "h": 17.87
+   },
+   "outfit": {
+    "top": "yellow top",
+    "bottom": "purple bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Yellow",
+    "secondaryColor": "Purple",
+    "primaryHex": "#facc15",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T16",
+   "clipId": "sf2c19",
+   "tSec": 27.0,
+   "confidence": 0.686,
+   "bbox": {
+    "x": 83.54,
+    "y": 64.72,
+    "w": 4.69,
+    "h": 17.69
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "jacket",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Unclear",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T17",
+   "clipId": "sf2c19",
+   "tSec": 27.5,
+   "confidence": 0.727,
+   "bbox": {
+    "x": 12.34,
+    "y": 60.0,
+    "w": 9.64,
+    "h": 29.54
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "grey trousers",
+    "outer": "black jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T19",
+   "clipId": "sf2c19",
+   "tSec": 28.17,
+   "confidence": 0.72,
+   "bbox": {
+    "x": 85.99,
+    "y": 61.94,
+    "w": 4.43,
+    "h": 14.63
+   },
+   "outfit": {
+    "top": "grey t-shirt",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Black",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T20",
+   "clipId": "sf2c19",
+   "tSec": 28.33,
+   "confidence": 0.697,
+   "bbox": {
+    "x": 65.94,
+    "y": 60.83,
+    "w": 4.38,
+    "h": 18.52
+   },
+   "outfit": {
+    "top": "yellow t-shirt",
+    "bottom": "purple shorts",
+    "outer": "black jacket",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Purple",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T21",
+   "clipId": "sf2c19",
+   "tSec": 29.67,
+   "confidence": 0.812,
+   "bbox": {
+    "x": 72.5,
+    "y": 70.74,
+    "w": 9.01,
+    "h": 28.89
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Black",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T23",
+   "clipId": "sf2c19",
+   "tSec": 29.67,
+   "confidence": 0.77,
+   "bbox": {
+    "x": 44.27,
+    "y": 82.31,
+    "w": 12.29,
+    "h": 17.41
+   },
+   "outfit": {
+    "top": "beige top",
+    "bottom": "unclear",
+    "outer": "beige jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T24",
+   "clipId": "sf2c19",
+   "tSec": 29.83,
+   "confidence": 0.759,
+   "bbox": {
+    "x": 57.03,
+    "y": 61.39,
+    "w": 5.26,
+    "h": 17.87
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T25",
+   "clipId": "sf2c19",
+   "tSec": 29.83,
+   "confidence": 0.751,
+   "bbox": {
+    "x": 93.07,
+    "y": 65.0,
+    "w": 5.78,
+    "h": 17.22
+   },
+   "outfit": {
+    "top": "green top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Green",
+    "secondaryColor": "Black",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T26",
+   "clipId": "sf2c19",
+   "tSec": 28.83,
+   "confidence": 0.604,
+   "bbox": {
+    "x": 91.77,
+    "y": 62.41,
+    "w": 4.69,
+    "h": 17.69
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "black bag",
+     "grey garment"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T28",
+   "clipId": "sf2c19",
+   "tSec": 29.83,
+   "confidence": 0.812,
+   "bbox": {
+    "x": 36.35,
+    "y": 61.3,
+    "w": 5.16,
+    "h": 22.59
+   },
+   "outfit": {
+    "top": "grey top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Blue",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "sf2c19-p6-T30",
+   "clipId": "sf2c19",
+   "tSec": 29.33,
+   "confidence": 0.618,
+   "bbox": {
+    "x": 75.36,
+    "y": 61.76,
+    "w": 2.97,
+    "h": 14.35
+   },
+   "outfit": {
+    "top": "yellow t-shirt",
+    "bottom": "purple shorts",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Yellow",
+    "secondaryColor": "Purple",
+    "primaryHex": "#facc15",
+    "secondaryHex": "#9333ea",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T00",
+   "clipId": "nyc1c13",
+   "tSec": 0.5,
+   "confidence": 0.841,
+   "bbox": {
+    "x": 84.95,
+    "y": 48.06,
+    "w": 11.88,
+    "h": 37.31
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "grey item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T02",
+   "clipId": "nyc1c13",
+   "tSec": 0.83,
+   "confidence": 0.843,
+   "bbox": {
+    "x": 70.31,
+    "y": 42.31,
+    "w": 5.89,
+    "h": 23.8
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T03",
+   "clipId": "nyc1c13",
+   "tSec": 3.0,
+   "confidence": 0.687,
+   "bbox": {
+    "x": 0.31,
+    "y": 38.24,
+    "w": 2.92,
+    "h": 16.02
+   },
+   "outfit": {
+    "top": "cream top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T05",
+   "clipId": "nyc1c13",
+   "tSec": 2.0,
+   "confidence": 0.609,
+   "bbox": {
+    "x": 33.54,
+    "y": 41.76,
+    "w": 4.9,
+    "h": 16.48
+   },
+   "outfit": {
+    "top": "brown top",
+    "bottom": "blue bottoms",
+    "outer": "brown jacket",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Blue",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T06",
+   "clipId": "nyc1c13",
+   "tSec": 2.5,
+   "confidence": 0.686,
+   "bbox": {
+    "x": 18.8,
+    "y": 41.02,
+    "w": 6.2,
+    "h": 17.04
+   },
+   "outfit": {
+    "top": "brown top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Blue",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T07",
+   "clipId": "nyc1c13",
+   "tSec": 1.67,
+   "confidence": 0.689,
+   "bbox": {
+    "x": 41.41,
+    "y": 42.13,
+    "w": 5.21,
+    "h": 15.0
+   },
+   "outfit": {
+    "top": "grey shirt",
+    "bottom": "blue jeans",
+    "outer": "brown jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Blue",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T10",
+   "clipId": "nyc1c13",
+   "tSec": 4.83,
+   "confidence": 0.836,
+   "bbox": {
+    "x": 89.01,
+    "y": 45.28,
+    "w": 6.61,
+    "h": 32.5
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "beige bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "black bicycle"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Beige",
+    "primaryHex": "#111827",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p1-T16",
+   "clipId": "nyc1c13",
+   "tSec": 4.0,
+   "confidence": 0.821,
+   "bbox": {
+    "x": 0.0,
+    "y": 38.43,
+    "w": 3.33,
+    "h": 16.85
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T00",
+   "clipId": "nyc1c13",
+   "tSec": 7.67,
+   "confidence": 0.845,
+   "bbox": {
+    "x": 53.75,
+    "y": 41.39,
+    "w": 6.88,
+    "h": 22.31
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T02",
+   "clipId": "nyc1c13",
+   "tSec": 5.0,
+   "confidence": 0.777,
+   "bbox": {
+    "x": 0.0,
+    "y": 38.52,
+    "w": 3.28,
+    "h": 16.67
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T03",
+   "clipId": "nyc1c13",
+   "tSec": 5.0,
+   "confidence": 0.781,
+   "bbox": {
+    "x": 89.84,
+    "y": 46.2,
+    "w": 6.67,
+    "h": 32.78
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "blue bicycle"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Beige",
+    "primaryHex": "#111827",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T04",
+   "clipId": "nyc1c13",
+   "tSec": 6.33,
+   "confidence": 0.874,
+   "bbox": {
+    "x": 88.44,
+    "y": 47.31,
+    "w": 8.23,
+    "h": 40.46
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "blue bottoms",
+    "outer": "white jacket",
+    "carry": [
+     "patterned bag"
+    ],
+    "primaryColor": "White",
+    "secondaryColor": "Blue",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T08",
+   "clipId": "nyc1c13",
+   "tSec": 7.0,
+   "confidence": 0.683,
+   "bbox": {
+    "x": 20.47,
+    "y": 43.43,
+    "w": 3.49,
+    "h": 14.72
+   },
+   "outfit": {
+    "top": "purple top",
+    "bottom": "blue bottoms",
+    "outer": "grey puffer",
+    "carry": [
+     "black object"
+    ],
+    "primaryColor": "Grey",
+    "secondaryColor": "Blue",
+    "primaryHex": "#9ca3af",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": true,
+    "aesthetic": "Outdoor / Technical"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T09",
+   "clipId": "nyc1c13",
+   "tSec": 6.5,
+   "confidence": 0.78,
+   "bbox": {
+    "x": 0.0,
+    "y": 38.52,
+    "w": 3.33,
+    "h": 16.67
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T14",
+   "clipId": "nyc1c13",
+   "tSec": 8.0,
+   "confidence": 0.73,
+   "bbox": {
+    "x": 0.0,
+    "y": 44.63,
+    "w": 8.44,
+    "h": 37.5
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T15",
+   "clipId": "nyc1c13",
+   "tSec": 9.33,
+   "confidence": 0.745,
+   "bbox": {
+    "x": 2.55,
+    "y": 47.13,
+    "w": 10.83,
+    "h": 46.2
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "brown bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p2-T16",
+   "clipId": "nyc1c13",
+   "tSec": 9.83,
+   "confidence": 0.701,
+   "bbox": {
+    "x": 19.64,
+    "y": 78.43,
+    "w": 18.49,
+    "h": 21.39
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "unclear",
+    "outer": "white outer layer",
+    "carry": [],
+    "primaryColor": "White",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#f8fafc",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T01",
+   "clipId": "nyc1c13",
+   "tSec": 10.5,
+   "confidence": 0.84,
+   "bbox": {
+    "x": 92.71,
+    "y": 45.65,
+    "w": 6.25,
+    "h": 32.78
+   },
+   "outfit": {
+    "top": "beige top",
+    "bottom": "black bottoms",
+    "outer": "beige outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Black",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T04",
+   "clipId": "nyc1c13",
+   "tSec": 10.33,
+   "confidence": 0.802,
+   "bbox": {
+    "x": 38.33,
+    "y": 40.93,
+    "w": 5.78,
+    "h": 20.93
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T05",
+   "clipId": "nyc1c13",
+   "tSec": 10.0,
+   "confidence": 0.672,
+   "bbox": {
+    "x": 0.16,
+    "y": 41.3,
+    "w": 8.59,
+    "h": 56.02
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "pink item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T06",
+   "clipId": "nyc1c13",
+   "tSec": 14.83,
+   "confidence": 0.752,
+   "bbox": {
+    "x": 0.0,
+    "y": 38.43,
+    "w": 3.54,
+    "h": 21.48
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T07",
+   "clipId": "nyc1c13",
+   "tSec": 10.0,
+   "confidence": 0.681,
+   "bbox": {
+    "x": 9.95,
+    "y": 47.04,
+    "w": 9.38,
+    "h": 49.91
+   },
+   "outfit": {
+    "top": "black shirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
+    "carry": [
+     "brown bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T10",
+   "clipId": "nyc1c13",
+   "tSec": 13.0,
+   "confidence": 0.743,
+   "bbox": {
+    "x": 30.0,
+    "y": 44.72,
+    "w": 12.14,
+    "h": 44.63
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "brown bottoms",
+    "outer": "none",
+    "carry": [
+     "pink item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Brown",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#7c4a1e",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T11",
+   "clipId": "nyc1c13",
+   "tSec": 11.33,
+   "confidence": 0.764,
+   "bbox": {
+    "x": 0.0,
+    "y": 66.02,
+    "w": 22.34,
+    "h": 33.7
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "green bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Green",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#16a34a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T12",
+   "clipId": "nyc1c13",
+   "tSec": 11.5,
+   "confidence": 0.759,
+   "bbox": {
+    "x": 27.76,
+    "y": 49.17,
+    "w": 13.18,
+    "h": 49.07
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "brown item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T14",
+   "clipId": "nyc1c13",
+   "tSec": 12.0,
+   "confidence": 0.854,
+   "bbox": {
+    "x": 37.66,
+    "y": 52.41,
+    "w": 15.78,
+    "h": 47.13
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "beige bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "brown item",
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Beige",
+    "primaryHex": "#111827",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T15",
+   "clipId": "nyc1c13",
+   "tSec": 12.33,
+   "confidence": 0.838,
+   "bbox": {
+    "x": 37.66,
+    "y": 50.19,
+    "w": 12.4,
+    "h": 43.33
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "brown item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T17",
+   "clipId": "nyc1c13",
+   "tSec": 13.0,
+   "confidence": 0.816,
+   "bbox": {
+    "x": 44.79,
+    "y": 49.63,
+    "w": 12.29,
+    "h": 41.3
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "brown item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T19",
+   "clipId": "nyc1c13",
+   "tSec": 13.83,
+   "confidence": 0.749,
+   "bbox": {
+    "x": 19.58,
+    "y": 43.89,
+    "w": 6.93,
+    "h": 31.57
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "black trousers",
+    "outer": "black jacket",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T20",
+   "clipId": "nyc1c13",
+   "tSec": 13.17,
+   "confidence": 0.765,
+   "bbox": {
+    "x": 0.1,
+    "y": 42.04,
+    "w": 14.48,
+    "h": 55.46
+   },
+   "outfit": {
+    "top": "black sweater",
+    "bottom": "black trousers",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T21",
+   "clipId": "nyc1c13",
+   "tSec": 14.17,
+   "confidence": 0.768,
+   "bbox": {
+    "x": 17.5,
+    "y": 41.02,
+    "w": 5.68,
+    "h": 19.63
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T22",
+   "clipId": "nyc1c13",
+   "tSec": 14.17,
+   "confidence": 0.774,
+   "bbox": {
+    "x": 69.43,
+    "y": 43.33,
+    "w": 7.19,
+    "h": 30.09
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "blue jeans",
+    "outer": "green sweater",
+    "carry": [
+     "silver object"
+    ],
+    "primaryColor": "Green",
+    "secondaryColor": "Blue",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T23",
+   "clipId": "nyc1c13",
+   "tSec": 14.5,
+   "confidence": 0.702,
+   "bbox": {
+    "x": 7.71,
+    "y": 41.94,
+    "w": 4.79,
+    "h": 13.06
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "black bottoms",
+    "outer": "red jacket",
+    "carry": [
+     "brown bag"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Black",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T24",
+   "clipId": "nyc1c13",
+   "tSec": 14.17,
+   "confidence": 0.792,
+   "bbox": {
+    "x": 44.48,
+    "y": 44.54,
+    "w": 10.57,
+    "h": 42.41
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [
+     "pink item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p3-T25",
+   "clipId": "nyc1c13",
+   "tSec": 14.67,
+   "confidence": 0.876,
+   "bbox": {
+    "x": 35.94,
+    "y": 46.57,
+    "w": 16.67,
+    "h": 49.17
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T00",
+   "clipId": "nyc1c13",
+   "tSec": 15.17,
+   "confidence": 0.82,
+   "bbox": {
+    "x": 60.42,
+    "y": 44.54,
+    "w": 7.86,
+    "h": 35.28
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "grey bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T01",
+   "clipId": "nyc1c13",
+   "tSec": 15.0,
+   "confidence": 0.82,
+   "bbox": {
+    "x": 88.54,
+    "y": 49.26,
+    "w": 8.49,
+    "h": 37.41
+   },
+   "outfit": {
+    "top": "black sweater",
+    "bottom": "grey trousers",
+    "outer": "none",
+    "carry": [
+     "white bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Grey",
+    "primaryHex": "#111827",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Smart Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T02",
+   "clipId": "nyc1c13",
+   "tSec": 15.83,
+   "confidence": 0.823,
+   "bbox": {
+    "x": 11.2,
+    "y": 41.76,
+    "w": 5.05,
+    "h": 18.43
+   },
+   "outfit": {
+    "top": "black hoodie",
+    "bottom": "black trousers",
+    "outer": "black hoodie",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Streetwear"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T03",
+   "clipId": "nyc1c13",
+   "tSec": 15.0,
+   "confidence": 0.79,
+   "bbox": {
+    "x": 48.49,
+    "y": 45.46,
+    "w": 12.24,
+    "h": 49.26
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T04",
+   "clipId": "nyc1c13",
+   "tSec": 16.5,
+   "confidence": 0.803,
+   "bbox": {
+    "x": 77.45,
+    "y": 45.74,
+    "w": 11.72,
+    "h": 42.04
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T05",
+   "clipId": "nyc1c13",
+   "tSec": 17.67,
+   "confidence": 0.747,
+   "bbox": {
+    "x": 2.66,
+    "y": 41.39,
+    "w": 5.47,
+    "h": 19.07
+   },
+   "outfit": {
+    "top": "beige top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T06",
+   "clipId": "nyc1c13",
+   "tSec": 17.5,
+   "confidence": 0.641,
+   "bbox": {
+    "x": 18.44,
+    "y": 41.57,
+    "w": 5.05,
+    "h": 24.35
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "unclear",
+    "outer": "green jacket",
+    "carry": [
+     "unclear item"
+    ],
+    "primaryColor": "Green",
+    "secondaryColor": "Unclear",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#a3a3a3",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T07",
+   "clipId": "nyc1c13",
+   "tSec": 15.17,
+   "confidence": 0.839,
+   "bbox": {
+    "x": 49.17,
+    "y": 46.85,
+    "w": 15.83,
+    "h": 47.69
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T08",
+   "clipId": "nyc1c13",
+   "tSec": 17.83,
+   "confidence": 0.866,
+   "bbox": {
+    "x": 19.69,
+    "y": 45.56,
+    "w": 11.77,
+    "h": 41.48
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "beige item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T09",
+   "clipId": "nyc1c13",
+   "tSec": 15.83,
+   "confidence": 0.803,
+   "bbox": {
+    "x": 90.52,
+    "y": 46.02,
+    "w": 6.04,
+    "h": 25.0
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "navy blue outer layer",
+    "carry": [
+     "grey item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T10",
+   "clipId": "nyc1c13",
+   "tSec": 17.83,
+   "confidence": 0.795,
+   "bbox": {
+    "x": 77.19,
+    "y": 43.98,
+    "w": 8.02,
+    "h": 35.65
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "grey bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Grey",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#9ca3af",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T11",
+   "clipId": "nyc1c13",
+   "tSec": 16.17,
+   "confidence": 0.777,
+   "bbox": {
+    "x": 63.28,
+    "y": 44.44,
+    "w": 8.23,
+    "h": 38.43
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "beige bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Beige",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#e7d8c9",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T12",
+   "clipId": "nyc1c13",
+   "tSec": 16.83,
+   "confidence": 0.81,
+   "bbox": {
+    "x": 0.94,
+    "y": 42.59,
+    "w": 10.62,
+    "h": 48.8
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "beige item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T13",
+   "clipId": "nyc1c13",
+   "tSec": 18.17,
+   "confidence": 0.805,
+   "bbox": {
+    "x": 87.24,
+    "y": 47.69,
+    "w": 7.92,
+    "h": 32.41
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black jacket",
+    "carry": [
+     "brown bag"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T14",
+   "clipId": "nyc1c13",
+   "tSec": 19.83,
+   "confidence": 0.811,
+   "bbox": {
+    "x": 52.19,
+    "y": 44.81,
+    "w": 10.26,
+    "h": 35.65
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "black outer layer",
+    "carry": [
+     "beige item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T16",
+   "clipId": "nyc1c13",
+   "tSec": 17.83,
+   "confidence": 0.856,
+   "bbox": {
+    "x": 8.44,
+    "y": 42.59,
+    "w": 11.46,
+    "h": 40.09
+   },
+   "outfit": {
+    "top": "white shirt",
+    "bottom": "blue jeans",
+    "outer": "green sweater",
+    "carry": [
+     "clear object"
+    ],
+    "primaryColor": "Green",
+    "secondaryColor": "Blue",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T18",
+   "clipId": "nyc1c13",
+   "tSec": 19.5,
+   "confidence": 0.747,
+   "bbox": {
+    "x": 7.86,
+    "y": 40.0,
+    "w": 5.1,
+    "h": 20.37
+   },
+   "outfit": {
+    "top": "white t-shirt",
+    "bottom": "blue jeans",
+    "outer": "brown jacket",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Blue",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p4-T19",
+   "clipId": "nyc1c13",
+   "tSec": 18.83,
+   "confidence": 0.784,
+   "bbox": {
+    "x": 1.61,
+    "y": 40.28,
+    "w": 3.65,
+    "h": 16.67
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T00",
+   "clipId": "nyc1c13",
+   "tSec": 20.5,
+   "confidence": 0.81,
+   "bbox": {
+    "x": 82.6,
+    "y": 47.13,
+    "w": 6.98,
+    "h": 26.85
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "navy blue bottoms",
+    "outer": "none",
+    "carry": [
+     "black item",
+     "beige item"
+    ],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Navy",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#1e3a8a",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T01",
+   "clipId": "nyc1c13",
+   "tSec": 20.83,
+   "confidence": 0.8,
+   "bbox": {
+    "x": 65.05,
+    "y": 44.72,
+    "w": 8.54,
+    "h": 32.87
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "beige item"
+    ],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T02",
+   "clipId": "nyc1c13",
+   "tSec": 20.5,
+   "confidence": 0.852,
+   "bbox": {
+    "x": 91.77,
+    "y": 42.5,
+    "w": 6.61,
+    "h": 33.24
+   },
+   "outfit": {
+    "top": "patterned top",
+    "bottom": "brown bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Patterned",
+    "secondaryColor": "Brown",
+    "primaryHex": "#a3a3a3",
+    "secondaryHex": "#7c4a1e",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T04",
+   "clipId": "nyc1c13",
+   "tSec": 20.67,
+   "confidence": 0.824,
+   "bbox": {
+    "x": 8.39,
+    "y": 40.74,
+    "w": 4.11,
+    "h": 18.15
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [
+     "brown item"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T06",
+   "clipId": "nyc1c13",
+   "tSec": 22.0,
+   "confidence": 0.728,
+   "bbox": {
+    "x": 10.42,
+    "y": 41.3,
+    "w": 7.4,
+    "h": 23.8
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "black bottoms",
+    "outer": "red jacket",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Black",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T07",
+   "clipId": "nyc1c13",
+   "tSec": 20.5,
+   "confidence": 0.734,
+   "bbox": {
+    "x": 13.96,
+    "y": 40.74,
+    "w": 5.1,
+    "h": 19.07
+   },
+   "outfit": {
+    "top": "black white top",
+    "bottom": "blue bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Blue",
+    "primaryHex": "#111827",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T09",
+   "clipId": "nyc1c13",
+   "tSec": 20.83,
+   "confidence": 0.833,
+   "bbox": {
+    "x": 61.2,
+    "y": 41.11,
+    "w": 4.32,
+    "h": 20.56
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "black jacket",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Black",
+    "primaryHex": "#111827",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T10",
+   "clipId": "nyc1c13",
+   "tSec": 22.67,
+   "confidence": 0.815,
+   "bbox": {
+    "x": 0.68,
+    "y": 41.57,
+    "w": 4.32,
+    "h": 18.7
+   },
+   "outfit": {
+    "top": "beige sweater",
+    "bottom": "blue jeans",
+    "outer": "none",
+    "carry": [
+     "black bag"
+    ],
+    "primaryColor": "Beige",
+    "secondaryColor": "Blue",
+    "primaryHex": "#e7d8c9",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T11",
+   "clipId": "nyc1c13",
+   "tSec": 24.17,
+   "confidence": 0.797,
+   "bbox": {
+    "x": 55.31,
+    "y": 47.22,
+    "w": 11.82,
+    "h": 38.15
+   },
+   "outfit": {
+    "top": "red top",
+    "bottom": "black bottoms",
+    "outer": "red jacket",
+    "carry": [
+     "beige bag"
+    ],
+    "primaryColor": "Red",
+    "secondaryColor": "Black",
+    "primaryHex": "#dc2626",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T12",
+   "clipId": "nyc1c13",
+   "tSec": 24.17,
+   "confidence": 0.841,
+   "bbox": {
+    "x": 23.23,
+    "y": 40.37,
+    "w": 5.16,
+    "h": 20.93
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown jacket",
+    "carry": [
+     "grey bag"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p5-T15",
+   "clipId": "nyc1c13",
+   "tSec": 24.0,
+   "confidence": 0.691,
+   "bbox": {
+    "x": 29.69,
+    "y": 42.96,
+    "w": 3.33,
+    "h": 13.98
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "blue bottoms",
+    "outer": "black outer layer",
+    "carry": [],
+    "primaryColor": "Black",
+    "secondaryColor": "Blue",
+    "primaryHex": "#111827",
+    "secondaryHex": "#2563eb",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T01",
+   "clipId": "nyc1c13",
+   "tSec": 29.5,
+   "confidence": 0.875,
+   "bbox": {
+    "x": 54.95,
+    "y": 41.48,
+    "w": 7.76,
+    "h": 29.72
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [
+     "grey item"
+    ],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T03",
+   "clipId": "nyc1c13",
+   "tSec": 29.17,
+   "confidence": 0.799,
+   "bbox": {
+    "x": 32.66,
+    "y": 41.48,
+    "w": 5.89,
+    "h": 21.67
+   },
+   "outfit": {
+    "top": "black top",
+    "bottom": "black bottoms",
+    "outer": "green outer layer",
+    "carry": [
+     "black item"
+    ],
+    "primaryColor": "Green",
+    "secondaryColor": "Black",
+    "primaryHex": "#16a34a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T04",
+   "clipId": "nyc1c13",
+   "tSec": 25.33,
+   "confidence": 0.694,
+   "bbox": {
+    "x": 34.01,
+    "y": 40.65,
+    "w": 3.28,
+    "h": 14.63
+   },
+   "outfit": {
+    "top": "cream top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Cream",
+    "secondaryColor": "Black",
+    "primaryHex": "#fef3c7",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T05",
+   "clipId": "nyc1c13",
+   "tSec": 25.17,
+   "confidence": 0.791,
+   "bbox": {
+    "x": 68.75,
+    "y": 41.48,
+    "w": 3.54,
+    "h": 16.11
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "navy blue outer layer",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T07",
+   "clipId": "nyc1c13",
+   "tSec": 27.17,
+   "confidence": 0.827,
+   "bbox": {
+    "x": 2.71,
+    "y": 43.06,
+    "w": 6.46,
+    "h": 19.91
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T08",
+   "clipId": "nyc1c13",
+   "tSec": 28.17,
+   "confidence": 0.756,
+   "bbox": {
+    "x": 11.61,
+    "y": 42.78,
+    "w": 6.61,
+    "h": 20.37
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T13",
+   "clipId": "nyc1c13",
+   "tSec": 28.67,
+   "confidence": 0.822,
+   "bbox": {
+    "x": 16.2,
+    "y": 43.24,
+    "w": 6.15,
+    "h": 19.81
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [
+     "red item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T14",
+   "clipId": "nyc1c13",
+   "tSec": 29.67,
+   "confidence": 0.707,
+   "bbox": {
+    "x": 25.21,
+    "y": 43.24,
+    "w": 5.89,
+    "h": 20.09
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "none",
+    "carry": [],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T16",
+   "clipId": "nyc1c13",
+   "tSec": 29.67,
+   "confidence": 0.702,
+   "bbox": {
+    "x": 29.38,
+    "y": 41.67,
+    "w": 5.21,
+    "h": 19.44
+   },
+   "outfit": {
+    "top": "navy blue top",
+    "bottom": "black bottoms",
+    "outer": "navy blue outer layer",
+    "carry": [
+     "white item"
+    ],
+    "primaryColor": "Navy",
+    "secondaryColor": "Black",
+    "primaryHex": "#1e3a8a",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  },
+  {
+   "trackingId": "nyc1c13-p6-T18",
+   "clipId": "nyc1c13",
+   "tSec": 29.83,
+   "confidence": 0.679,
+   "bbox": {
+    "x": 54.01,
+    "y": 40.37,
+    "w": 2.97,
+    "h": 13.52
+   },
+   "outfit": {
+    "top": "white top",
+    "bottom": "black bottoms",
+    "outer": "brown outer layer",
+    "carry": [],
+    "primaryColor": "Brown",
+    "secondaryColor": "Black",
+    "primaryHex": "#7c4a1e",
+    "secondaryHex": "#111827",
+    "heavyOuterwear": false,
+    "aesthetic": "Casual"
+   },
+   "demographics": null,
+   "model": "google/gemma-4-26B-A4B-it"
+  }
+ ],
+ "aggregates": {
+  "sightings": 214,
+  "tracks": 214,
+  "heavyOuterwearPct": 5.1,
+  "carryPct": {
+   "backpack": 1.9,
+   "tote": 0.0,
+   "handbag": 0.0,
+   "bag": 21.5,
+   "box": 0.5,
+   "phone": 0.0,
+   "none": 28.0
+  },
+  "topColors": {
+   "Black": 83,
+   "White": 21,
+   "Patterned": 17,
+   "Grey": 17,
+   "Navy": 15,
+   "Brown": 14,
+   "Beige": 12,
+   "Red": 8,
+   "Cream": 7,
+   "Blue": 7,
+   "Yellow": 5,
+   "Green": 5,
+   "Purple": 2,
+   "Unclear": 1
+  },
+  "aesthetics": {
+   "Casual": 163,
+   "Smart Casual": 33,
+   "Streetwear": 10,
+   "Outdoor / Technical": 8
+  }
+ }
+}

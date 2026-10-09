@@ -1,0 +1,80 @@
+{
+  "pipeline": {
+    "generatedAt": "2026-10-09T17:20:00Z",
+    "detector": "YOLO11s (event GPU endpoint, called directly)",
+    "labeler": "W&B Inference: google/gemma-4-26B-A4B-it",
+    "tracing": "W&B Weave project vastdata/team-49",
+    "index": "VAST VSS (team-49), clips referenced by original_video",
+    "promptVersion": "outfit-prompt-noexample",
+    "secondsPerLabel": 1.8,
+    "notes": [
+      "SAMPLE FILE: shape only. Replaced by detections.json generated on the lab VM.",
+      "Replay of recorded street cameras from the event archive, not a live store feed.",
+      "Counts are person-sightings per sampled frame, not unique shoppers.",
+      "Age, gender, height and fit are not inferred, by design."
+    ]
+  },
+  "clips": [
+    {
+      "clipId": "sf2c17",
+      "camera": "sf_streets_cam-2",
+      "location": "san_francisco",
+      "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261001_095836_sf2_chunk_0017.mp4",
+      "filename": "20261001_095836_sf2_chunk_0017.mp4",
+      "durationSec": 30,
+      "description": "Busy San Francisco crosswalk, bright afternoon"
+    }
+  ],
+  "detections": [
+    {
+      "trackingId": "sf2c17-T01",
+      "clipId": "sf2c17",
+      "tSec": 17.5,
+      "confidence": 0.91,
+      "bbox": { "x": 12.0, "y": 48.0, "w": 7.5, "h": 38.0 },
+      "outfit": {
+        "top": "white t-shirt",
+        "bottom": "light blue jeans",
+        "outer": "none",
+        "carry": ["black backpack", "phone"],
+        "primaryColor": "White",
+        "secondaryColor": "Light Blue",
+        "primaryHex": "#f8fafc",
+        "secondaryHex": "#93c5fd",
+        "aesthetic": "Casual",
+        "heavyOuterwear": false
+      },
+      "demographics": null,
+      "model": "google/gemma-4-26B-A4B-it"
+    },
+    {
+      "trackingId": "sf2c17-T02",
+      "clipId": "sf2c17",
+      "tSec": 17.5,
+      "confidence": 0.88,
+      "bbox": { "x": 41.0, "y": 50.0, "w": 6.0, "h": 34.0 },
+      "outfit": {
+        "top": "cream blouse",
+        "bottom": "blue jeans",
+        "outer": "none",
+        "carry": ["green tote"],
+        "primaryColor": "Cream",
+        "secondaryColor": "Blue",
+        "primaryHex": "#fef3c7",
+        "secondaryHex": "#2563eb",
+        "aesthetic": "Casual",
+        "heavyOuterwear": false
+      },
+      "demographics": null,
+      "model": "google/gemma-4-26B-A4B-it"
+    }
+  ],
+  "aggregates": {
+    "sightings": 2,
+    "tracks": 2,
+    "heavyOuterwearPct": 0,
+    "carryPct": { "backpack": 50, "tote": 50, "handbag": 0, "bag": 0, "box": 0, "phone": 50, "none": 0 },
+    "topColors": { "White": 1, "Cream": 1 },
+    "aesthetics": { "Casual": 2 }
+  }
+}
