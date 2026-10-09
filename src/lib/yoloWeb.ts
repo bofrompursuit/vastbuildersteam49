@@ -12,7 +12,7 @@ export interface YoloBox {
 }
 
 const SIZE = 640;
-const ORT_VERSION = "1.20.1";
+const ORT_VERSION = "1.30.0";
 
 type Ort = typeof import("onnxruntime-web");
 let ortMod: Ort | null = null;

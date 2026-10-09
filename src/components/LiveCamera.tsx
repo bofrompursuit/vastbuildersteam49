@@ -119,6 +119,7 @@ export default function LiveCamera() {
   const [starting, setStarting] = useState(false);
   const [recording, setRecording] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [detName, setDetName] = useState("loading detector");
   const [disabledMsg, setDisabledMsg] = useState<string | null>(null);
   const [cards, setCards] = useState<Track[]>([]);
   const [totals, setTotals] = useState<Totals>(ZERO);
@@ -196,10 +197,23 @@ export default function LiveCamera() {
     // Lazy-load the on-device detector only now (keeps SSR/build free of TensorFlow).
     try {
       if (!detectorRef.current) {
-        const tf = await import("@tensorflow/tfjs");
-        const coco = await import("@tensorflow-models/coco-ssd");
-        await tf.ready();
-        detectorRef.current = (await coco.load({ base: "lite_mobilenet_v2" })) as unknown as Detector;
+        try {
+          // Primary: YOLO11n on-device (ONNX Runtime Web), same YOLO11 family as the event's detector.
+          const y = await import("@/lib/yoloWeb");
+          await y.loadYolo("/models/yolo11n.onnx");
+          detectorRef.current = {
+            detect: async (v: HTMLVideoElement) =>
+              (await y.detectPeople(v, MIN_SCORE)).map((b) => ({ bbox: [b.x, b.y, b.w, b.h] as [number, number, number, number], class: "person", score: b.score })),
+          };
+          setDetName("YOLO11n (on-device, ONNX Runtime Web)");
+        } catch {
+          // Fallback: TensorFlow.js COCO-SSD.
+          const tf = await import("@tensorflow/tfjs");
+          const coco = await import("@tensorflow-models/coco-ssd");
+          await tf.ready();
+          detectorRef.current = (await coco.load({ base: "lite_mobilenet_v2" })) as unknown as Detector;
+          setDetName("COCO-SSD (on-device, TensorFlow.js fallback)");
+        }
       }
     } catch {
       setError("Could not load the on-device person detector (TensorFlow.js). The camera preview works, but there are no boxes.");
@@ -433,7 +447,7 @@ export default function LiveCamera() {
         Point a camera at people who agreed to it. Person crops (about one per second) are sent to W&amp;B Inference; nothing is stored. Clothing and carried items only; age, gender and identity are not inferred.
       </p>
       <p className="mb-3 text-xs leading-relaxed text-neutral-600">
-        Live boxes: on-device person detector (TensorFlow.js COCO-SSD) — not the event&apos;s YOLO11, which is only reachable in the lab network. Outfit labels: W&amp;B Inference vision.
+        Live boxes: {detName}, running on this device. The event&apos;s server-side YOLO11s/Cosmos are only reachable inside the lab network, so the live mode uses YOLO11n in the browser. Outfit labels: W&amp;B Inference vision.
       </p>
 
       <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -487,7 +501,7 @@ export default function LiveCamera() {
             <video ref={videoRef} autoPlay muted playsInline className="absolute inset-0 h-full w-full object-contain" />
             <canvas ref={overlayRef} className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
             <div className="absolute left-3 top-3 flex items-center gap-2 rounded bg-slate-950/80 px-2 py-1 font-mono text-xs text-slate-200">
-              <span className="h-2 w-2 rounded-full bg-red-500" /> LIVE · COCO-SSD boxes · W&amp;B labels
+              <span className="h-2 w-2 rounded-full bg-red-500" /> LIVE · {detName.split(" (")[0]} boxes · W&amp;B labels
             </div>
             <div className="absolute bottom-3 left-3 rounded bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-emerald-400">
               detector {stats.fps.toFixed(1)} fps · {stats.tracks} tracked
