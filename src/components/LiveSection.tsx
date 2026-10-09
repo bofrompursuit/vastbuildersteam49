@@ -149,7 +149,9 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
   useEffect(() => {
     const v = videoRef.current;
     if (!v || !videoOn) return;
+    v.muted = true; // autoplay is only allowed muted
     v.playbackRate = speed;
+    if (v.paused) v.play().catch(() => {});
     if (Math.abs(v.currentTime - t) > 0.8) v.currentTime = t;
   }, [t, speed, videoOn]);
 
@@ -159,7 +161,7 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
     <div>
     <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
       {videoOn && clip ? (
-        <video ref={videoRef} src={`/assets/videos/${encodeURIComponent(clip.filename)}`} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-fill" />
+        <video ref={videoRef} key={clip.clipId} src={`/assets/videos/${encodeURIComponent(clip.filename)}`} autoPlay muted loop playsInline preload="auto" onError={() => setHaveVideo((h) => ({ ...h, [clip.clipId]: false }))} className="absolute inset-0 h-full w-full object-fill" />
       ) : (
         <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:10%_10%]">
           <p className="absolute inset-x-0 bottom-10 px-6 text-center font-mono text-[10px] text-slate-400">
