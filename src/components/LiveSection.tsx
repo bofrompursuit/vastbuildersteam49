@@ -80,7 +80,9 @@ function useReplay(data: RealDataFile | null, speed: SamplingRate) {
   const [feed, setFeed] = useState<FeedItem[]>([]);
   const pos = useRef({ i: 0, t: 0, pass: 0, first: true });
   const speedRef = useRef(speed);
-  speedRef.current = speed;
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
 
   const byClip = useMemo(() => {
     const m = new Map<string, RealDetection[]>();
@@ -91,7 +93,6 @@ function useReplay(data: RealDataFile | null, speed: SamplingRate) {
   useEffect(() => {
     if (!data || data.clips.length === 0) return;
     pos.current = { i: 0, t: 0, pass: 0, first: true };
-    setFeed([]);
     const clips = data.clips;
     const id = setInterval(() => {
       const p = pos.current;
@@ -117,7 +118,10 @@ function useReplay(data: RealDataFile | null, speed: SamplingRate) {
         p.t = nt;
       }
     }, TICK_MS);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      setFeed([]); // reset the feed when the data changes
+    };
   }, [data, byClip]);
 
   return { ...state, feed };
