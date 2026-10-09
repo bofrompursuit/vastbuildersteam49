@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Cpu, Database, Eye, ScanSearch, Timer } from "lucide-react";
 import LiveSection from "./LiveSection";
+import LiveCamera from "./LiveCamera";
 import DashboardSection from "./DashboardSection";
 import type { SamplingRate } from "@/lib/types";
 import type { RealDataFile } from "@/lib/realTypes";
@@ -147,6 +148,10 @@ export default function AuraFitApp() {
           <Eyebrow>Section 01 · Recorded-camera replay</Eyebrow>
           <h2 className="mb-6 text-3xl font-medium tracking-tight sm:text-4xl">Replayed Foot-Traffic &amp; Outfit Analytics</h2>
           <LiveSection samplingRate={samplingRate} data={data} />
+        </div>
+
+        <div id="live-camera" className="scroll-mt-24">
+          <LiveCamera />
         </div>
 
         <div>

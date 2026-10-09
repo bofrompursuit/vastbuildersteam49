@@ -44,3 +44,20 @@
 ## Open team items
 - Re-ingest (rewriting VSS captions) is blocked by the accidental whole-archive re-ingest backlog: the detector pods are busy. An organizer has to clear it. Nothing in this branch depends on it.
 - Hand check: about 24 crops labelled by a person, scored in Weave. Not done yet; whoever has 10 minutes.
+
+## Live camera mode
+A webcam mode, separate from the recorded-clip replay. Boxes come from an on-device person detector (TensorFlow.js COCO-SSD `lite_mobilenet_v2`, lazy-loaded when the camera starts) with a simple IoU tracker (ids L01, L02, ...). About once per second, up to 2 requests in flight, the largest unlabelled or stale (>2 s) tracks are cropped (+8% pad, max side 512) and POSTed as JPEG data URLs to `/api/live` with `single:true`. The route calls a W&B Inference vision model and returns clothing and carried items (`top`, `bottom`, `outer`, `carry`, `motion`). `/api/live` without `single` still describes a whole frame (up to 6 people). The UI shows detector fps, labels/s, running totals since start (share of labelled sightings with an outer layer, bag, backpack) and a Record button that saves the boxed video as `auraafit-live-<timestamp>.webm`. Without `WANDB_API_KEY`, boxes, tracking and recording still work and labels read "needs W&B key".
+
+**Env vars** (server-side only; Vercel project env or `.env.local`):
+- `WANDB_API_KEY` (required). Without it `/api/live` returns `{enabled:false, message}` and the UI shows the message.
+- `WANDB_PROJECT_PATH` (optional): sent as the `OpenAI-Project` header, e.g. `vastdata/team-49`.
+- `WANDB_VISION_MODEL` (optional): defaults to `google/gemma-4-26B-A4B-it`.
+
+**Where it works:** it runs on Vercel, because W&B Inference is a public API. The YOLO and Cosmos servers are reachable only inside the lab network, so this mode uses COCO-SSD boxes instead of YOLO11, and has no Cosmos captions. The camera needs https or localhost.
+
+**Privacy:**
+- Use it only on people who agreed to be filmed.
+- Frames are sent to W&B Inference and are not stored by us. The route never logs or returns the image.
+- Only clothing and carried items are described. The prompt forbids age, gender, race, face, hair and body.
+- The server drops any line that still contains such a word (`dropped.protected`) and any duplicate line (`dropped.duplicate`).
+- Identity is not inferred. Counts are sightings, not unique people.
