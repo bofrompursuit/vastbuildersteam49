@@ -206,13 +206,13 @@ export default function LiveSection({ samplingRate }: { samplingRate: SamplingRa
 
   return (
     <section id="live" className="scroll-mt-24 space-y-6">
-      <div className="grid gap-6 lg:grid-cols-5">
-        <div className="space-y-6 lg:col-span-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+        <div className="min-w-0 space-y-6 lg:col-span-3">
           <VideoFeed tracks={tracks} clock={clock} />
           <SemanticSearch />
           <VideoIntelligence />
         </div>
-        <div className="space-y-6 lg:col-span-2">
+        <div className="min-w-0 space-y-6 lg:col-span-2">
           <div className="rounded-3xl border border-neutral-200 bg-neutral-100 p-4">
             <h3 className="mb-3 flex items-center justify-between text-sm font-semibold text-neutral-900">
               Live Demographic &amp; Outfit Extraction Feed

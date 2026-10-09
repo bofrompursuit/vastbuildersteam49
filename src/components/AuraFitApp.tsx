@@ -30,14 +30,14 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function Hero() {
   return (
-    <section className="grid gap-3 lg:grid-cols-2">
-      <div className="flex flex-col justify-center rounded-[2rem] bg-neutral-100 p-8 sm:p-12 lg:min-h-[560px]">
+    <section className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      <div className="flex flex-col justify-center rounded-[2rem] bg-neutral-100 p-6 sm:p-12 lg:min-h-[560px]">
         <Eyebrow>Daily analyzed shoppers · 48,210</Eyebrow>
-        <h1 className="text-4xl font-medium leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+        <h1 className="text-[2.5rem] font-medium leading-[1.05] break-words tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
           The Intelligence Layer for Modern Retail
         </h1>
         <p className="mt-6 max-w-lg text-base leading-relaxed text-neutral-600 sm:text-lg">
-          AURA.FIT.TECH connects every in-store camera into a unified AI layer — delivering real-time outfit analytics, anonymous
+          AURAAFIT connects every in-store camera into a unified AI layer — delivering real-time outfit analytics, anonymous
           demographics, and automated merchandising across your stores.
         </p>
         <div className="mt-10 flex flex-wrap gap-2">
@@ -71,7 +71,7 @@ export default function AuraFitApp() {
     <div className="min-h-screen bg-white text-neutral-900">
       <header className="sticky top-0 z-20 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-          <a href="#" className="text-xl font-semibold tracking-tight">AURA.FIT.TECH</a>
+          <a href="#" className="text-xl font-semibold tracking-tight">AURAAFIT</a>
           <nav className="hidden gap-8 text-sm text-neutral-800 md:flex">
             {NAV.map((n) => (
               <a key={n.href} href={n.href} className="hover:text-brand">{n.label}</a>
@@ -79,6 +79,11 @@ export default function AuraFitApp() {
           </nav>
           <a href="#live" className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark">Go Live</a>
         </div>
+        <nav className="flex gap-5 overflow-x-auto px-4 pb-3 text-sm whitespace-nowrap text-neutral-700 md:hidden">
+          {NAV.map((n) => (
+            <a key={n.href} href={n.href} className="hover:text-brand">{n.label}</a>
+          ))}
+        </nav>
       </header>
 
       <main className="mx-auto max-w-7xl space-y-16 px-4 pb-16 sm:px-6">
@@ -106,7 +111,7 @@ export default function AuraFitApp() {
       </main>
 
       <footer className="border-t border-neutral-200 py-6 text-center text-xs text-neutral-500">
-        AURA.FIT.TECH · VAST Data · CoreWeave · YOLO · NVIDIA Cosmos · Weights &amp; Biases — anonymous tracking, no PII stored
+        AURAAFIT · VAST Data · CoreWeave · YOLO · NVIDIA Cosmos · Weights &amp; Biases — anonymous tracking, no PII stored
       </footer>
     </div>
   );

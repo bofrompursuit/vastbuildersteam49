@@ -141,7 +141,7 @@ export default function VideoIntelligence() {
       </h3>
       <p className="mb-4 text-xs text-neutral-500">Upload footage or paste a link — extract color palettes, accessories and physique estimates, then generate GTM and shopper insights.</p>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div
           onDragOver={(e) => (e.preventDefault(), setDragging(true))}
           onDragLeave={() => setDragging(false)}
@@ -180,7 +180,7 @@ export default function VideoIntelligence() {
       {error && <p className="mt-3 text-xs text-red-600">{error}</p>}
 
       {step >= 0 && (
-        <ol className="mt-4 grid gap-1.5 sm:grid-cols-3">
+        <ol className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-3">
           {STEPS.map((s, i) => (
             <li key={s} className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] ${i < step || step === STEPS.length ? "bg-brand/10 text-brand" : i === step ? "bg-white text-neutral-800" : "text-neutral-400"}`}>
               {i < step || step === STEPS.length ? <CheckCircle2 className="h-3.5 w-3.5" /> : i === step ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <span className="h-3.5 w-3.5 rounded-full border border-neutral-300" />}
@@ -210,7 +210,7 @@ export default function VideoIntelligence() {
             </div>
           ) : null}
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <Bars title="Dominant colors" data={result.aggregates.colors} />
             <Bars title="Accessory prevalence" data={result.aggregates.accessories} />
             <Bars title="Fit / physique" data={result.aggregates.physiques} />
@@ -243,7 +243,7 @@ export default function VideoIntelligence() {
             </table>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="rounded-2xl border border-neutral-200 bg-white p-4">
               <h4 className="mb-3 flex items-center gap-1.5 text-sm font-semibold text-neutral-900"><Store className="h-4 w-4 text-brand" /> B2B · Brands &amp; Retailers</h4>
               <ul className="space-y-3">

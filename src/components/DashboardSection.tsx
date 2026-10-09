@@ -31,8 +31,8 @@ export default function DashboardSection({ samplingRate, onSamplingRate }: Props
         <h2 className="text-3xl font-medium tracking-tight text-neutral-900 sm:text-4xl">Executive Foot-Traffic &amp; Inventory Performance Dashboard</h2>
         <p className="text-sm text-neutral-500">Live streaming metric telemetry and aggregated foot-traffic demographics.</p>
       </div>
-      <div className="grid gap-6 lg:grid-cols-[1fr_260px]">
-        <div className="relative overflow-hidden rounded-[2rem] border border-neutral-200 bg-white">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_260px]">
+        <div className="relative min-w-0 overflow-hidden rounded-[2rem] border border-neutral-200 bg-white">
           {loading && !failed && (
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-white/90 text-neutral-500">
               <Loader2 className="h-8 w-8 animate-spin text-brand" /> Loading live telemetry…
@@ -54,7 +54,7 @@ export default function DashboardSection({ samplingRate, onSamplingRate }: Props
               width="100%"
               height="800px"
               frameBorder="0"
-              className="block bg-white"
+              className="block h-[640px] bg-white sm:h-[800px]"
               onLoad={() => setLoading(false)}
               onError={() => setFailed(true)}
             />

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AURA.FIT.TECH",
+  title: "AURAAFIT",
   description: "Retail & Foot-Traffic Intelligence Engine",
 };
 
