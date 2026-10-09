@@ -100,7 +100,11 @@ function useReplay(data: RealDataFile | null, speed: SamplingRate) {
       const pd: PreDet = {
         d,
         key: `${d.clipId}-${d.trackingId}-${d.tSec}`,
-        label: `${d.trackingId.split("-").pop()} · ${d.outfit.top}`,
+        label: [
+          `${d.trackingId.split("-").pop()} · ${d.outfit.top}`,
+          d.outfit.bottom && d.outfit.bottom !== "unclear" ? d.outfit.bottom : "",
+          d.outfit.carry.length ? `carry: ${d.outfit.carry.join(", ")}` : "",
+        ].filter(Boolean).join("\n"),
         path,
         t0: path ? path[0][0] - PATH_LEAD_SEC : d.tSec,
         t1: path ? path[path.length - 1][0] + PATH_TAIL_SEC : d.tSec + BOX_HOLD_SEC,
@@ -221,8 +225,8 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
           className="absolute rounded-sm border-2 border-emerald-400/90"
           style={{ left: `${d.x}%`, top: `${d.y}%`, width: `${d.w}%`, height: `${d.h}%` }}
         >
-          <span className="absolute -top-4 left-0 whitespace-nowrap rounded bg-emerald-500/90 px-1 font-mono text-[9px] text-slate-950">
-            {d.label}
+          <span className="absolute bottom-full left-0 mb-0.5 whitespace-pre rounded bg-emerald-500/90 px-1 font-mono text-[9px] leading-tight text-slate-950">
+            {d.h >= 24 ? d.label : d.label.split("\n")[0]}
           </span>
         </div>
       ))}
