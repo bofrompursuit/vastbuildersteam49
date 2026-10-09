@@ -118,7 +118,7 @@ function Credits() {
 }
 
 export default function AuraFitApp() {
-  const [samplingRate, setSamplingRate] = useState<SamplingRate>(5);
+  const [samplingRate, setSamplingRate] = useState<SamplingRate>(1);
   const { loaded, error } = useRealData();
   const data = loaded?.data ?? null;
 

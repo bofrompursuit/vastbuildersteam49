@@ -38,7 +38,7 @@
 - To add Bo's store clip, add its VSS filename to `CLIPS`. It must be in our VSS archive.
 - Known limits:
   - Each 5 s piece is tracked separately, so numbers are **sightings**, not unique people.
-  - About half the labels came back colour-only; a generic noun (top / bottoms / item) was added, and no garment type was invented.
+  - Labels v2 (`single-person-outfit-v2-typed`): each person is re-cropped from the replay frame (padded, upscaled) and W&B Gemma must name a garment type from a fixed list (traced in Weave). 213/214 tops now name a type (v1: 49/214, the rest colour-only). Types on small, distant people are the model's closest match and can be wrong. Script: `scripts/relabel.py`, run on the lab VM.
   - Labels are model output and are not hand-checked yet.
 
 ## Open team items
