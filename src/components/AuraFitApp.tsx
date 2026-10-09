@@ -20,6 +20,8 @@ function statusFor(data: RealDataFile) {
   ];
 }
 
+const COSMOS_DASHBOARD_URL = "https://team-49-app.thecosmoslabs.com/app/";
+
 const NAV = [
   { href: "#live", label: "Replay" },
   { href: "#search", label: "Search" },
@@ -168,6 +170,19 @@ export default function AuraFitApp() {
           <Eyebrow>Section 01 · Recorded-camera replay</Eyebrow>
           <h2 className="mb-6 text-3xl font-medium tracking-tight sm:text-4xl">Replayed Foot-Traffic &amp; Outfit Analytics</h2>
           <LiveSection samplingRate={samplingRate} data={data} />
+        </div>
+
+        <div>
+          <Eyebrow>Live dashboard · Cosmos Labs</Eyebrow>
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">Outfit Boxes Dashboard</h2>
+            <a href={COSMOS_DASHBOARD_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm font-medium text-brand hover:text-brand-dark">
+              Open in new tab <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="overflow-hidden rounded-[2rem] border border-neutral-200 bg-neutral-950">
+            <iframe src={COSMOS_DASHBOARD_URL} title="Outfit Boxes dashboard" loading="lazy" className="block h-[70vh] min-h-[480px] w-full" />
+          </div>
         </div>
 
         <div>
