@@ -12,7 +12,8 @@
    "Each 5 s piece is tracked separately, so a person seen in two pieces counts twice: numbers are person-sightings, not unique shoppers.",
    "Age, gender, height and fit are not inferred, by design.",
    "Labels are model output (W&B vision) and can be wrong; see the hand check.",
-   "Where the vision model returned only a colour, a generic noun (top / bottoms / item) was added; no garment type was invented."
+   "Where the vision model returned only a colour, a generic noun (top / bottoms / item) was added; no garment type was invented.",
+   "Scene captions under the replay are the original Cosmos3-Reason descriptions stored in our VAST VSS index (gender words replaced with neutral ones)."
   ]
  },
  "clips": [
@@ -23,7 +24,51 @@
    "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261001_095836_sf2_chunk_0017.mp4",
    "filename": "20261001_095836_sf2_chunk_0017.mp4",
    "durationSec": 30,
-   "description": "Busy San Francisco crosswalk by a Fidelity storefront, bright afternoon"
+   "description": "Busy San Francisco crosswalk by a Fidelity storefront, bright afternoon",
+   "segments": [
+    {
+     "n": 1,
+     "tStart": 0,
+     "tEnd": 5,
+     "cosmosCaption": "A black Amazon Prime delivery van is driving through an intersection in a city. The van is moving from left to right across the frame. Pedestrians are crossing the street at a crosswalk, some waiting at the curb while others are in the process of crossing. The traffic light is green for the direction the van is traveling in. The van is a standard delivery vehicle with the Amazon Prime logo clearly visible on the side. The intersection is busy with other vehicles and pedestrians. The van continues to move forward through the intersection, following the flow of traffic.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 2,
+     "tStart": 5,
+     "tEnd": 10,
+     "cosmosCaption": "The scene is a busy city intersection with pedestrians and vehicles moving through the area. A FedEx delivery truck is visible, driving through the intersection. Several cars, including a white sedan and a dark-colored vehicle, are also present. A cyclist rides across the intersection, navigating among the vehicles. Pedestrians are seen crossing the street at designated crosswalks, while others wait on the sidewalks. The traffic lights are functioning, and the overall flow of traffic appears orderly. The environment includes tall buildings with glass facades and street signs indicating directions. No unusual behavior or safety hazards are evident in the footage.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 3,
+     "tStart": 10,
+     "tEnd": 15,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through. A FedEx delivery truck is visible on the right side of the intersection, indicating commercial activity. Pedestrians are crossing the street at designated crosswalks, while others are walking along the sidewalks. The traffic lights are functioning, and vehicles are following the signals. The environment appears orderly, with no immediate signs of unusual behavior or safety hazards. The presence of a fire hydrant and street signs is consistent with a typical city setting.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 4,
+     "tStart": 15,
+     "tEnd": 20,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing and vehicles moving through. A person in a white top and light blue jeans, carrying a green handbag, walks across the crosswalk from left to right. The person is followed by a group of people, including a person in a black shirt and another in a white shirt, both carrying backpacks. A person in a black jacket and carrying a brown box walks along the right side of the crosswalk. A person in a white shirt and beige pants, also carrying a backpack, walks from left to right in the foreground. A person with hair, wearing a black top and carrying a white tote bag, walks from right to left in the foreground. A silver SUV drives through the\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 5,
+     "tStart": 20,
+     "tEnd": 25,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians crossing in multiple directions. A person in a black jacket and dark pants walks across the foreground from right to left, carrying a brown cardboard box in their left hand. The person is followed by a person in a gray jacket and dark pants, also carrying a brown cardboard box in their left hand. Both individuals are walking at a steady pace and appear to be heading toward the left side of the frame. In the background, several other pedestrians are visible, some walking across the crosswalk and others standing or waiting near the sidewalks. A few people are seen carrying backpacks or handbags. The traffic lights are visible, with some\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 6,
+     "tStart": 25,
+     "tEnd": 30,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through the crosswalks. A person wearing a black shirt and black pants is crossing the street from left to right, carrying a black backpack. Another individual in a white shirt and black pants is also crossing from left to right, holding a black handbag. A cyclist in a black shirt and black pants rides across the intersection from left to right, followed by two more cyclists in black shirts and black pants. Two pedestrians, one in a maroon shirt and black pants and another in a blue shirt and black pants, both carrying black backpacks, walk from right to left across the foreground. Two more pedestrians, one in a\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    }
+   ]
   },
   {
    "clipId": "sf2c19",
@@ -32,7 +77,51 @@
    "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261001_095927_sf2_chunk_0019.mp4",
    "filename": "20261001_095927_sf2_chunk_0019.mp4",
    "durationSec": 30,
-   "description": "Same San Francisco corner, people waiting at the curb"
+   "description": "Same San Francisco corner, people waiting at the curb",
+   "segments": [
+    {
+     "n": 1,
+     "tStart": 0,
+     "tEnd": 5,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles moving through the area. A black SUV is parked on the left side of the frame, and a silver sedan is visible nearby. A white car is seen driving through the intersection in the background. A motorcycle is also present, moving along the road. Traffic lights are visible at the intersection, and a fire hydrant is located on the sidewalk. A person wearing a backpack is walking on the sidewalk, and another individual is seen crossing the street. A handbag is carried by one of the pedestrians. The overall activity suggests a typical day in a city with people going about their daily routines.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 2,
+     "tStart": 5,
+     "tEnd": 10,
+     "cosmosCaption": "The scene is a busy urban intersection with pedestrians and vehicles. A person in a beige jacket and blue jeans walks across the foreground from right to left, passing in front of a black SUV parked on the left side of the frame. Another pedestrian, wearing a light-colored top and carrying a handbag, crosses the street from left to right. A person in a patterned shirt and dark pants stands near the crosswalk, facing the street. A white van drives through the intersection from right to left, while a black sedan is visible further back, moving in the same direction. Traffic lights are visible at the intersection, with one showing red. A fire hydrant is located on the sidewalk near the right\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 3,
+     "tStart": 10,
+     "tEnd": 15,
+     "cosmosCaption": "The scene is a busy city intersection with pedestrians crossing and vehicles moving through. A white van is seen driving from right to left across the intersection, followed by a black car and a blue car. Pedestrians are crossing the street at marked crosswalks, with some waiting at the curb. A person in a light-colored coat and face mask walks across the foreground from left to right. A fire hydrant is visible on the sidewalk near the crosswalk. Traffic lights are present at the intersection, and a truck is parked on the left side of the frame. The overall activity suggests a typical urban environment with orderly pedestrian and vehicular movement.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 4,
+     "tStart": 15,
+     "tEnd": 20,
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing and vehicles moving through. Several people are walking across the crosswalk, including a group of individuals in casual attire. A person in a black coat carrying a handbag is seen crossing the street, while others are waiting at the curb. A person with a backpack is also visible walking through the intersection. Traffic lights are present, and vehicles, including cars and a white SUV, are navigating the intersection. The environment includes tall buildings, one with a visible \"Fidelity\" sign, and street infrastructure such as a fire hydrant and traffic signals. The overall activity suggests a typical urban setting with\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 5,
+     "tStart": 20,
+     "tEnd": 25,
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing a marked crosswalk. Several individuals are walking across the street, some carrying backpacks or handbags. A few people are standing near the curb, waiting to cross. The traffic light is visible and appears to be green for vehicles, allowing cars to move through the intersection. A black SUV is parked on the left side of the frame, and other vehicles can be seen driving in the background. The surrounding area includes tall buildings with glass facades and a mix of modern and er architectural styles. The overall atmosphere is one of typical urban activity with people going about their daily routines.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 6,
+     "tStart": 25,
+     "tEnd": 30,
+     "cosmosCaption": "The scene shows a busy city intersection with pedestrians crossing in multiple directions. A person in a white shirt and black pants walks across the crosswalk, while another individual in a red shirt and black pants crosses from the opposite direction. A person in a yellow shirt and purple shorts is also visible crossing the street. Several pedestrians are waiting at the curb, including one in a gray shirt and jeans with a backpack, and another in a black suit with a briefcase. A person in a white shirt and black pants is seen walking along the sidewalk. A person in a black shirt and jeans is riding a bicycle across the intersection. A white car is driving through the intersection, and a\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    }
+   ]
   },
   {
    "clipId": "nyc1c13",
@@ -41,7 +130,51 @@
    "vssOriginalVideo": "s3://team-49-vss-chunks/team-49/20261008_070321_VID_20261006_174811_003_chunk_0013.mp4",
    "filename": "20261008_070321_VID_20261006_174811_003_chunk_0013.mp4",
    "durationSec": 30,
-   "description": "Broadway and Walker St, New York, overcast late afternoon"
+   "description": "Broadway and Walker St, New York, overcast late afternoon",
+   "segments": [
+    {
+     "n": 1,
+     "tStart": 0,
+     "tEnd": 5,
+     "cosmosCaption": "A white minivan drives through the intersection from left to right. A yellow taxi follows, also moving left to right. A dark gray minivan then proceeds in the same direction. A person in a black hoodie stands on the sidewalk near the crosswalk, facing the street. Another person in a light-colored jacket walks along the sidewalk, carrying a bicycle. A person in a brown coat and high heels crosses the street from left to right. A person in a dark jacket and jeans walks along the sidewalk, carrying a backpack. A white delivery truck is parked on the right side of the street. A fire hydrant is visible on the left sidewalk. A traffic light shows a red pedestrian signal. A street sign reads\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 2,
+     "tStart": 5,
+     "tEnd": 10,
+     "cosmosCaption": "A gray minivan drives through the intersection from left to right. A white truck is parked on the right side of the street. A pedestrian wearing a brown jacket, black skirt, and high heels crosses the street from left to right. Another pedestrian in dark clothing walks across the crosswalk from right to left. A person in a light-colored jacket and blue jeans walks along the sidewalk on the right. A cyclist rides across the intersection from left to right. A pedestrian with a stroller enters the frame from the left. A traffic light showing a red hand is visible on the right side of the street. A street sign reading \"Walker St\" is visible on the left. A building with the number \"401\" and the\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 3,
+     "tStart": 10,
+     "tEnd": 15,
+     "cosmosCaption": "A group of pedestrians crosses a marked crosswalk on a city street. A person in a black top and light-colored pants pushes a stroller with a pink blanket. A person in a plaid shirt carries a child in a pink jacket. Another person in a black top and dark pants carries a brown shoulder bag. A person in a black jacket and gray pants walks alongside them. A person in a black top and pants carries a red backpack. A person in a black top and gray pants carries a white bag. A person in a green jacket and blue jeans walks toward the crosswalk. A person in a dark jacket and blue jeans walks away from the crosswalk. A white truck is parked on the right side of the street. A traffic light shows a red\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 4,
+     "tStart": 15,
+     "tEnd": 20,
+     "cosmosCaption": "Pedestrians cross a marked crosswalk in an urban setting. A person with a large gray handbag walks across the foreground. Behind their, a person in a plaid shirt carries a child in a pink jacket. Another person pushes a stroller while walking with a group. A person in a green jacket and jeans crosses the street. A white truck is parked on the right side of the street. A traffic light shows a red hand signal for pedestrians. A street sign reads \"Walker St.\" A building with a storefront labeled \"UNIFORM\" is visible. A fire hydrant and a bicycle are on the sidewalk. Orange traffic cones and a metal barricade are in the foreground.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 5,
+     "tStart": 20,
+     "tEnd": 25,
+     "cosmosCaption": "The scene is a city street intersection with a marked crosswalk and traffic signals. Pedestrians are crossing the street from right to left, including a person in a blue jacket and black pants, and another person in dark clothing carrying a light-colored handbag. A person in a plaid shirt and jeans walks along the sidewalk on the right. A cyclist wearing a helmet and a red jacket rides through the intersection from left to right, passing in front of a white truck parked on the right side of the frame. The truck has a visible logo that appears to read \"CHASE\" on its side. A traffic light pole on the right displays a pedestrian signal showing a hand, indicating pedestrians should not cross. A\u2026",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    },
+    {
+     "n": 6,
+     "tStart": 25,
+     "tEnd": 30,
+     "cosmosCaption": "Pedestrians cross a marked crosswalk in front of a building with a storefront labeled 'UNIFORM' at 401. A traffic light shows a red hand, indicating pedestrians should not cross. A white truck is parked on the right side of the street. A bicycle is visible near the crosswalk. A clock is mounted on the building facade. A person wearing a backpack is seen walking on the sidewalk. A handbag is carried by one pedestrian. The street has orange traffic cones and metal barricades in the foreground. The scene is active with multiple people walking in different directions.",
+     "source": "Cosmos3-Reason caption from the VAST VSS index (original ingest)"
+    }
+   ]
   }
  ],
  "detections": [

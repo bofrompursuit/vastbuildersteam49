@@ -8,6 +8,7 @@
   - nyc_streets_cam-1 chunk 13.
 
   Boxes come from YOLO11 (the event GPU endpoint, called directly). Per-person outfit labels come from W&B Inference `google/gemma-4-26B-A4B-it`, and every call is traced in W&B Weave (`vastdata/team-49`). The shape is in `src/lib/realTypes.ts`.
+- **Cosmos in the app:** each clip in `detections.json` has `segments[]` with the original **NVIDIA Cosmos3-Reason** caption for every 5 s piece, taken from our VAST VSS index (gender words neutralised). The replay panel shows the caption for the piece that's playing. Optional `cosmosOutfit` holds a fresh direct Cosmos3 pass with our fashion prompt, when present.
 - **Replay videos:** `public/assets/videos/<VSS filename>.mp4`, 720p, about 2.7 MB each, stored via Git LFS (Bo's existing `.gitattributes`). The replay panel plays them, with the real boxes synced.
 - **UI (`src/components/*`, `src/lib/engine.ts`, `types.ts`, `analysis.ts`):** reads the real data, falling back to `detections.sample.json`.
   - Demographics show **"not inferred"** (team decision).

@@ -101,7 +101,10 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
     if (Math.abs(v.currentTime - t) > 0.8) v.currentTime = t;
   }, [t, speed, videoOn]);
 
+  const seg = clip?.segments?.find((sg) => t >= sg.tStart && t < sg.tEnd) ?? clip?.segments?.[clip.segments.length - 1];
+
   return (
+    <div>
     <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
       {videoOn && clip ? (
         <video ref={videoRef} src={`/assets/videos/${encodeURIComponent(clip.filename)}`} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-fill" />
@@ -138,6 +141,21 @@ function ReplayFeed({ replay, speed }: { replay: ReturnType<typeof useReplay>; s
       <div className="absolute bottom-3 right-3 rounded bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-slate-300">
         {speed}× replay · pass {pass + 1}
       </div>
+    </div>
+    {seg && (
+      <div className="mt-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-3">
+        <div className="mb-1 font-mono text-[10px] uppercase tracking-wider text-neutral-500">
+          NVIDIA Cosmos3-Reason · piece {seg.n}/6 ({fmtClock(seg.tStart)}–{fmtClock(seg.tEnd)}) · {seg.source}
+        </div>
+        <p className="text-xs leading-relaxed text-neutral-700">{seg.cosmosCaption}</p>
+        {seg.cosmosOutfit && (
+          <>
+            <div className="mb-1 mt-2 font-mono text-[10px] uppercase tracking-wider text-neutral-500">Cosmos3 direct, our fashion prompt (compare with the W&amp;B labels on the boxes)</div>
+            <pre className="whitespace-pre-wrap font-mono text-[11px] text-neutral-700">{seg.cosmosOutfit}</pre>
+          </>
+        )}
+      </div>
+    )}
     </div>
   );
 }

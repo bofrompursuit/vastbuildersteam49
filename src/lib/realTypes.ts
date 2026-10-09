@@ -35,6 +35,15 @@ export interface RealDetection {
   traceUrl?: string; // W&B Weave call URL for this label, when available
 }
 
+export interface RealSegment {
+  n: number; // 1..6, the 5 s piece within the 30 s clip
+  tStart: number;
+  tEnd: number;
+  cosmosCaption: string; // NVIDIA Cosmos3-Reason description of this piece (from the VAST VSS index)
+  source: string;
+  cosmosOutfit?: string; // optional: fresh direct Cosmos3 fashion pass (our prompt), raw lines
+}
+
 export interface RealClip {
   clipId: string; // e.g. "sf2c17"
   camera: string; // e.g. "sf_streets_cam-2"
@@ -43,6 +52,7 @@ export interface RealClip {
   filename: string; // VSS Explore card title
   durationSec: number;
   description: string; // one line, human-written
+  segments?: RealSegment[]; // per-5 s Cosmos captions
 }
 
 export interface RealAggregates {
