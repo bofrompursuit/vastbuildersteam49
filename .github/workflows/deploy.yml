@@ -1,0 +1,58 @@
+# CI on every push and PR to `domain`; production deploy to auraafit.tech on every push to `domain`.
+# Needs one repo secret: VERCEL_TOKEN (a Vercel access token for the theegelatarun-4606 team).
+name: CI/CD
+
+on:
+  push:
+    branches: [domain]
+  pull_request:
+    branches: [domain]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: team_Khx1LokuTj8qtj4LSwJGX0rr
+  VERCEL_PROJECT_ID: prj_n2hEpKODpsqrlV3HAWbilqpeFAMI
+  SITE: https://auraafit.vercel.app
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  deploy:
+    needs: check
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://auraafit.tech
+    steps:
+      - uses: actions/checkout@v4
+      # Only the .mp4 is served; skip the 22 MB .mov original
+      - run: git lfs pull --include=public/assets/videos/store-demo.mp4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Deploy to Vercel production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          [ -n "$VERCEL_TOKEN" ] || { echo "::error::VERCEL_TOKEN secret is not set"; exit 1; }
+          npx --yes vercel@63.1.0 deploy --prod --yes --token "$VERCEL_TOKEN"
+      - name: Smoke test production
+        run: |
+          curl -fsS --retry 3 --retry-delay 5 "$SITE/" | grep -q AURAAFIT
+          curl -fsSI --retry 3 "$SITE/assets/videos/store-demo.mp4" | grep -qi 'content-type: video/mp4'
+          echo "Live: https://auraafit.tech" >> "$GITHUB_STEP_SUMMARY"
