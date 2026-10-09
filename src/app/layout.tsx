@@ -25,6 +25,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   appleWebApp: { capable: true, title: "AURAAFIT", statusBarStyle: "default" },
+  // older iOS (< 17) only goes full-screen from the home screen with this legacy tag
+  other: { "apple-mobile-web-app-capable": "yes" },
 };
 
 export const viewport: Viewport = {
