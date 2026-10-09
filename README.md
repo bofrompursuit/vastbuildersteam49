@@ -6,7 +6,7 @@ AURAAFIT turns street-camera video into outfit analytics a merchandiser can act 
 
 Built by Team 49 at the VAST Data Builders Challenge: Real-Time Video Agents Hack, NYC, October 9, 2026.
 
-**Live site: [auraafit.tech](https://auraafit.tech)** · Demo video: `<VIDEO LINK: TODO>` · App code: [`domain` branch](https://github.com/bofrompursuit/vastbuildersteam49/tree/domain)
+**Live site: [auraafit.tech](https://auraafit.tech)** · Demo video: [youtu.be/zCnlGEaNM_c](https://youtu.be/zCnlGEaNM_c) · App code: [`domain` branch](https://github.com/bofrompursuit/vastbuildersteam49/tree/domain)
 
 ![AURAAFIT home page](docs/screenshots/hero.jpg)
 
