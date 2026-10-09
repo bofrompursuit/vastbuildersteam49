@@ -15,14 +15,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AURAAFIT",
   description: "Retail & Foot-Traffic Intelligence Engine",
-  manifest: "/manifest.webmanifest",
+  manifest: "/manifest.webmanifest?v=2",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico?v=2", sizes: "16x16 32x32 48x48" },
+      { url: "/icon-192.png?v=2", type: "image/png", sizes: "192x192" },
+      { url: "/icon.png?v=2", type: "image/png", sizes: "512x512" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [
+      { url: "/apple-touch-icon.png?v=2", sizes: "180x180" },
+      { url: "/apple-touch-icon-precomposed.png?v=2", sizes: "180x180", rel: "apple-touch-icon-precomposed" },
+    ],
   },
   appleWebApp: { capable: true, title: "AURAAFIT", statusBarStyle: "default" },
   // older iOS (< 17) only goes full-screen from the home screen with this legacy tag
