@@ -2,17 +2,25 @@
 
 **What the street is wearing, without knowing who's wearing it.**
 
-AURAAFIT turns street-camera video into outfit analytics a merchandiser can act on. Built by Team 49 at the VAST Data Builders Challenge: Real-Time Video Agents Hack, NYC, October 9, 2026.
+AURAAFIT turns street-camera video into outfit analytics a merchandiser can act on: what people wear and carry, with a VAST clip and a W&B Weave trace behind every label, and without guessing who anyone is.
+
+Built by Team 49 at the VAST Data Builders Challenge: Real-Time Video Agents Hack, NYC, October 9, 2026.
 
 **Live site: [auraafit.tech](https://auraafit.tech)** · Demo video: `<VIDEO LINK: TODO>` · App code: [`domain` branch](https://github.com/bofrompursuit/vastbuildersteam49/tree/domain)
 
 ![AURAAFIT home page](docs/screenshots/hero.jpg)
 
-Stores count foot traffic, but they can't see what the street is wearing. AURAAFIT reports what people wear and carry (top, bottom, outer layer, bags) as anonymous totals: which colours dominate, how many people carry a backpack, how many wear heavy outerwear. A merchandising agent turns those totals into store actions. Every number links back to a clip in the VAST VSS index, and every label comes from a model call traced in W&B Weave.
+## About
 
-The footage is a **replay of recorded street cameras** from the event archive (San Francisco and New York), not a live store feed. Age, gender, height and fit are **not inferred**, by design.
+Stores count foot traffic, but they can't see what the street is wearing. AURAAFIT reads outfits from video.
 
-**Who it's for:** retailers, landlords and business districts deciding what to stock or lease on a block.
+It starts from event footage indexed in VAST VSS (612 clips, 13 cameras). NVIDIA YOLO11 finds and tracks each person, and W&B Inference vision (Gemma 4) labels what they wear and carry: top, bottom, outer layer, bags. Every labelling call is traced in W&B Weave. Requiring a real garment type in our prompt took typed labels from 49 to 213 out of 214. NVIDIA Cosmos3-Reason adds a scene caption for each 5-second piece.
+
+The app at [auraafit.tech](https://auraafit.tech) replays recorded street cameras from San Francisco and New York with the labels on the boxes. Buyers can search the labels ("backpack"), and each match links to its clip and timestamp in VAST. A dashboard rolls up 214 person-sightings into colour mix, style mix and carried items, with CSV export. A merchandising agent reads only the totals and drafts store actions, such as putting carry accessories near the entrance because 32% of sightings carry a backpack.
+
+Privacy by design: a guard filter keeps clothing and carried items only. Age, gender, race and faces are never inferred, and nothing is tracked across cameras. Counts are sightings, not unique people.
+
+Built for retailers, landlords and business districts deciding what to stock or lease on a block. Next step: a consenting storefront camera, over repeated days.
 
 ## Try it
 
@@ -57,9 +65,6 @@ Also: Next.js, Tailwind CSS, Vercel, Cursor.
 - **Counts are person-sightings, not unique people.** The same person can appear in several frames.
 - **Labels are model output, not hand-checked.** We scored prompt versions against an answer key for one clip only, not at scale.
 - **The merchandising agent runs on its rule-based fallback in this deployment.** With `WANDB_API_KEY` set on the server it calls W&B Inference live; the panel always says which.
-
-**Next step:** a consenting storefront camera, over repeated days.
-
 ## Run it locally
 
 ```bash
