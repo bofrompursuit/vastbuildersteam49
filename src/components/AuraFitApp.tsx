@@ -74,31 +74,32 @@ function Hero({ data }: { data: RealDataFile | null }) {
 }
 
 const BUILDERS = [
-  { name: "Bo Moldenhauer", url: "https://www.linkedin.com/in/bomoldenhauer" },
-  { name: "Tarun Theegela", url: "https://www.linkedin.com/in/taruntheegela/" },
-  { name: "Qiman Wang", url: "https://www.linkedin.com/in/qimanwang/" },
-  { name: "Alexander Mong", url: "https://www.linkedin.com/in/alexander-mong/" },
+  { name: "Bo Moldenhauer", url: "https://www.linkedin.com/in/bomoldenhauer", color: "#0A66C2" },
+  { name: "Tarun Theegela", url: "https://www.linkedin.com/in/taruntheegela/", color: "#0A66C2" },
+  { name: "Qiman Wang", url: "https://www.linkedin.com/in/qimanwang/", color: "#0A66C2" },
+  { name: "Alexander Mong", url: "https://www.linkedin.com/in/alexander-mong/", color: "#0A66C2" },
 ];
 
 const SPONSORS = [
-  { name: "VAST Data", url: "https://www.vastdata.com/" },
-  { name: "CoreWeave", url: "https://coreweave.com/" },
-  { name: "xAI", url: "https://x.ai/company" },
-  { name: "NVIDIA", url: "https://www.nvidia.com/en-us/" },
-  { name: "Weights & Biases", url: "https://wandb.ai/" },
-  { name: "Hugging Face", url: "https://huggingface.co/" },
+  { name: "VAST Data", url: "https://www.vastdata.com/", color: "#00A3E0" },
+  { name: "CoreWeave", url: "https://coreweave.com/", color: "#4C5FD5" },
+  { name: "xAI", url: "https://x.ai/company", color: "#111111" },
+  { name: "NVIDIA", url: "https://www.nvidia.com/en-us/", color: "#76B900" },
+  { name: "Weights & Biases", url: "https://wandb.ai/", color: "#FFBE00" },
+  { name: "Hugging Face", url: "https://huggingface.co/", color: "#FFD21E" },
 ];
 
 function Credits() {
-  const link = "inline-flex items-center gap-1 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-800 hover:border-brand hover:text-brand";
+  const link = "brand-pill inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-800 transition-colors";
+  const dot = (c: string) => <span className="h-2 w-2 rounded-full ring-1 ring-black/10" style={{ background: c }} />;
   return (
     <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 pb-12 sm:px-6 md:grid-cols-2">
       <div>
         <p className="mb-3 font-mono text-xs uppercase tracking-wider text-neutral-500">Connect with the builders</p>
         <div className="flex flex-wrap gap-2">
           {BUILDERS.map((b) => (
-            <a key={b.url} href={b.url} target="_blank" rel="noopener noreferrer" className={link}>
-              {b.name} <ArrowUpRight className="h-3.5 w-3.5" />
+            <a key={b.url} href={b.url} target="_blank" rel="noopener noreferrer" className={link} style={{ "--c": b.color } as React.CSSProperties}>
+              {dot(b.color)}{b.name} <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           ))}
         </div>
@@ -107,8 +108,8 @@ function Credits() {
         <p className="mb-3 font-mono text-xs uppercase tracking-wider text-neutral-500">Sponsors</p>
         <div className="flex flex-wrap gap-2">
           {SPONSORS.map((s) => (
-            <a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer" className={link}>
-              {s.name} <ArrowUpRight className="h-3.5 w-3.5" />
+            <a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer" className={link} style={{ "--c": s.color } as React.CSSProperties}>
+              {dot(s.color)}{s.name} <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           ))}
         </div>

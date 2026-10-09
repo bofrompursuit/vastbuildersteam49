@@ -19,3 +19,9 @@ body {
 }
 
 html, body { overflow-x: hidden; }
+
+/* credits pills: brand-colour border + soft tint on hover */
+.brand-pill:hover {
+  border-color: var(--c);
+  background: color-mix(in srgb, var(--c) 10%, white);
+}
