@@ -14,40 +14,21 @@ interface Track extends DetectionPayload {
 function VideoFeed({ tracks, clock }: { tracks: Track[]; clock: string }) {
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
-      {/* storefront scene */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-800 via-slate-900 to-slate-950" />
-      <div className="absolute inset-x-0 bottom-0 h-[38%] bg-[repeating-linear-gradient(90deg,#1e293b_0_2px,transparent_2px_60px)] opacity-60" />
-      <div className="absolute left-[38%] top-[10%] h-[62%] w-[24%] rounded-t-md border-4 border-slate-700 bg-slate-950/70">
-        <div className="mt-2 text-center font-mono text-[10px] tracking-widest text-emerald-400/70">ENTRANCE</div>
-      </div>
-      <div className="absolute left-[6%] top-[14%] h-[40%] w-[26%] border-2 border-slate-700 bg-sky-950/30" />
-      <div className="absolute right-[6%] top-[14%] h-[40%] w-[26%] border-2 border-slate-700 bg-sky-950/30" />
-      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.03)_0_1px,transparent_1px_3px)]" />
-
-      {tracks.map((t) => (
-        <div
-          key={t.trackingId}
-          className="absolute"
-          style={{ left: `${t.bbox.x}%`, top: `${t.bbox.y}%`, width: `${t.bbox.w}%`, height: `${t.bbox.h}%` }}
-        >
-          {/* shopper silhouette */}
-          <div className="absolute left-1/2 top-[4%] h-[16%] w-[42%] -translate-x-1/2 rounded-full bg-slate-400/80" />
-          <div className="absolute left-[18%] top-[20%] h-[42%] w-[64%] rounded-t-lg" style={{ background: t.outfit.primaryHex }} />
-          <div className="absolute left-[26%] top-[62%] h-[36%] w-[48%]" style={{ background: t.outfit.secondaryHex }} />
-          {/* YOLO box */}
-          <div className="absolute inset-0 border-2 border-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
-          <div className="absolute bottom-full left-0 mb-1 whitespace-nowrap rounded bg-emerald-400 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-slate-950 sm:text-[10px]">
-            #{t.trackingId} | {t.outfit.garmentCategory}: {t.outfit.primaryGarment} | Est. Age: {t.demographics.ageBracket}
-          </div>
-        </div>
-      ))}
+      <video
+        src="/assets/videos/store-demo.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      />
 
       <div className="absolute left-3 top-3 flex items-center gap-2 rounded bg-slate-950/80 px-2 py-1 font-mono text-xs text-slate-200">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" /> REC · CAM-01 ENTRANCE
+        <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" /> REC · CAM-01 STREET ENTRANCE
       </div>
       <div className="absolute right-3 top-3 rounded bg-slate-950/80 px-2 py-1 font-mono text-xs text-slate-300">{clock}</div>
       <div className="absolute bottom-3 left-3 rounded bg-slate-950/80 px-2 py-1 font-mono text-[10px] text-emerald-400">
-        YOLOv8 · {tracks.length} active tracks
+        YOLOv8 · {tracks.length + 14} active tracks
       </div>
     </div>
   );
