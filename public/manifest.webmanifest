@@ -9,8 +9,29 @@
   "background_color": "#ffffff",
   "theme_color": "#1b6b93",
   "icons": [
-    { "src": "/aurafit-icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/aurafit-icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/aurafit-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/aurafit-apple-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/aurafit-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/aurafit-square-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/aurafit-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }

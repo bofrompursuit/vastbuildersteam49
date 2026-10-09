@@ -15,12 +15,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AURAAFIT",
   description: "Retail & Foot-Traffic Intelligence Engine",
-  manifest: "/manifest.webmanifest?v=3",
+  manifest: "/manifest.webmanifest?v=4",
   icons: {
     icon: [
       { url: "/favicon.ico?v=3", sizes: "16x16 32x32 48x48" },
       { url: "/aurafit-icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/aurafit-icon-512.png", type: "image/png", sizes: "512x512" },
+      { url: "/aurafit-square-512.png", type: "image/png", sizes: "512x512" },
     ],
     apple: [
       { url: "/aurafit-apple-180.png", sizes: "180x180" },
