@@ -1,20 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Cpu, Database, Eye, ScanSearch } from "lucide-react";
+import { ArrowUpRight, Cpu, Database, Eye, ScanSearch, Timer } from "lucide-react";
 import LiveSection from "./LiveSection";
 import DashboardSection from "./DashboardSection";
 import type { SamplingRate } from "@/lib/types";
+import type { RealDataFile } from "@/lib/realTypes";
+import { useRealData, type LoadedRealData } from "@/lib/realData";
 
-const STATUS = [
-  { icon: Database, label: "VAST Data AI OS: Connected" },
-  { icon: Cpu, label: "CoreWeave H100 Node: Active (12ms latency)" },
-  { icon: ScanSearch, label: "YOLO v8 Tracking: Live" },
-  { icon: Eye, label: "NVIDIA Cosmos Engine: Stream Ingesting" },
-];
+/** Status chips are built from `pipeline` in the data file. Nothing here is hard-coded as "live". */
+function statusFor(data: RealDataFile) {
+  const p = data.pipeline;
+  return [
+    { icon: ScanSearch, label: `Detector: ${p.detector}` },
+    { icon: Eye, label: `Labeler: ${p.labeler}` },
+    { icon: Cpu, label: `Tracing: ${p.tracing}` },
+    { icon: Database, label: `Index: ${p.index}` },
+    { icon: Timer, label: `Measured: ${p.secondsPerLabel}s per label` },
+  ];
+}
 
 const NAV = [
-  { href: "#live", label: "Live Stream" },
+  { href: "#live", label: "Replay" },
   { href: "#search", label: "Search" },
   { href: "#agent", label: "Agent" },
   { href: "#dashboard", label: "Dashboard" },
@@ -28,20 +35,22 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Hero() {
+function Hero({ data }: { data: RealDataFile | null }) {
+  const spotlight = data ? [...data.detections].sort((a, b) => b.confidence - a.confidence)[0] : undefined;
+  const garment = spotlight ? (spotlight.outfit.outer && spotlight.outfit.outer.toLowerCase() !== "none" ? spotlight.outfit.outer : spotlight.outfit.top) : "";
   return (
     <section className="grid grid-cols-1 gap-3 lg:grid-cols-2">
       <div className="flex flex-col justify-center rounded-[2rem] bg-neutral-100 p-6 sm:p-12 lg:min-h-[560px]">
-        <Eyebrow>Daily analyzed shoppers · 48,210</Eyebrow>
+        <Eyebrow>{data ? `${data.aggregates.sightings.toLocaleString()} person-sightings in the replayed clips` : "Loading replay data…"}</Eyebrow>
         <h1 className="text-[2.5rem] font-medium leading-[1.05] break-words tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
           The Intelligence Layer for Modern Retail
         </h1>
         <p className="mt-6 max-w-lg text-base leading-relaxed text-neutral-600 sm:text-lg">
-          AURAAFIT connects every in-store camera into a unified AI layer — delivering real-time outfit analytics, anonymous
-          demographics, and automated merchandising across your stores.
+          AURAAFIT turns camera footage into outfit analytics: YOLO11 finds people, a W&amp;B Inference vision model labels what they
+          wear, and a demo catalog maps outfits to products. Age, gender, height and fit are not inferred.
         </p>
         <div className="mt-10 flex flex-wrap gap-2">
-          <a href="#live" className="rounded-full bg-brand px-5 py-3 text-sm font-medium text-white hover:bg-brand-dark">Start analyzing</a>
+          <a href="#live" className="rounded-full bg-brand px-5 py-3 text-sm font-medium text-white hover:bg-brand-dark">Open the replay</a>
           <a href="#dashboard" className="rounded-full border border-neutral-400 px-5 py-3 text-sm font-medium text-neutral-900 hover:bg-white">View Dashboard</a>
         </div>
       </div>
@@ -51,21 +60,46 @@ function Hero() {
         <div className="absolute left-1/2 top-[62%] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-300/60 blur-3xl" />
         <div className="absolute inset-x-0 top-[70%] h-[3px] bg-indigo-100 shadow-[0_0_24px_6px_rgba(199,210,254,0.9)]" />
         <div className="absolute left-6 top-6 rounded-2xl border border-white/30 bg-white/15 p-4 text-white backdrop-blur-md">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-white/70">Live track</p>
-          <p className="mt-1 text-sm font-medium">#TRK-8092 · Navy Puffer Jacket</p>
-          <p className="text-xs text-white/80">Est. age 24-30 · Outdoor / Technical</p>
+          <p className="font-mono text-[10px] uppercase tracking-wider text-white/70">Sample detection · recorded clip</p>
+          <p className="mt-1 text-sm font-medium">{spotlight ? `#${spotlight.trackingId} · ${garment}` : "—"}</p>
+          <p className="text-xs text-white/80">Age, gender: not inferred{spotlight ? ` · ${spotlight.outfit.aesthetic}` : ""}</p>
         </div>
         <div className="absolute bottom-6 right-6 rounded-2xl border border-white/30 bg-white/15 p-4 text-right text-white backdrop-blur-md">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-white/70">Heavy outerwear · 30 min</p>
-          <p className="text-3xl font-medium">68%</p>
+          <p className="font-mono text-[10px] uppercase tracking-wider text-white/70">Heavy outerwear · all replayed sightings</p>
+          <p className="text-3xl font-medium">{data ? `${data.aggregates.heavyOuterwearPct}%` : "—"}</p>
         </div>
       </div>
     </section>
   );
 }
 
+function Notes({ loaded }: { loaded: LoadedRealData }) {
+  const { data, isSample, source } = loaded;
+  const lines = [
+    "Replay of recorded street cameras (San Francisco / New York) from the event archive, processed by YOLO11 + W&B vision. This is not a live store feed.",
+    ...data.pipeline.notes,
+    "Product suggestions come from a demo catalog (fixed rule: outfit aesthetic to a sample SKU). They are not model output and not real inventory.",
+    "The signage button only calls a demo endpoint; no physical display is connected.",
+    "The video-upload analyzer below only returns real labels for the replayed event clips (see its note).",
+  ];
+  return (
+    <details open className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4 text-xs text-neutral-600">
+      <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-wider text-neutral-700">How this works / limits</summary>
+      <p className="mt-2 font-mono text-[11px] text-neutral-500">
+        Data file: {source}
+        {isSample ? " (SAMPLE: shape only, not the real run)" : ""} · generated {data.pipeline.generatedAt} · prompt {data.pipeline.promptVersion}
+      </p>
+      <ul className="mt-2 list-disc space-y-1 pl-5">
+        {lines.map((l, i) => <li key={i}>{l}</li>)}
+      </ul>
+    </details>
+  );
+}
+
 export default function AuraFitApp() {
   const [samplingRate, setSamplingRate] = useState<SamplingRate>(5);
+  const { loaded, error } = useRealData();
+  const data = loaded?.data ?? null;
 
   return (
     <div className="min-h-screen bg-white text-neutral-900">
@@ -77,7 +111,7 @@ export default function AuraFitApp() {
               <a key={n.href} href={n.href} className="hover:text-brand">{n.label}</a>
             ))}
           </nav>
-          <a href="#live" className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark">Go Live</a>
+          <a href="#live" className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark">Open Replay</a>
         </div>
         <nav className="flex gap-5 overflow-x-auto px-4 pb-3 text-sm whitespace-nowrap text-neutral-700 md:hidden">
           {NAV.map((n) => (
@@ -87,31 +121,42 @@ export default function AuraFitApp() {
       </header>
 
       <main className="mx-auto max-w-7xl space-y-16 px-4 pb-16 sm:px-6">
-        <Hero />
+        <Hero data={data} />
+
+        {loaded?.isSample && (
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 px-4 py-2 text-xs text-amber-800">
+            SAMPLE DATA: showing detections.sample.json (shape only). The real run in detections.json has not been loaded.
+          </div>
+        )}
+        {error && (
+          <div className="rounded-2xl border border-red-300 bg-red-50 px-4 py-2 text-xs text-red-700">
+            Could not load /data/detections.json or /data/detections.sample.json. No data is shown (nothing is simulated).
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-2">
-          {STATUS.map(({ icon: Icon, label }) => (
+          {data && statusFor(data).map(({ icon: Icon, label }) => (
             <span key={label} className="flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3 py-1.5 font-mono text-[11px] text-neutral-700">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
               <Icon className="h-3 w-3 text-brand" /> {label}
             </span>
           ))}
         </div>
+        {loaded && <Notes loaded={loaded} />}
 
         <div>
-          <Eyebrow>Section 01 · Real-time stream</Eyebrow>
-          <h2 className="mb-6 text-3xl font-medium tracking-tight sm:text-4xl">Live Foot-Traffic &amp; Outfit Analytics</h2>
-          <LiveSection samplingRate={samplingRate} />
+          <Eyebrow>Section 01 · Recorded-camera replay</Eyebrow>
+          <h2 className="mb-6 text-3xl font-medium tracking-tight sm:text-4xl">Replayed Foot-Traffic &amp; Outfit Analytics</h2>
+          <LiveSection samplingRate={samplingRate} data={data} />
         </div>
 
         <div>
           <Eyebrow>Section 02 · Analytics</Eyebrow>
-          <DashboardSection samplingRate={samplingRate} onSamplingRate={setSamplingRate} />
+          <DashboardSection samplingRate={samplingRate} onSamplingRate={setSamplingRate} data={data} />
         </div>
       </main>
 
       <footer className="border-t border-neutral-200 py-6 text-center text-xs text-neutral-500">
-        AURAAFIT · VAST Data · CoreWeave · YOLO · NVIDIA Cosmos · Weights &amp; Biases — anonymous tracking, no PII stored
+        AURAAFIT · VAST VSS · YOLO11 · W&amp;B Inference + Weave — replay of recorded event footage; age, gender, height and fit are not inferred
       </footer>
     </div>
   );

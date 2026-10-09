@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { CheckCircle2, Download, Film, Link2, Loader2, ShoppingBag, Store, UploadCloud, User } from "lucide-react";
 import { nameColor, rgbToHex, type AnalysisResult, type Distribution, type PaletteColor, type VideoSource } from "@/lib/analysis";
 
-const STEPS = ["Ingesting video", "Sampling frames", "YOLO subject tracking", "Cosmos attribute extraction", "Aggregating trends", "Generating GTM intelligence"];
+const STEPS = ["Loading video", "Sampling frames (browser)", "Measuring dominant colors", "Calling analysis API", "Aggregating", "Drafting insights"];
 
 /** Sample real frames in the browser and return the dominant colors. Fails soft (CORS, codecs). */
 async function sampleVideo(src: string, crossOrigin: boolean): Promise<{ palette?: PaletteColor[]; duration?: number }> {
@@ -139,7 +139,7 @@ export default function VideoIntelligence() {
       <h3 className="mb-1 flex items-center gap-2 text-sm font-semibold text-neutral-900">
         <Film className="h-4 w-4 text-brand" /> Video Feature Extraction &amp; Business Intelligence
       </h3>
-      <p className="mb-4 text-xs text-neutral-500">Upload footage or paste a link — extract color palettes, accessories and physique estimates, then generate GTM and shopper insights.</p>
+      <p className="mb-4 text-xs text-neutral-500">Upload footage or paste a link. Clips from the event archive (matched by filename) return the precomputed YOLO11 + W&B vision labels. Any other video is not analyzed on this deployment; only its color palette is measured, in your browser. Age, gender, height and fit are not inferred.</p>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div
@@ -194,13 +194,24 @@ export default function VideoIntelligence() {
         <div className="mt-4 space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="font-mono text-[11px] text-neutral-500">
-              {result.jobId} · {result.aggregates.totalTracks} tracks · avg height {result.aggregates.avgHeightCm} cm
-              {result.source.sampledPalette?.length ? " · palette from real frames" : " · palette estimated"}
+              {result.jobId} · {result.aggregates.totalTracks} tracks · height: not inferred
+              {result.mode === "precomputed-real" ? " · precomputed real labels" : result.mode === "lab-pipeline-only" ? " · not analyzed" : " · DEMO rows (synthetic)"}
+              {result.source.sampledPalette?.length ? " · palette measured from real frames" : " · no palette (frames could not be read)"}
             </p>
             <button onClick={exportCsv} className="flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-4 py-1.5 text-xs font-medium text-neutral-800 hover:border-brand hover:text-brand">
               <Download className="h-3.5 w-3.5" /> Export CSV
             </button>
           </div>
+
+          {result.message && <p className="rounded-2xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-800">{result.message}</p>}
+          {result.realDataAvailableFor?.length ? (
+            <p className="text-xs text-neutral-500">Clips with real data: {result.realDataAvailableFor.map((c) => c.filename).join(", ")}</p>
+          ) : null}
+          {result.notes?.length ? (
+            <ul className="list-disc space-y-0.5 pl-5 text-[11px] text-neutral-500">
+              {result.notes.map((n, i) => <li key={i}>{n}</li>)}
+            </ul>
+          ) : null}
 
           {result.source.sampledPalette?.length ? (
             <div className="flex h-8 overflow-hidden rounded-full border border-neutral-200">
@@ -213,7 +224,10 @@ export default function VideoIntelligence() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <Bars title="Dominant colors" data={result.aggregates.colors} />
             <Bars title="Accessory prevalence" data={result.aggregates.accessories} />
-            <Bars title="Fit / physique" data={result.aggregates.physiques} />
+            <div className="rounded-2xl border border-neutral-200 bg-white p-4">
+              <h4 className="mb-3 font-mono text-[11px] uppercase tracking-wider text-neutral-500">Fit / physique</h4>
+              <p className="text-xs text-neutral-400">not inferred (privacy by design)</p>
+            </div>
           </div>
 
           <div className="max-h-56 overflow-auto rounded-2xl border border-neutral-200 bg-white">
@@ -234,9 +248,9 @@ export default function VideoIntelligence() {
                       </span>
                     </td>
                     <td className="px-3 py-1.5">{t.accessories.join(", ") || "—"}</td>
-                    <td className="px-3 py-1.5">{t.heightCm} cm / {t.heightIn}″</td>
-                    <td className="px-3 py-1.5">{t.physique}</td>
-                    <td className="px-3 py-1.5">{(t.detectionConfidence * 100).toFixed(0)}%</td>
+                    <td className="px-3 py-1.5 text-neutral-400">not inferred</td>
+                    <td className="px-3 py-1.5 text-neutral-400">not inferred</td>
+                    <td className="px-3 py-1.5">{t.detectionConfidence ? `${(t.detectionConfidence * 100).toFixed(0)}%` : "n/a"}</td>
                   </tr>
                 ))}
               </tbody>

@@ -1,8 +1,9 @@
-// Video feature extraction + business-intelligence engine.
-// Colors can be supplied from real frame sampling (client canvas); detections are simulated
-// until the AI video-ingestion pipeline replaces `extractTracks`.
+// DEMO analyzer for user-supplied video. The ONLY measured input is the color palette (client canvas
+// frame sampling). Track rows are synthetic placeholders derived from that palette: no detector runs here.
+// Height, physique and attribute confidences are NOT inferred (privacy by design) and are null / "not inferred".
 
-export type Physique = "Athletic" | "Slim" | "Average" | "Structured Fit" | "Relaxed";
+/** Never inferred. Values are "not inferred" (or the API's "Not inferred"); the UI always renders "not inferred". */
+export type Physique = string;
 export type Accessory = "Cross-body Bag" | "Sunglasses" | "Beanie" | "Minimalist Watch" | "Tote" | "Belt" | "Backpack" | "Cap" | "Scarf";
 
 export interface PaletteColor {
@@ -29,11 +30,11 @@ export interface ExtractedTrack {
   secondaryHex: string;
   secondaryColor: string;
   accessories: Accessory[];
-  heightCm: number;
-  heightIn: number;
+  heightCm: number | null; // not inferred: null or 0
+  heightIn: number | null; // not inferred: null or 0
   physique: Physique;
-  detectionConfidence: number;
-  attributeConfidence: number;
+  detectionConfidence: number | null; // null when no detector ran
+  attributeConfidence: number | null;
 }
 
 export interface Distribution {
@@ -45,7 +46,7 @@ export interface Distribution {
 
 export interface TrendAggregates {
   totalTracks: number;
-  avgHeightCm: number;
+  avgHeightCm: number | null; // not inferred: null or 0
   colors: Distribution[];
   accessories: Distribution[];
   physiques: Distribution[];
@@ -58,6 +59,11 @@ export interface Recommendations {
 
 export interface AnalysisResult {
   jobId: string;
+  /** "precomputed-real" = known event clip, real labels; "lab-pipeline-only" = nothing analyzed. Absent = legacy demo analyzer. */
+  mode?: string;
+  message?: string;
+  notes?: string[];
+  realDataAvailableFor?: { clipId: string; filename: string; camera: string; location: string }[];
   source: VideoSource;
   processedAt: string;
   tracks: ExtractedTrack[];
@@ -91,8 +97,6 @@ const DEFAULT_PALETTE: PaletteColor[] = ["#111827", "#1e3a8a", "#c19a6b", "#9ca3
   hex: h, ...nameColor(h), share: [0.28, 0.2, 0.16, 0.14, 0.12, 0.1][i],
 }));
 
-const ACCESSORIES: Accessory[] = ["Cross-body Bag", "Sunglasses", "Beanie", "Minimalist Watch", "Tote", "Belt", "Backpack", "Cap", "Scarf"];
-const PHYSIQUES: Physique[] = ["Athletic", "Slim", "Average", "Structured Fit", "Relaxed"];
 
 // small seeded PRNG so the same video gives the same result
 function rng(seed: string) {
@@ -118,8 +122,7 @@ export function extractTracks(source: VideoSource): ExtractedTrack[] {
   return Array.from({ length: n }, (_, i) => {
     const p = weighted(norm, rand());
     const s = weighted(norm.filter((c) => c.hex !== p.hex).map((c, _, a) => ({ ...c, share: 1 / a.length })), rand()) ?? p;
-    const heightCm = 152 + Math.round(rand() * 38);
-    const accessories = ACCESSORIES.filter(() => rand() < 0.22).slice(0, 3);
+    const accessories: Accessory[] = []; // accessories are not detected for uploads
     return {
       trackId: `VID-${String(i + 1).padStart(3, "0")}`,
       timestampSec: +((duration * i) / n + rand() * 2).toFixed(1),
@@ -129,11 +132,11 @@ export function extractTracks(source: VideoSource): ExtractedTrack[] {
       secondaryHex: s.hex,
       secondaryColor: s.name,
       accessories,
-      heightCm,
-      heightIn: +(heightCm / 2.54).toFixed(1),
-      physique: PHYSIQUES[Math.floor(rand() * PHYSIQUES.length)],
-      detectionConfidence: +(0.82 + rand() * 0.17).toFixed(3),
-      attributeConfidence: +(0.74 + rand() * 0.22).toFixed(3),
+      heightCm: null,
+      heightIn: null,
+      physique: "not inferred",
+      detectionConfidence: null,
+      attributeConfidence: null,
     };
   });
 }
@@ -151,29 +154,26 @@ export function aggregate(tracks: ExtractedTrack[]): TrendAggregates {
   const hexByName = new Map(tracks.map((t) => [t.primaryColor, t.primaryHex]));
   return {
     totalTracks: n,
-    avgHeightCm: Math.round(tracks.reduce((s, t) => s + t.heightCm, 0) / Math.max(n, 1)),
+    avgHeightCm: null,
     colors: distribution(tracks.map((t) => t.primaryColor), n, (l) => hexByName.get(l) ?? "#999"),
     accessories: distribution(tracks.flatMap((t) => t.accessories), n),
-    physiques: distribution(tracks.map((t) => t.physique), n),
+    physiques: [], // not inferred
   };
 }
 
 export function recommend(a: TrendAggregates): Recommendations {
   const [c1, c2] = a.colors;
-  const acc = a.accessories[0];
-  const fit = a.physiques[0];
   const dark = a.colors.filter((c) => nameColor(c.hex ?? "#000").shade === "Dark").reduce((s, c) => s + c.pct, 0);
   return {
     b2b: [
-      { tag: "GTM", title: `Lead the next drop with ${c1?.label ?? "core"} tones`, detail: `${c1?.pct ?? 0}% of tracked subjects wear ${c1?.label} as their primary color${c2 ? `, followed by ${c2.label} (${c2.pct}%)` : ""}. Prioritise these colorways in paid social creative and launch lookbooks.` },
-      { tag: "Inventory", title: `Shift stock toward ${fit?.label ?? "core"} silhouettes`, detail: `${fit?.label} physiques make up ${fit?.pct ?? 0}% of traffic (avg height ${a.avgHeightCm} cm). Rebalance size curves and reorder ${fit?.label === "Slim" ? "slim/tapered" : fit?.label === "Athletic" ? "stretch & athletic-cut" : "regular & relaxed"} fits.` },
-      { tag: "Merchandising", title: acc ? `Cross-merchandise ${acc.label.toLowerCase()}s at point of sale` : "Add accessory add-ons at checkout", detail: acc ? `${acc.pct}% of subjects carry a ${acc.label.toLowerCase()} — bundle with top garments and place on front tables.` : "Low accessory prevalence: introduce entry-price add-ons." },
-      { tag: "Visual Trigger", title: dark > 50 ? "Brighten window displays for contrast" : "Feature darker statement pieces", detail: dark > 50 ? `${dark}% of observed palettes are dark shades — a light, high-contrast window will stand out to passers-by.` : `Only ${dark}% dark shades observed — anchor displays with deep tones to create focal points.` },
+      { tag: "GTM", title: `Lead the next drop with ${c1?.label ?? "core"} tones`, detail: `${c1?.pct ?? 0}% of the demo rows use ${c1?.label} as primary color${c2 ? `, followed by ${c2.label} (${c2.pct}%)` : ""}. Row counts are synthetic; the palette is the measured part.` },
+      { tag: "Inventory", title: `Check stock depth in ${c1?.label ?? "core"} and ${c2?.label ?? "neutral"}`, detail: "Based on the sampled palette only. Size and fit are not inferred, so no size-curve advice is given." },
+      { tag: "Merchandising", title: "Build tonal displays from the sampled palette", detail: `Group ${c1?.label ?? "core"}${c2 ? ` and ${c2.label}` : ""} pieces together at the front of store.` },
+      { tag: "Visual Trigger", title: dark > 50 ? "Brighten window displays for contrast" : "Feature darker statement pieces", detail: dark > 50 ? `${dark}% of the sampled palette is dark shades: a light, high-contrast window will stand out.` : `Only ${dark}% of the sampled palette is dark shades: anchor displays with deep tones to create focal points.` },
     ],
     b2c: [
-      { title: "Your trending palette", detail: `The street is wearing ${a.colors.slice(0, 3).map((c) => c.label).join(", ")}. These pair well as a tonal base with one accent.`, swatches: a.colors.slice(0, 4).map((c) => c.hex ?? "#999") },
-      { title: "Complementary pieces", detail: `With ${c1?.label ?? "neutral"} as a base, try a ${c2?.label ?? "contrasting"} layer and ${acc ? (acc.label === "Sunglasses" ? "sunglasses" : `a ${acc.label.toLowerCase()}`) : "a minimalist watch"} to match what's trending.` },
-      { title: "Fit insight", detail: `${fit?.label ?? "Average"} cuts dominate — look for ${fit?.label === "Structured Fit" ? "tailored shoulders and clean lines" : fit?.label === "Relaxed" ? "dropped shoulders and wide legs" : "a true-to-size, slightly tapered fit"}.` },
+      { title: "Your trending palette", detail: `The footage shows ${a.colors.slice(0, 3).map((c) => c.label).join(", ")}. These pair well as a tonal base with one accent.`, swatches: a.colors.slice(0, 4).map((c) => c.hex ?? "#999") },
+      { title: "Complementary pieces", detail: `With ${c1?.label ?? "neutral"} as a base, try a ${c2?.label ?? "contrasting"} layer to match the palette.` },
     ],
   };
 }
@@ -182,7 +182,7 @@ export function toCsv(tracks: ExtractedTrack[], source: VideoSource): string {
   const head = "source,track_id,timestamp_sec,primary_color,primary_hex,primary_shade,secondary_color,secondary_hex,accessories,height_cm,height_in,physique,detection_confidence,attribute_confidence";
   const esc = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
   return [head, ...tracks.map((t) =>
-    [esc(source.name), t.trackId, t.timestampSec, t.primaryColor, t.primaryHex, t.primaryShade, t.secondaryColor, t.secondaryHex, esc(t.accessories.join("; ")), t.heightCm, t.heightIn, t.physique, t.detectionConfidence, t.attributeConfidence].join(","),
+    [esc(source.name), t.trackId, t.timestampSec, t.primaryColor, t.primaryHex, t.primaryShade, t.secondaryColor, t.secondaryHex, esc(t.accessories.join("; ")), "not inferred", "not inferred", t.physique, "n/a", "n/a"].join(","),
   )].join("\n");
 }
 

@@ -1,113 +1,172 @@
-import type {
-  AgentAlert,
-  DetectionPayload,
-  FitSize,
-  GenderPresentation,
-  OutfitDetection,
-  ProductRecommendation,
-  SearchResult,
-} from "./types";
+// Truth layer: maps REAL detections (public/data/detections.json, see realTypes.ts) into the shapes the UI uses.
+// Nothing here generates data. No random numbers, no invented demographics.
+import type { RealClip, RealDataFile, RealDetection } from "./realTypes";
+import { recommendFor } from "./realCatalog";
+import { NOT_INFERRED } from "./types";
+import type { AgentAlert, DetectionPayload, SearchResult } from "./types";
 
-const pick = <T,>(a: readonly T[]): T => a[Math.floor(Math.random() * a.length)];
+const none = (s: string | undefined) => !s || s.trim().toLowerCase() === "none";
 
-type OutfitTemplate = Omit<OutfitDetection, "primaryColor" | "secondaryColor" | "primaryHex" | "secondaryHex"> & {
-  colors: [string, string, string, string];
-  rec: ProductRecommendation;
-};
-
-const OUTFITS: OutfitTemplate[] = [
-  { primaryGarment: "Black Oversized Hoodie", garmentCategory: "Outerwear", aesthetic: "Streetwear", heavyOuterwear: false, colors: ["Black", "Charcoal", "#111827", "#374151"], rec: { sku: "SW-2210", name: "Heavyweight Cargo Jogger", priceUsd: 68, matchScore: 0.94 } },
-  { primaryGarment: "Navy Puffer Jacket", garmentCategory: "Outerwear", aesthetic: "Outdoor / Technical", heavyOuterwear: true, colors: ["Navy", "White", "#1e3a8a", "#f8fafc"], rec: { sku: "OW-4471", name: "Thermal Fleece Beanie", priceUsd: 24, matchScore: 0.91 } },
-  { primaryGarment: "Camel Wool Overcoat", garmentCategory: "Outerwear", aesthetic: "Business Casual", heavyOuterwear: true, colors: ["Camel", "Grey", "#c19a6b", "#6b7280"], rec: { sku: "BC-1180", name: "Cashmere Crew Sweater", priceUsd: 129, matchScore: 0.89 } },
-  { primaryGarment: "Grey Zip Track Jacket", garmentCategory: "Activewear", aesthetic: "Athleisure", heavyOuterwear: false, colors: ["Grey", "Lime", "#9ca3af", "#a3e635"], rec: { sku: "AT-3302", name: "Performance Running Tight", priceUsd: 58, matchScore: 0.92 } },
-  { primaryGarment: "Olive Shell Parka", garmentCategory: "Outerwear", aesthetic: "Outdoor / Technical", heavyOuterwear: true, colors: ["Olive", "Black", "#556b2f", "#111827"], rec: { sku: "OW-4502", name: "Waterproof Trail Boot", priceUsd: 149, matchScore: 0.88 } },
-  { primaryGarment: "White Linen Shirt", garmentCategory: "Top", aesthetic: "Minimalist", heavyOuterwear: false, colors: ["White", "Beige", "#f8fafc", "#e7d8c9"], rec: { sku: "MN-0912", name: "Tapered Chino", priceUsd: 72, matchScore: 0.87 } },
-  { primaryGarment: "Burgundy Quilted Vest", garmentCategory: "Outerwear", aesthetic: "Smart Casual", heavyOuterwear: true, colors: ["Burgundy", "Cream", "#7f1d1d", "#fef3c7"], rec: { sku: "SC-5521", name: "Merino Turtleneck", priceUsd: 89, matchScore: 0.9 } },
-];
-
-const AGES = ["16-23", "24-30", "31-40", "41-55", "55+"] as const;
-const GENDERS: GenderPresentation[] = ["Masculine", "Feminine", "Androgynous"];
-const SIZES: FitSize[] = ["XS", "S", "M", "L", "XL", "XXL"];
-
-let seq = 8090;
-
-export function generateDetection(): DetectionPayload {
-  const o = pick(OUTFITS);
-  const height = 152 + Math.round(Math.random() * 38);
+export function toPayload(d: RealDetection, clip?: RealClip): DetectionPayload {
+  const o = d.outfit;
+  const hasOuter = !none(o.outer);
   return {
-    trackingId: `TRK-${seq++}`,
-    timestamp: new Date().toISOString(),
-    confidence: +(0.86 + Math.random() * 0.13).toFixed(3),
-    bbox: { x: -12, y: 22 + Math.random() * 22, w: 9 + Math.random() * 3, h: 44 + Math.random() * 14 },
-    demographics: {
-      ageBracket: pick(AGES),
-      genderPresentation: pick(GENDERS),
-      heightCm: height,
-      fitSize: SIZES[Math.min(5, Math.max(0, Math.floor((height - 150) / 7)))],
-    },
+    trackingId: d.trackingId,
+    timestamp: `${d.clipId} @ ${d.tSec}s`,
+    clipId: d.clipId,
+    tSec: d.tSec,
+    camera: clip?.camera,
+    model: d.model,
+    traceUrl: d.traceUrl,
+    confidence: d.confidence,
+    bbox: d.bbox,
+    demographics: { ageBracket: NOT_INFERRED, genderPresentation: NOT_INFERRED, heightCm: NOT_INFERRED, fitSize: NOT_INFERRED },
     outfit: {
-      primaryGarment: o.primaryGarment,
-      garmentCategory: o.garmentCategory,
+      primaryGarment: hasOuter ? o.outer : o.top,
+      garmentCategory: hasOuter ? "Outerwear" : "Top",
+      top: o.top,
+      bottom: o.bottom,
+      outer: o.outer,
+      carry: o.carry,
+      primaryColor: o.primaryColor,
+      secondaryColor: o.secondaryColor,
+      primaryHex: o.primaryHex,
+      secondaryHex: o.secondaryHex,
       aesthetic: o.aesthetic,
       heavyOuterwear: o.heavyOuterwear,
-      primaryColor: o.colors[0],
-      secondaryColor: o.colors[1],
-      primaryHex: o.colors[2],
-      secondaryHex: o.colors[3],
     },
-    recommendation: { ...o.rec, matchScore: +(o.rec.matchScore - Math.random() * 0.05).toFixed(2) },
+    recommendation: recommendFor(o.aesthetic, o.heavyOuterwear),
   };
 }
 
-/** Simulated vector search over temporal clip embeddings. */
-export function semanticSearch(query: string): SearchResult[] {
-  const q = query.toLowerCase();
-  const garment = OUTFITS.find((o) => q.includes(o.colors[0].toLowerCase()) || q.includes(o.primaryGarment.split(" ").pop()!.toLowerCase()));
-  const label = garment?.primaryGarment ?? "matching outfit";
-  const base = 98.4;
-  return [
-    { cam: "CAM-01 Entrance", t: "14:12:08 – 14:12:31", h: 210 },
-    { cam: "CAM-03 Outerwear Aisle", t: "14:47:52 – 14:48:20", h: 160 },
-    { cam: "CAM-01 Entrance", t: "15:36:04 – 15:36:19", h: 260 },
-  ].map((c, i) => ({
-    clipId: `CLIP-${(Date.now() % 100000) + i}`,
-    camera: c.cam,
-    timeRange: c.t,
-    matchConfidence: +(base - i * (2.1 + Math.random() * 2)).toFixed(1),
-    description: `Shopper in ${label}`,
-    thumbHue: c.h,
-  }));
-}
+const pct = (n: number, d: number) => Math.round((n / Math.max(d, 1)) * 100);
 
-/** W&B managed LLM agent: reasons over a window of detections. */
+/** Rule-based summary over a window of REAL replayed detections (no LLM, no demographics). */
 export function agentAlerts(window: DetectionPayload[]): AgentAlert[] {
-  const n = Math.max(window.length, 1);
-  const heavy = Math.round((window.filter((d) => d.outfit.heavyOuterwear).length / n) * 100);
+  const n = window.length;
+  if (n === 0) {
+    return [{ id: "wait", severity: "info", metricPct: 0, insight: "Waiting for the replay to reach the first labelled sighting.", action: "No action yet." }];
+  }
+  const heavy = pct(window.filter((d) => d.outfit.heavyOuterwear).length, n);
   const counts = new Map<string, number>();
   window.forEach((d) => counts.set(d.outfit.aesthetic, (counts.get(d.outfit.aesthetic) ?? 0) + 1));
-  const [topStyle, topCount] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0] ?? ["Streetwear", 0];
-  const youth = Math.round((window.filter((d) => ["16-23", "24-30"].includes(d.demographics.ageBracket)).length / n) * 100);
+  const [topStyle, topCount] = [...counts.entries()].sort((a, b) => b[1] - a[1])[0];
+  const bags = pct(window.filter((d) => d.outfit.carry.some((c) => /bag|backpack|tote|purse|satchel/i.test(c))).length, n);
   return [
     {
       id: "signage",
       severity: "action",
       metricPct: heavy,
-      insight: `${heavy}% of incoming foot traffic in the last 30 mins is wearing heavy outerwear.`,
-      action: "Auto-update entrance digital display to feature Winter Outerwear Collection.",
+      campaign: heavy >= 40 ? "Winter Outerwear Collection" : `${topStyle} Edit`,
+      insight: `${heavy}% of the last ${n} replayed person-sightings show heavy outerwear.`,
+      action: heavy >= 40 ? "Suggest: feature the Winter Outerwear Collection on the entrance display (demo)." : `Suggest: feature the ${topStyle} edit on the entrance display (demo).`,
     },
     {
       id: "merch",
       severity: "info",
-      metricPct: Math.round((topCount / n) * 100),
-      insight: `${topStyle} is the dominant aesthetic (${Math.round((topCount / n) * 100)}% of tracked shoppers).`,
-      action: `Re-merchandise front table with ${topStyle} best-sellers; replenish sizes M/L.`,
+      metricPct: pct(topCount, n),
+      insight: `${topStyle} is the most common aesthetic (${pct(topCount, n)}% of the last ${n} sightings).`,
+      action: `Suggest: re-merchandise the front table with ${topStyle} best-sellers.`,
     },
     {
-      id: "staff",
-      severity: youth > 60 ? "critical" : "info",
-      metricPct: youth,
-      insight: `${youth}% of shoppers are under 30.`,
-      action: "Push mobile-checkout QR prompts to the fitting-room displays.",
+      id: "carry",
+      severity: "info",
+      metricPct: bags,
+      insight: `${bags}% of the last ${n} sightings carry a bag, backpack or tote.`,
+      action: "Suggest: place bag and carry accessories near checkout.",
     },
   ];
+}
+
+// ---- text search over the labelled detections (term overlap, not embeddings) ----
+
+const STOP = new Set(["show", "shoppers", "shopper", "people", "person", "wearing", "wear", "wears", "with", "the", "and", "between", "who", "that", "all", "any", "from", "find", "for", "clips", "clip", "under", "over", "aged", "age", "men", "women", "man", "woman"]);
+
+function hueOf(hex: string): number {
+  const n = parseInt(hex.replace("#", ""), 16);
+  if (Number.isNaN(n)) return 210;
+  const r = ((n >> 16) & 255) / 255, g = ((n >> 8) & 255) / 255, b = (n & 255) / 255;
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  if (d === 0) return 210;
+  const h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  return Math.round(((h * 60) + 360) % 360);
+}
+
+export const fmtClock = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+
+export function searchDetections(data: RealDataFile, query: string, limit = 3): SearchResult[] {
+  const stem = (w: string) => w.replace(/(es|s)$/, "");
+  const terms = [...new Set(query.toLowerCase().split(/[^a-z]+/).filter((w) => w.length >= 3 && w !== "pm" && !STOP.has(w)).map(stem))];
+  if (terms.length === 0) return [];
+  const clips = new Map(data.clips.map((c) => [c.clipId, c]));
+  return data.detections
+    .map((d) => {
+      const o = d.outfit;
+      const hay = [o.top, o.bottom, o.outer, ...o.carry, o.primaryColor, o.secondaryColor, o.aesthetic].join(" ").toLowerCase();
+      const words = hay.split(/[^a-z]+/).map(stem);
+      const hit = terms.filter((t) => words.includes(t)).length;
+      return { d, score: hit / terms.length };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || b.d.confidence - a.d.confidence)
+    .slice(0, limit)
+    .map(({ d, score }) => {
+      const clip = clips.get(d.clipId);
+      const o = d.outfit;
+      const parts = [o.outer && !none(o.outer) ? o.outer : null, o.top, o.bottom].filter(Boolean).join(" + ");
+      return {
+        clipId: d.clipId,
+        camera: clip ? `${clip.camera} (${clip.location.replace(/_/g, " ")})` : d.clipId,
+        timeRange: `at ${fmtClock(d.tSec)} in clip`,
+        matchConfidence: Math.round(score * 100),
+        description: `${d.trackingId}: ${parts}`,
+        thumbHue: hueOf(o.primaryHex),
+      };
+    });
+}
+
+// ---- server-side helpers kept for the API routes (export / search) ----
+// They read the same real file from disk (detections.json, else detections.sample.json). No random data.
+
+let serverCache: RealDataFile | null | undefined;
+let genIdx = 0;
+
+interface NodeBuiltins {
+  fs: { existsSync(p: string): boolean; readFileSync(p: string, enc: string): string };
+  path: { join(...p: string[]): string };
+}
+
+export function readRealDataSync(): RealDataFile | null {
+  if (serverCache !== undefined) return serverCache;
+  serverCache = null;
+  try {
+    const get = (process as unknown as { getBuiltinModule?: (m: string) => unknown }).getBuiltinModule;
+    if (!get) return null;
+    const b: NodeBuiltins = { fs: get("fs") as NodeBuiltins["fs"], path: get("path") as NodeBuiltins["path"] };
+    for (const f of ["detections.json", "detections.sample.json"]) {
+      const p = b.path.join(process.cwd(), "public", "data", f);
+      if (b.fs.existsSync(p)) {
+        serverCache = JSON.parse(b.fs.readFileSync(p, "utf8")) as RealDataFile;
+        break;
+      }
+    }
+  } catch {
+    serverCache = null;
+  }
+  return serverCache;
+}
+
+/** Returns the next REAL detection (cycles through the file in order). Works as an Array.from callback. */
+export function generateDetection(_v?: unknown, i?: number): DetectionPayload {
+  const data = readRealDataSync();
+  if (!data || data.detections.length === 0) throw new Error("No real detections found in public/data");
+  const idx = typeof i === "number" ? i : genIdx++;
+  const d = data.detections[idx % data.detections.length];
+  return toPayload(d, data.clips.find((c) => c.clipId === d.clipId));
+}
+
+/** Text search over the real labelled detections. */
+export function semanticSearch(query: string): SearchResult[] {
+  const data = readRealDataSync();
+  return data ? searchDetections(data, query) : [];
 }
